@@ -1,0 +1,65 @@
+{
+  "name": "Reactron",
+  "productName": "Reactron Boilerplate",
+  "version": "0.1.0",
+  "author": "Shahid",
+  "description": "A simple react-electron (reactron) boilerplate",
+  "private": true,
+  "main": "build/app.js",
+  "homepage": "./",
+  "dependencies": {
+    "electron-is-dev": "^0.3.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "pack": "build --em.main=build/app.js",
+    "preelectron-pack": "yarn build"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "electron": "^1.7.9",
+    "electron-builder": "^19.49.0",
+    "wait-on": "^2.0.2"
+  },
+  "build": {
+    "appId": "me.shahids.reactron",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "icon": "build/icons/png",
+      "maintainer": "Shahid",
+      "category": "Utility"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    }
+  }
+}
