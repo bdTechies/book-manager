@@ -1,8 +1,11 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 const url = require("url");
+const dataPath = app.getPath("userData");
+const db = require("./config/db");
+
 const startUrl =
-  process.env.ELECTRON_START_URL ||
+  `http://localhost:3000` ||
   url.format({
     pathname: path.join(__dirname, "/../build/index.html"),
     protocol: "file:",
@@ -13,7 +16,6 @@ let mainWindow;
 function createWindow() {
   mainWindow = new BrowserWindow({ width: 1152, height: 700 });
   mainWindow.loadURL(startUrl);
-
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
