@@ -2,15 +2,24 @@
   "name": "reactron",
   "version": "0.1.0",
   "private": true,
+  "main": "src/electron-starter.js",
+  "homepage": "./",
   "dependencies": {
     "@sh4hids/react-scripts": "1.1.8",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "nf start -p 3000",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "electron-start": "node src/electron-wait-react",
+    "react-start": "BROWSER=none react-scripts start"
+  },
+  "devDependencies": {
+    "electron": "^2.0.5",
+    "foreman": "^3.0.1"
   }
 }
