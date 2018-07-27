@@ -14,6 +14,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getData();
+    this.props.getSavedTask();
   }
 
   handleSubmit(event) {
@@ -45,7 +46,7 @@ class App extends Component {
         <p className="App-intro">All the things I need to do..</p>
         <List>
           {this.props.todos.map(todo => (
-            <ListItem key={todo.id}>
+            <ListItem key={todo._id}>
               {todo.task} <span>Completed: {todo.isCompleted ? 'Y' : 'N'}</span>
             </ListItem>
           ))}
@@ -64,6 +65,7 @@ const mapStateToProps = state => {
 
 const mapActionsToProps = {
   getData: todoActions.getData,
+  getSavedTask: todoActions.getSavedTask,
   handleInputChange: todoActions.createNewTask,
   handleSubmit: todoActions.saveTask,
 };

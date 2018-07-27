@@ -15,7 +15,7 @@ export default function todoReducer(state = INITIAL_STATE, { type, payload }) {
     case CREATE_TASK:
       return {
         ...state,
-        newTask: { id: state.todos.length, task: payload, isCompleted: false },
+        newTask: { task: payload, isCompleted: false },
       };
     case ADD_TASK:
       return {

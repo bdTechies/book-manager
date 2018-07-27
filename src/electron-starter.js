@@ -47,7 +47,7 @@ ipcMain.on('init-app', (event, data) => {
     })
     .catch(err => console.log(err));
 });
-
+let x = 34;
 ipcMain.on('save-task', (event, data) => {
   datastore
     .insert(data)
