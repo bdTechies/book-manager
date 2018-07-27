@@ -12,6 +12,10 @@ class App extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
+  componentDidMount() {
+    this.props.getData();
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     this.props.handleSubmit(this.props.newTask);
@@ -29,6 +33,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to Reactron</h1>
           <form onSubmit={this.handleSubmit} id="add-task">
             <TextField
+              required
               label="New task"
               margin="normal"
               name="task"
@@ -58,8 +63,9 @@ const mapStateToProps = state => {
 };
 
 const mapActionsToProps = {
+  getData: todoActions.getData,
   handleInputChange: todoActions.createNewTask,
-  handleSubmit: todoActions.addNewTask,
+  handleSubmit: todoActions.saveTask,
 };
 
 export default connect(

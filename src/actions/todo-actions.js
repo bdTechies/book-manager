@@ -1,4 +1,33 @@
-import { ADD_TASK, CREATE_TASK } from './types';
+import { SET_DATA, ADD_TASK, CREATE_TASK } from './types';
+const electron = window.require('electron');
+const { ipcRenderer } = electron;
+
+export function getData() {
+  ipcRenderer.send('init-app', 'init app');
+  return dispatch => {
+    ipcRenderer.on('initialized-app', (event, data) => {
+      dispatch(setData(data));
+      return data;
+    });
+  };
+}
+
+export function saveTask(task) {
+  ipcRenderer.send('save-task', task);
+  return dispatch => {
+    ipcRenderer.on('task-saved', (event, data) => {
+      dispatch(addNewTask(data));
+      return data;
+    });
+  };
+}
+
+export function setData(data) {
+  return {
+    type: SET_DATA,
+    payload: data,
+  };
+}
 
 export function createNewTask(value) {
   return {

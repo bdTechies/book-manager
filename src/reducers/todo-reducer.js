@@ -1,4 +1,4 @@
-import { ADD_TASK, CREATE_TASK } from '../actions/types';
+import { SET_DATA, ADD_TASK, CREATE_TASK } from '../actions/types';
 
 const INITIAL_STATE = {
   todos: [],
@@ -7,6 +7,11 @@ const INITIAL_STATE = {
 
 export default function todoReducer(state = INITIAL_STATE, { type, payload }) {
   switch (type) {
+    case SET_DATA:
+      return {
+        ...state,
+        todos: [...state.todos, ...payload],
+      };
     case CREATE_TASK:
       return {
         ...state,
@@ -16,6 +21,7 @@ export default function todoReducer(state = INITIAL_STATE, { type, payload }) {
       return {
         ...state,
         todos: [...state.todos, payload],
+        newTask: {},
       };
     default:
       return state;

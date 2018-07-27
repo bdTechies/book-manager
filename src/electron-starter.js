@@ -1,15 +1,16 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const url = require('url');
 const dataPath = app.getPath('userData');
 const db = require('./config/db');
+const datastore = db.createDatabase(dataPath, 'todo');
 
 const startUrl =
   `http://localhost:3000` ||
   url.format({
     pathname: path.join(__dirname, '/../build/index.html'),
     protocol: 'file:',
-    slashes: true
+    slashes: true,
   });
 let mainWindow;
 
@@ -36,4 +37,22 @@ app.on('activate', function() {
   if (mainWindow === null) {
     createWindow();
   }
+});
+
+ipcMain.on('init-app', (event, data) => {
+  datastore
+    .find({})
+    .then(data => {
+      event.sender.send('initialized-app', data);
+    })
+    .catch(err => console.log(err));
+});
+
+ipcMain.on('save-task', (event, data) => {
+  datastore
+    .insert(data)
+    .then(data => {
+      event.sender.send('task-saved', data);
+    })
+    .catch(err => console.log(err));
 });
