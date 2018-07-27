@@ -1,5 +1,5 @@
-const path = require("path");
-const Datastore = require("nedb-promises");
+const path = require('path');
+const Datastore = require('nedb-promises');
 
 const createDatabase = (dbPath, dbName) => {
   let datastore;
