@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { honeyFlower } from './ui/themes';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import { todoActions } from './actions';
 import Routes from './routes';
 
 const theme = createMuiTheme(honeyFlower);

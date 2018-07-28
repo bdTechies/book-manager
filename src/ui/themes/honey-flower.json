@@ -134,7 +134,7 @@
     },
     "subheading": {
       "color": "rgba(0, 0, 0, 0.87)",
-      "fontFamily": "\"Fira Sans\", \"Helvetica\", \"Arial\", sans-serif",
+      "fontFamily": "\"Arima Madurai\", cursive",
       "lineHeight": "1.5em",
       "fontSize": "1rem",
       "fontWeight": 400

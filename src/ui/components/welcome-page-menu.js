@@ -2,7 +2,7 @@ import React from 'react';
 import { MenuList, MainMenuItem } from '../base-kits';
 import { Link } from 'react-router-dom';
 
-const MainMenu = () => (
+const WelcomePageMenu = () => (
   <MenuList>
     <MainMenuItem>
       <Link to="/all-books">
@@ -27,4 +27,4 @@ const MainMenu = () => (
   </MenuList>
 );
 
-export default MainMenu;
+export default WelcomePageMenu;
