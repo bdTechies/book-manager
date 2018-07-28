@@ -5,11 +5,25 @@ import { Link } from 'react-router-dom';
 const MainMenu = () => (
   <MenuList>
     <MainMenuItem>
-      <Link to="/all-books">view all</Link>
+      <Link to="/all-books">
+        <span>view all</span>
+      </Link>
     </MainMenuItem>
-    <MainMenuItem>add new</MainMenuItem>
-    <MainMenuItem>about</MainMenuItem>
-    <MainMenuItem>exit</MainMenuItem>
+    <MainMenuItem>
+      <Link to="/add-book">
+        <span>add new</span>
+      </Link>
+    </MainMenuItem>
+    <MainMenuItem>
+      <Link to="/about">
+        <span>about</span>
+      </Link>
+    </MainMenuItem>
+    <MainMenuItem>
+      <Link to="/exit">
+        <span>exit</span>
+      </Link>
+    </MainMenuItem>
   </MenuList>
 );
 

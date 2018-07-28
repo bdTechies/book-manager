@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const MainMenuItem = styled.li`
   font-size: 20px;
+  margin-bottom: 8px;
   font-family: 'Arima Madurai';
   text-transform: lowercase;
   a {
@@ -10,7 +11,24 @@ const MainMenuItem = styled.li`
     text-align: right;
     display: inline-block;
     text-decoration: none;
-    border-bottom: 1px solid #ffffff;
+    outline: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+    span {
+      transition: all ease-in-out 0.2s;
+    }
+
+    &:hover {
+      span {
+        padding-right: 4px;
+      }
+    }
+
+    &:visited,
+    &:active {
+      color: #ffffff;
+      outline: none;
+    }
   }
 `;
 

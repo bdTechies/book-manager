@@ -1,3 +1,4 @@
-import Welcome from './welcome-page';
+import WelcomePage from './welcome-page';
+import AllBooksPage from './all-books-page';
 
-export { Welcome };
+export { WelcomePage, AllBooksPage };

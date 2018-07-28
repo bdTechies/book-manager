@@ -1,3 +1,3 @@
-import WelcomeLayout from './welcome-layout';
+import WelcomeLayout from './welcome-page-layout';
 
 export { WelcomeLayout };
