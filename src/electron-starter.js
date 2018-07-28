@@ -42,6 +42,7 @@ app.on('activate', function() {
 ipcMain.on('init-app', (event, data) => {
   datastore
     .find({})
+    .sort({ createdAt: 1 })
     .then(data => {
       event.sender.send('initialized-app', data);
     })
