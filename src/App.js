@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Button, List, ListItem } from './ui/base-kits/';
-import { TextField } from '@material-ui/core/';
+import { TextField, AppBar, Toolbar, Typography } from '@material-ui/core/';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { todoActions } from './actions';
+import { honeyFlower } from './ui/themes';
+
+const theme = createMuiTheme(honeyFlower);
 
 class App extends Component {
   constructor(props) {
@@ -29,29 +33,40 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to Reactron</h1>
-          <form onSubmit={this.handleSubmit} id="add-task">
-            <TextField
-              required
-              label="New task"
-              margin="normal"
-              name="task"
-              onChange={this.handleInputChange}
-            />
-            <Button type="submit">Add Task</Button>
-          </form>
-        </header>
-        <p className="App-intro">All the things I need to do..</p>
-        <List>
-          {this.props.todos.map(todo => (
-            <ListItem key={todo._id}>
-              {todo.task} <span>Completed: {todo.isCompleted ? 'Y' : 'N'}</span>
-            </ListItem>
-          ))}
-        </List>
-      </div>
+      <MuiThemeProvider theme={theme}>
+        <div className="App">
+          <AppBar position="static" color="secondary">
+            <Toolbar>
+              <Typography variant="headline" color="inherit">
+                Photos
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <header className="App-header">
+            <h1 className="App-title">Welcome to Reactron</h1>
+            <form onSubmit={this.handleSubmit} id="add-task">
+              <TextField
+                required
+                label="New task"
+                margin="normal"
+                name="task"
+                onChange={this.handleInputChange}
+              />
+              <Button type="submit">Add Task</Button>
+            </form>
+          </header>
+          Button
+          <p className="App-intro">All the things I need to do..</p>
+          <List>
+            {this.props.todos.map(todo => (
+              <ListItem key={todo._id}>
+                {todo.task}{' '}
+                <span>Completed: {todo.isCompleted ? 'Y' : 'N'}</span>
+              </ListItem>
+            ))}
+          </List>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
