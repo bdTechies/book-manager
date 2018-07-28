@@ -14,7 +14,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getData();
-    this.props.getSavedTask();
+    this.props.initMainProcessListeners();
   }
 
   handleSubmit(event) {
@@ -65,7 +65,7 @@ const mapStateToProps = state => {
 
 const mapActionsToProps = {
   getData: todoActions.getData,
-  getSavedTask: todoActions.getSavedTask,
+  initMainProcessListeners: todoActions.initMainProcessListeners,
   handleInputChange: todoActions.createNewTask,
   handleSubmit: todoActions.saveTask,
 };
