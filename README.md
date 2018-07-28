@@ -2,4 +2,4 @@
 
 A simple personal library management application.
 
-![Book Manager](https://cdn.rawgit.com/bdTechies/cdn/8149aa4b5e900b123a404bcdee42e968be1b566b/images/book-manager.svg)
+![Book Manager](https://cdn.rawgit.com/bdTechies/cdn/65c16949b8e48b140771dbe199ebe660a2df98e8/images/book-manager.png)
