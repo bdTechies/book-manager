@@ -1,4 +1,4 @@
-## React + Electron = Reactron
+## Book Manager
 
 A simple personal library management application.
 
