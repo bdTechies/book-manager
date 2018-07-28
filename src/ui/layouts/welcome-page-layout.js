@@ -11,13 +11,13 @@ const WelcomeLayout = props => (
   <WelcomeContainer>
     <Grid container>
       <Grid item sm={6}>
-        <FullHeightGrid container justify="center" alignItems="center">
+        <FullHeightGrid container justify="center" alignItems="center" noCopy>
           <WelcomePageLogo />
         </FullHeightGrid>
       </Grid>
       <FixedVerticalDevider />
       <Grid item sm={6} justify="center">
-        <FullHeightGrid container justify="center" alignItems="center">
+        <FullHeightGrid container justify="center" alignItems="center" noCopy>
           <WelcomePageMenu />
         </FullHeightGrid>
       </Grid>
