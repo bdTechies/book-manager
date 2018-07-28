@@ -1,6 +1,10 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import { WelcomeContainer, FullHeightGrid } from '../base-kits';
+import {
+  WelcomeContainer,
+  FullHeightGrid,
+  FixedVerticalDevider,
+} from '../base-kits';
 import { WelcomePageMenu, WelcomePageLogo } from '../components';
 
 const WelcomeLayout = props => (
@@ -11,6 +15,7 @@ const WelcomeLayout = props => (
           <WelcomePageLogo />
         </FullHeightGrid>
       </Grid>
+      <FixedVerticalDevider />
       <Grid item sm={6} justify="center">
         <FullHeightGrid container justify="center" alignItems="center">
           <WelcomePageMenu />

@@ -5,6 +5,7 @@ import FullHeightGrid from './full-height-grid';
 import Image from './image';
 import CustomTypography from './custom-typography';
 import Container from './container';
+import FixedVerticalDevider from './fixed-vertical-devider';
 
 export {
   WelcomeContainer,
@@ -14,4 +15,5 @@ export {
   Image,
   CustomTypography,
   Container,
+  FixedVerticalDevider,
 };
