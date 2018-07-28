@@ -1,5 +1,5 @@
 {
-  "name": "reactron",
+  "name": "book-manager",
   "version": "0.1.0",
   "private": true,
   "main": "src/electron-starter.js",
