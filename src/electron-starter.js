@@ -15,7 +15,13 @@ const startUrl =
 let mainWindow;
 
 function createWindow() {
-  mainWindow = new BrowserWindow({ width: 1152, height: 700 });
+  mainWindow = new BrowserWindow({
+    width: 1152,
+    height: 700,
+    minWidth: 1152,
+    minHeight: 700,
+    frame: false,
+  });
   mainWindow.loadURL(startUrl);
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -56,4 +62,8 @@ ipcMain.on('save-task', (event, data) => {
       event.sender.send('task-saved', data);
     })
     .catch(err => console.log(err));
+});
+
+ipcMain.on('EXIT_APP', (event, data) => {
+  app.quit();
 });

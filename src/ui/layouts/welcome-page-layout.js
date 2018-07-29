@@ -18,7 +18,7 @@ const WelcomeLayout = props => (
       <FixedVerticalDevider />
       <Grid item sm={6} justify="center">
         <FullHeightGrid container justify="center" alignItems="center" noCopy>
-          <WelcomePageMenu />
+          <WelcomePageMenu onExitApp={props.onExitApp} />
         </FullHeightGrid>
       </Grid>
     </Grid>

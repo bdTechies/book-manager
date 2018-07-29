@@ -2,7 +2,7 @@ import React from 'react';
 import { MenuList, MainMenuItem } from '../base-kits';
 import { Link } from 'react-router-dom';
 
-const WelcomePageMenu = () => (
+const WelcomePageMenu = props => (
   <MenuList>
     <MainMenuItem>
       <Link to="/all-books">
@@ -20,9 +20,9 @@ const WelcomePageMenu = () => (
       </Link>
     </MainMenuItem>
     <MainMenuItem>
-      <Link to="/exit">
+      <a onClick={props.onExitApp()}>
         <span>exit</span>
-      </Link>
+      </a>
     </MainMenuItem>
   </MenuList>
 );
