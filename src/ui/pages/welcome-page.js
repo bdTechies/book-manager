@@ -1,20 +1,38 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { WelcomeLayout } from '../layouts';
-import { appControlActions } from '../../actions';
+import React from 'react';
+import { Grid } from '@material-ui/core';
+import {
+  WelcomeContainer,
+  FullHeightGrid,
+  FixedVerticalDevider,
+} from '../base-kits';
+import { WelcomePageLogo, WelcomePageMenu } from '../components';
 
-class WelcomePage extends Component {
-  render() {
-    return <WelcomeLayout {...this.props} />;
-  }
-}
+const WelcomePage = () => (
+  <WelcomeContainer>
+    <Grid container>
+      <Grid item sm={6}>
+        <FullHeightGrid
+          container
+          justify="center"
+          alignItems="center"
+          nocopy="true"
+        >
+          <WelcomePageLogo />
+        </FullHeightGrid>
+      </Grid>
+      <FixedVerticalDevider />
+      <Grid item sm={6}>
+        <FullHeightGrid
+          container
+          justify="center"
+          alignItems="center"
+          nocopy="true"
+        >
+          <WelcomePageMenu />
+        </FullHeightGrid>
+      </Grid>
+    </Grid>
+  </WelcomeContainer>
+);
 
-const mapStateToProps = state => ({});
-const mapActionsToProps = {
-  onExitApp: appControlActions.exitApp,
-};
-
-export default connect(
-  mapStateToProps,
-  mapActionsToProps
-)(WelcomePage);
+export default WelcomePage;

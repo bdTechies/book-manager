@@ -8,7 +8,7 @@ const WelcomePageLogo = () => (
     <CustomTypography
       variant="headline"
       align="center"
-      color="#ffffff"
+      customcolor="#ffffff"
       mt="16px"
     >
       Manage your dreams

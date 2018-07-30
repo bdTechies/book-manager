@@ -4,7 +4,7 @@ import { Grid } from '@material-ui/core';
 const FullHeightGrid = styled(Grid)`
   height: 100vh;
   ${props =>
-    props.noCopy
+    props.nocopy
       ? css`
           -webkit-user-select: none;
         `
