@@ -1,8 +1,14 @@
-import React, { Component } from 'react';
+import React, { Fragments, Component } from 'react';
+import { MainMenu } from '../components';
 
 class AllBooksPage extends Component {
   render() {
-    return <h1>Hello there...</h1>;
+    return (
+      <div>
+        <MainMenu />
+        <p>Hello</p>
+      </div>
+    );
   }
 }
 

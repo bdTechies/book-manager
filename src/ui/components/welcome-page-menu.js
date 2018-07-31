@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { MenuList, MainMenuItem } from '../base-kits';
+import { MenuList, WelcomePageMenuItem } from '../base-kits';
 import { appControlActions } from '../../actions';
 
 class WelcomePageMenu extends Component {
@@ -18,26 +18,26 @@ class WelcomePageMenu extends Component {
   render() {
     return (
       <MenuList>
-        <MainMenuItem>
+        <WelcomePageMenuItem>
           <Link to="/all-books">
             <span>view all</span>
           </Link>
-        </MainMenuItem>
-        <MainMenuItem>
+        </WelcomePageMenuItem>
+        <WelcomePageMenuItem>
           <Link to="/add-book">
             <span>add new</span>
           </Link>
-        </MainMenuItem>
-        <MainMenuItem>
+        </WelcomePageMenuItem>
+        <WelcomePageMenuItem>
           <Link to="/about">
             <span>about</span>
           </Link>
-        </MainMenuItem>
-        <MainMenuItem>
+        </WelcomePageMenuItem>
+        <WelcomePageMenuItem>
           <a onClick={this.onExitApp}>
             <span>exit</span>
           </a>
-        </MainMenuItem>
+        </WelcomePageMenuItem>
       </MenuList>
     );
   }
