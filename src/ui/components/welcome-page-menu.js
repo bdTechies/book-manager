@@ -43,8 +43,6 @@ class WelcomePageMenu extends Component {
   }
 }
 
-console.log(typeof appControlActions.exitApp);
-
 const mapActionsToProps = {
   onExitApp: appControlActions.exitApp,
 };

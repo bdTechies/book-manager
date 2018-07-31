@@ -13,6 +13,7 @@ const MainMenuItem = styled.li`
     text-decoration: none;
     outline: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
 
     span {
       transition: all ease-in-out 0.2s;

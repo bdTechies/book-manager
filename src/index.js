@@ -14,6 +14,20 @@ injectGlobal`
     padding: 0;
     box-sizing: border-box;
   }
+
+  body {
+    -ms-overflow-style: scrollbar;
+    -webkit-app-region:drag;
+  }
+
+  input,
+  button,
+  textarea,
+  ul,  p,  h1,
+  h2,  h3,  h4,
+  h5, h6 {
+  	-webkit-app-region: no-drag;
+  }
 `;
 
 const store = createStore(allReducers, applyMiddleware(thunk));
