@@ -6,7 +6,6 @@ class AllBooksPage extends Component {
     return (
       <div>
         <MainMenu />
-        <p>Hello</p>
       </div>
     );
   }
