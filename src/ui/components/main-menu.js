@@ -1,33 +1,66 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Tooltip } from '@material-ui/core';
-import { PlusIcon, AllInclusiveIcon } from 'mdi-react';
-import { MenuList, MainMenuItem } from '../base-kits';
+import { MenuList, MainMenuItem, Image } from '../base-kits';
+import bmLogo from '../assets/img/bm-logo-white.svg';
+import {
+  PlusIcon,
+  AllInclusiveIcon,
+  SwapVerticalIcon,
+  TextIcon,
+  SettingsIcon,
+  InformationVariantIcon,
+} from 'mdi-react';
 
 const MainMenu = props => (
   <MenuList vertical="true">
-    <Tooltip title="All Books" placement="right">
+    <Tooltip title="Book Manager" placement="right">
       <MainMenuItem>
-        <Link to="/all-books">
+        <Image src={bmLogo} />
+      </MainMenuItem>
+    </Tooltip>
+    <Tooltip title="Add Book" placement="right">
+      <MainMenuItem>
+        <Link to="/add-book">
           <PlusIcon />
         </Link>
       </MainMenuItem>
     </Tooltip>
-    <MainMenuItem>
-      <Link to="/add-book">
-        <AllInclusiveIcon />
-      </Link>
-    </MainMenuItem>
-    <MainMenuItem>
-      <Link to="/about">
-        <span>about</span>
-      </Link>
-    </MainMenuItem>
-    <MainMenuItem>
-      <a onClick={this.onExitApp}>
-        <span>exit</span>
-      </a>
-    </MainMenuItem>
+    <Tooltip title="All Books" placement="right">
+      <MainMenuItem>
+        <Link to="/all-books">
+          <AllInclusiveIcon />
+        </Link>
+      </MainMenuItem>
+    </Tooltip>
+    <Tooltip title="Notes" placement="right">
+      <MainMenuItem>
+        <Link to="/notes">
+          <TextIcon />
+        </Link>
+      </MainMenuItem>
+    </Tooltip>
+    <Tooltip title="Import/Export" placement="right">
+      <MainMenuItem>
+        <Link to="/exim">
+          <SwapVerticalIcon />
+        </Link>
+      </MainMenuItem>
+    </Tooltip>
+    <Tooltip title="Settings" placement="right">
+      <MainMenuItem>
+        <Link to="/settings">
+          <SettingsIcon />
+        </Link>
+      </MainMenuItem>
+    </Tooltip>
+    <Tooltip title="About Book Manager" placement="right">
+      <MainMenuItem>
+        <Link to="/about">
+          <InformationVariantIcon />
+        </Link>
+      </MainMenuItem>
+    </Tooltip>
   </MenuList>
 );
 

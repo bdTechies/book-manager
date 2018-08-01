@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
 const MainMenuItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 50px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   a {
     width: 100%;
     color: #ffffff;
@@ -11,7 +18,6 @@ const MainMenuItem = styled.li`
     align-items: center;
     text-decoration: none;
     outline: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     cursor: pointer;
 
     &:visited,
@@ -19,6 +25,11 @@ const MainMenuItem = styled.li`
       color: #ffffff;
       outline: none;
     }
+  }
+
+  img {
+    width: 24px;
+    height: auto;
   }
 `;
 
