@@ -10,6 +10,9 @@ const MenuList = styled.ul`
       ? css`
           height: 100vh;
           width: 60px;
+          position: fixed;
+          top: 0;
+          left: 0;
           background-image: linear-gradient(
             to top,
             #143584,
@@ -18,6 +21,19 @@ const MenuList = styled.ul`
             #4e2780,
             #5c1f7c
           );
+        `
+      : ''};
+
+  ${props =>
+    props.control
+      ? css`
+          display: inline;
+          position: absolute;
+          right: 16px;
+          width: auto;
+          line-height: 0;
+          top: 50%;
+          transform: translateY(-50%);
         `
       : ''};
 `;

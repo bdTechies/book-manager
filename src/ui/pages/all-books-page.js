@@ -1,12 +1,14 @@
-import React, { Fragments, Component } from 'react';
-import { MainMenu } from '../components';
+import React, { Component } from 'react';
+import { Container } from '../base-kits';
+import { MainMenu, TopMenuBar } from '../components';
 
 class AllBooksPage extends Component {
   render() {
     return (
-      <div>
+      <Container pl="60px">
         <MainMenu />
-      </div>
+        <TopMenuBar pageTitle="All Books" />
+      </Container>
     );
   }
 }
