@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container } from '../base-kits';
 import { MainMenu, TopMenuBar } from '../components';
+import { AllBooksContainer } from '../containers';
 
-class AllBooksPage extends Component {
-  render() {
-    return (
-      <Container pl="60px" pt="50px">
-        <MainMenu />
-        <TopMenuBar pageTitle="All Books" />
-        <p>All Books...</p>
-      </Container>
-    );
-  }
-}
+const AllBooksPage = () => (
+  <Container main>
+    <MainMenu />
+    <TopMenuBar pageTitle="All Books" />
+    <AllBooksContainer />
+  </Container>
+);
 
 export default AllBooksPage;

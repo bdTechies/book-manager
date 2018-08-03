@@ -43,7 +43,6 @@ class ControlMenu extends Component {
   }
 
   render() {
-    console.log(this.props.isMaximized);
     return (
       <MenuList control="true">
         <ControlMenuItem>
