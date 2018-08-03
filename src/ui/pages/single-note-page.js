@@ -5,7 +5,7 @@ import { MainMenu, TopMenuBar } from '../components';
 class SingleNotePage extends Component {
   render() {
     return (
-      <Container pl="60px" pt="50px">
+      <Container main>
         <MainMenu />
         <TopMenuBar pageTitle="Note: A Tale of Two Cities" />
         <p>Note for A Tale of Two Cities</p>

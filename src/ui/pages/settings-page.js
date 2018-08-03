@@ -5,7 +5,7 @@ import { MainMenu, TopMenuBar } from '../components';
 class SettingsPage extends Component {
   render() {
     return (
-      <Container pl="60px" pt="50px">
+      <Container main>
         <MainMenu />
         <TopMenuBar pageTitle="Settings" />
         <p>Settings</p>

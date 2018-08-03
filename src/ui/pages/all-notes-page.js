@@ -5,7 +5,7 @@ import { MainMenu, TopMenuBar } from '../components';
 class AllNotesPage extends Component {
   render() {
     return (
-      <Container pl="60px" pt="50px">
+      <Container main>
         <MainMenu />
         <TopMenuBar pageTitle="All Notes" />
         <p>All notes...</p>

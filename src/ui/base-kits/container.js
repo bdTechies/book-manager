@@ -13,6 +13,7 @@ const Container = styled.div`
           overflow-y: auto;
           overflow-x: hidden;
           padding: 16px;
+          background-color: #f8f3fb;
         `
       : ''};
 `;
