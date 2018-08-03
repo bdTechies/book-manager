@@ -18,7 +18,6 @@ const ControlMenuItem = styled.li`
     display: inline-block;
     text-decoration: none;
     outline: none;
-    cursor: pointer;
     line-height: 0;
   }
 `;

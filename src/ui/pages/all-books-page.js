@@ -5,9 +5,10 @@ import { MainMenu, TopMenuBar } from '../components';
 class AllBooksPage extends Component {
   render() {
     return (
-      <Container pl="60px">
+      <Container pl="60px" pt="50px">
         <MainMenu />
         <TopMenuBar pageTitle="All Books" />
+        <p>All Books...</p>
       </Container>
     );
   }

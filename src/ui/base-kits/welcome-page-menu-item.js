@@ -5,6 +5,8 @@ const WelcomePageMenuItem = styled.li`
   margin-bottom: 8px;
   font-family: 'Arima Madurai';
   text-transform: lowercase;
+  cursor: pointer;
+
   a {
     width: 100%;
     color: #ffffff;
