@@ -35,7 +35,7 @@ const MainMenu = props => (
     </Tooltip>
     <Tooltip title="Notes" placement="right">
       <MainMenuItem>
-        <Link to="/notes">
+        <Link to="/all-notes">
           <TextIcon />
         </Link>
       </MainMenuItem>
