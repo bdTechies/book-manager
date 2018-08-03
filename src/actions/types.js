@@ -1,4 +1,8 @@
 export const EXIT_APP = 'control:exit_app';
+export const MINIMIZE_APP = 'control:minimize_app';
+export const MAXIMIZE_APP = 'control:maximize_app';
+export const UN_MAXIMIZE_APP = 'control:un_maximize_app';
+export const TOGGLE_MAXIMIZE = 'control:toggle_maximize';
 export const GET_DATA = 'todo:get_data';
 export const SET_DATA = 'todo:set_data';
 export const SAVE_TASK = 'todo:save_task';

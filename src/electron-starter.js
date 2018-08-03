@@ -64,6 +64,18 @@ ipcMain.on('save-task', (event, data) => {
     .catch(err => console.log(err));
 });
 
+ipcMain.on('MINIMIZE_APP', (event, data) => {
+  mainWindow.minimize();
+});
+
+ipcMain.on('MAXIMIZE_APP', (event, data) => {
+  mainWindow.maximize();
+});
+
+ipcMain.on('UN_MAXIMIZE_APP', (event, data) => {
+  mainWindow.unmaximize();
+});
+
 ipcMain.on('EXIT_APP', (event, data) => {
   app.quit();
 });
