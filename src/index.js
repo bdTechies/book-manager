@@ -28,6 +28,22 @@ injectGlobal`
   h5, h6 {
   	-webkit-app-region: no-drag;
   }
+
+  ::-webkit-scrollbar-track
+  {
+  	background-color: rgba(92,31,124, 0.1);
+  }
+
+  ::-webkit-scrollbar
+  {
+  	width: 8px;
+  	background-color: rgba(92,31,124, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb
+  {
+  	background-color: rgba(92,31,124, 0.5);
+  }
 `;
 
 const store = createStore(allReducers, applyMiddleware(thunk));

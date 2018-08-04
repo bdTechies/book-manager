@@ -10,6 +10,7 @@ import CustomTypography from './custom-typography';
 import Container from './container';
 import WelcomeContainer from './welcome-container';
 import FixedVerticalDevider from './fixed-vertical-devider';
+import PaddedPaper from './padded-paper';
 
 export {
   WelcomeContainer,
@@ -24,4 +25,5 @@ export {
   CustomTypography,
   Container,
   FixedVerticalDevider,
+  PaddedPaper,
 };
