@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 const ImageThumbContainer = styled.div`
-  -ms-overflow-style: scrollbar;
-  -webkit-app-region: drag;
   display: flex;
   flex-direction: column;
   justify-content: center;
