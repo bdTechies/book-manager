@@ -1,13 +1,22 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { PaddedPaper, ImageThumbContainer, InfoCaption } from '../base-kits';
+import {
+  PaddedPaper,
+  ImageThumbContainer,
+  InfoCaption,
+  Image,
+} from '../base-kits';
+import bmPlaceholderImage from '../assets/img/bm-image-placeholder.svg';
+import bookCover from '../assets/img/a-tale-of-two-cities.jpeg';
 
 const BookPreviewCard = props => (
   <Grid item xs={6}>
     <PaddedPaper square minheight="332">
       <Grid container direction="row">
         <Grid item xs={6} lg={4}>
-          <ImageThumbContainer />
+          <ImageThumbContainer>
+            <Image src={bookCover} />
+          </ImageThumbContainer>
         </Grid>
         <Grid item xs={6} lg={8}>
           <Typography variant="headline" gutterBottom color="primary">
