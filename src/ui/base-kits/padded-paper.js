@@ -4,6 +4,8 @@ import { Paper } from '@material-ui/core';
 const PaddedPaper = styled(Paper)`
   padding: ${props => (props.padding ? props.padding : '16')}px;
   min-height: ${props => (props.minheight ? props.minheight + 'px' : '100%')};
+  display: flex;
+  flex-direction: row;
 `;
 
 export default PaddedPaper;

@@ -11,6 +11,8 @@ import Container from './container';
 import WelcomeContainer from './welcome-container';
 import FixedVerticalDevider from './fixed-vertical-devider';
 import PaddedPaper from './padded-paper';
+import ImageThumbContainer from './image-thumb-container';
+import InfoCaption from './info-caption';
 
 export {
   WelcomeContainer,
@@ -26,4 +28,6 @@ export {
   Container,
   FixedVerticalDevider,
   PaddedPaper,
+  ImageThumbContainer,
+  InfoCaption,
 };

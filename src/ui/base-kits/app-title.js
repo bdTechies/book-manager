@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
 
 const AppTitle = styled(Typography)`
+  -webkit-user-select: none;
   && {
     display: inline-block;
     width: 100%;

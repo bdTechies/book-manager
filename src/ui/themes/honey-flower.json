@@ -127,7 +127,7 @@
     "fontWeightMedium": 500,
     "title": {
       "color": "rgba(0, 0, 0, 0.87)",
-      "fontFamily": "\"Fira Sans\", \"Helvetica\", \"Arial\", sans-serif",
+      "fontFamily": "\"Arima Madurai\", cursive",
       "lineHeight": "1.16667em",
       "fontSize": "1.3125rem",
       "fontWeight": 500
