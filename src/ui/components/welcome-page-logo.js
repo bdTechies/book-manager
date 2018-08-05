@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, CustomTypography, Container } from '../base-kits';
-import bmLogo from '../assets/img/bm-logo-white.svg';
+import bmLogo from '../../assets/img/bm-logo-white.svg';
 
 const WelcomePageLogo = () => (
   <Container align="center">

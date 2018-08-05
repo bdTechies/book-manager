@@ -6,8 +6,8 @@ import {
   InfoCaption,
   Image,
 } from '../base-kits';
-import bmPlaceholderImage from '../assets/img/bm-image-placeholder.svg';
-import bookCover from '../assets/img/a-tale-of-two-cities.jpeg';
+import bmPlaceholderImage from '../../assets/img/bm-image-placeholder.svg';
+import bookCover from '../../assets/img/a-tale-of-two-cities.jpeg';
 
 const BookPreviewCard = props => (
   <Grid item xs={6}>
@@ -19,7 +19,7 @@ const BookPreviewCard = props => (
           </ImageThumbContainer>
         </Grid>
         <Grid item xs={6} lg={7}>
-          <Typography variant="headline" gutterBottom color="primary">
+          <Typography variant="headline" color="primary">
             A Tale of Two Cities
           </Typography>
           <Typography variant="title" gutterBottom color="primary">
