@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { Grid, Typography, Button } from '@material-ui/core';
 import {
   PaddedPaper,
   ImageThumbContainer,
@@ -8,6 +9,8 @@ import {
 } from '../base-kits';
 import bmPlaceholderImage from '../../assets/img/bm-image-placeholder.svg';
 import bookCover from '../../assets/img/a-tale-of-two-cities.jpeg';
+
+const SingleBookLink = props => <Link to="/about" {...props} />;
 
 const BookPreviewCard = props => (
   <Grid item xs={6}>
@@ -42,6 +45,7 @@ const BookPreviewCard = props => (
             <InfoCaption>Reading Status: </InfoCaption>
             Completed
           </Typography>
+          <Button variant="contained" color="primary" size="small" component={SingleBookLink}>Full Info</Button>
         </Grid>
       </Grid>
     </PaddedPaper>
