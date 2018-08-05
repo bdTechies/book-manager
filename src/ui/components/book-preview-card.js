@@ -13,12 +13,12 @@ const BookPreviewCard = props => (
   <Grid item xs={6}>
     <PaddedPaper square minheight="332">
       <Grid container direction="row">
-        <Grid item xs={6} lg={4}>
+        <Grid item xs={6} lg={5}>
           <ImageThumbContainer>
             <Image src={bookCover} />
           </ImageThumbContainer>
         </Grid>
-        <Grid item xs={6} lg={8}>
+        <Grid item xs={6} lg={7}>
           <Typography variant="headline" gutterBottom color="primary">
             A Tale of Two Cities
           </Typography>
