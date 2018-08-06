@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { MenuList, ControlMenuItem, Image } from '../base-kits';
 import { appControlActions } from '../../actions';
-import minimizeIcon from '../assets/img/Minimize.svg';
-import maximizeIcon from '../assets/img/Maximize.svg';
-import unMaximizeIcon from '../assets/img/Unmaximize.svg';
-import closeIcon from '../assets/img/Close.svg';
+import minimizeIcon from '../../assets/img/Minimize.svg';
+import maximizeIcon from '../../assets/img/Maximize.svg';
+import unMaximizeIcon from '../../assets/img/Unmaximize.svg';
+import closeIcon from '../../assets/img/Close.svg';
 
 class ControlMenu extends Component {
   constructor(props) {

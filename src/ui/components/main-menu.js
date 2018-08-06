@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Tooltip } from '@material-ui/core';
 import { MenuList, MainMenuItem, Image } from '../base-kits';
-import bmLogo from '../assets/img/bm-logo-white.svg';
+import bmLogo from '../../assets/img/bm-logo-white.svg';
 import {
   PlusIcon,
   AllInclusiveIcon,
