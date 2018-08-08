@@ -13,6 +13,7 @@ import FixedVerticalDevider from './fixed-vertical-devider';
 import PaddedPaper from './padded-paper';
 import ImageThumbContainer from './image-thumb-container';
 import InfoCaption from './info-caption';
+import CustomButton from './custom-button';
 
 export {
   WelcomeContainer,
@@ -30,4 +31,5 @@ export {
   PaddedPaper,
   ImageThumbContainer,
   InfoCaption,
+  CustomButton,
 };

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from '../base-kits';
-import { MainMenu, TopMenuBar } from '../components';
+import { MainMenu, TopMenuBar, AddNewBookForm } from '../components';
 
 class AddNewBookPage extends Component {
   render() {
@@ -8,7 +8,7 @@ class AddNewBookPage extends Component {
       <Container main>
         <MainMenu />
         <TopMenuBar pageTitle="Add Book" />
-        <p>Add Book...</p>
+        <AddNewBookForm />
       </Container>
     );
   }

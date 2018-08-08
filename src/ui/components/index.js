@@ -4,6 +4,7 @@ import TopMenuBar from './top-menu-bar';
 import WelcomePageMenu from './welcome-page-menu';
 import WelcomePageLogo from './welcome-page-logo';
 import BookPreviewCard from './book-preview-card';
+import AddNewBookForm from './add-new-book-form';
 
 export {
   MainMenu,
@@ -12,4 +13,5 @@ export {
   WelcomePageMenu,
   WelcomePageLogo,
   BookPreviewCard,
+  AddNewBookForm,
 };
