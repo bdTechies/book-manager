@@ -42,17 +42,64 @@ class AddNewBookForm extends Component {
   }
 
   handleChange = field => event => {
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [field]: event.target.value,
+    this.setState(
+      {
+        formData: {
+          ...this.state.formData,
+          [field]: event.target.value,
+        },
       },
-    });
+      () => this.validateFormField(field, this.state.formData[field])
+    );
   };
 
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state);
+  }
+
+  validateFormField(field, data) {
+    if (field === 'title') {
+      if (!data) {
+        this.setState({
+          ...this.state,
+          errors: {
+            ...this.state.errors,
+            formError: true,
+            titleError: true,
+          },
+        });
+      } else {
+        this.setState({
+          ...this.state,
+          errors: {
+            ...this.state.errors,
+            formError: false,
+            titleError: false,
+          },
+        });
+      }
+    } else if (field === 'author') {
+      if (!data) {
+        this.setState({
+          ...this.state,
+          errors: {
+            ...this.state.errors,
+            formError: true,
+            authorError: true,
+          },
+        });
+      } else {
+        this.setState({
+          ...this.state,
+          errors: {
+            ...this.state.errors,
+            formError: false,
+            authorError: false,
+          },
+        });
+      }
+    }
   }
 
   render() {
@@ -72,10 +119,11 @@ class AddNewBookForm extends Component {
                       margin="none"
                       fullWidth
                       autoFocus
-                      required={true}
+                      required
                       InputLabelProps={{
                         shrink: true,
                       }}
+                      error={this.state.errors.titleError}
                     />
                     <CustomTextField
                       id="author"
@@ -84,9 +132,11 @@ class AddNewBookForm extends Component {
                       onChange={this.handleChange('author')}
                       margin="normal"
                       fullWidth
+                      required
                       InputLabelProps={{
                         shrink: true,
                       }}
+                      error={this.state.errors.authorError}
                     />
                     <CustomTextField
                       id="translator"
@@ -191,6 +241,7 @@ class AddNewBookForm extends Component {
                         color="primary"
                         size="small"
                         type="submit"
+                        disabled={this.state.errors.formError}
                       >
                         Save
                       </Button>
