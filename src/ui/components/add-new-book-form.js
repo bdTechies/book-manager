@@ -20,6 +20,39 @@ const AllBooksLink = props => <Link to="/all-books" {...props} />;
 class AddNewBookForm extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      formData: {
+        title: '',
+        author: '',
+        translator: '',
+        publisher: '',
+        description: '',
+        coverImage: '',
+        categories: '',
+        readingStatus: '',
+      },
+      errors: {
+        formError: false,
+        titleError: false,
+        authorError: false,
+      },
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange = field => event => {
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        [field]: event.target.value,
+      },
+    });
+  };
+
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.state);
   }
 
   render() {
@@ -28,17 +61,18 @@ class AddNewBookForm extends Component {
         <Grid item xs={12}>
           <PaddedPaper square>
             <Container p={32}>
-              <form>
+              <form onSubmit={this.handleSubmit} noValidate>
                 <Grid container direction="row" spacing={32}>
                   <Grid item xs={6}>
                     <CustomTextField
                       id="title"
                       label="Title"
-                      // value={this.state.name}
-                      // onChange={this.handleChange('name')}
+                      value={this.state.formData.title}
+                      onChange={this.handleChange('title')}
                       margin="none"
                       fullWidth
                       autoFocus
+                      required={true}
                       InputLabelProps={{
                         shrink: true,
                       }}
@@ -46,8 +80,8 @@ class AddNewBookForm extends Component {
                     <CustomTextField
                       id="author"
                       label="Author"
-                      // value={this.state.name}
-                      // onChange={this.handleChange('name')}
+                      value={this.state.formData.author}
+                      onChange={this.handleChange('author')}
                       margin="normal"
                       fullWidth
                       InputLabelProps={{
@@ -57,8 +91,8 @@ class AddNewBookForm extends Component {
                     <CustomTextField
                       id="translator"
                       label="Translator"
-                      // value={this.state.name}
-                      // onChange={this.handleChange('name')}
+                      value={this.state.formData.translator}
+                      onChange={this.handleChange('translator')}
                       margin="normal"
                       fullWidth
                       InputLabelProps={{
@@ -68,8 +102,8 @@ class AddNewBookForm extends Component {
                     <CustomTextField
                       id="publisher"
                       label="Publisher"
-                      // value={this.state.name}
-                      // onChange={this.handleChange('name')}
+                      value={this.state.formData.publisher}
+                      onChange={this.handleChange('publisher')}
                       margin="normal"
                       fullWidth
                       InputLabelProps={{
@@ -79,8 +113,8 @@ class AddNewBookForm extends Component {
                     <CustomTextField
                       id="book-description"
                       label="Book description"
-                      // value={this.state.name}
-                      // onChange={this.handleChange('name')}
+                      value={this.state.formData.description}
+                      onChange={this.handleChange('description')}
                       margin="normal"
                       multiline={true}
                       rows={5}
@@ -95,8 +129,8 @@ class AddNewBookForm extends Component {
                     <CustomTextField
                       id="book-cover"
                       label="Book cover"
-                      // value={this.state.name}
-                      // onChange={this.handleChange('name')}
+                      value={this.state.formData.coverImage}
+                      onChange={this.handleChange('coverImage')}
                       margin="none"
                       fullWidth
                       InputLabelProps={{
@@ -106,8 +140,8 @@ class AddNewBookForm extends Component {
                     <CustomTextField
                       id="categories"
                       label="Categories"
-                      // value={this.state.name}
-                      // onChange={this.handleChange('name')}
+                      value={this.state.formData.categories}
+                      onChange={this.handleChange('categories')}
                       margin="normal"
                       mb={16}
                       fullWidth
@@ -121,8 +155,8 @@ class AddNewBookForm extends Component {
                     <RadioGroup
                       aria-label="Reading Status"
                       name="reading-status"
-                      // value={this.state.value}
-                      // onChange={this.handleChange}
+                      value={this.state.formData.readingStatus}
+                      onChange={this.handleChange('readingStatus')}
                     >
                       <FormControlLabel
                         value="completed"
@@ -152,7 +186,12 @@ class AddNewBookForm extends Component {
                       >
                         Cancel
                       </CustomButton>
-                      <Button variant="contained" color="primary" size="small">
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        type="submit"
+                      >
                         Save
                       </Button>
                     </Container>
