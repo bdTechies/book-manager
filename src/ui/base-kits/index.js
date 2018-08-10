@@ -14,6 +14,8 @@ import PaddedPaper from './padded-paper';
 import ImageThumbContainer from './image-thumb-container';
 import InfoCaption from './info-caption';
 import CustomButton from './custom-button';
+import CustomTextField from './custom-text-field';
+import CustomFormLabel from './custom-form-label';
 
 export {
   WelcomeContainer,
@@ -32,4 +34,6 @@ export {
   ImageThumbContainer,
   InfoCaption,
   CustomButton,
+  CustomTextField,
+  CustomFormLabel,
 };

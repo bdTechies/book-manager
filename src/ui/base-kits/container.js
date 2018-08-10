@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
+import { space } from 'styled-system';
 
 const Container = styled.div`
+  ${space}
   text-align: ${props => (props.align ? props.align : 'left')};
   ${props =>
     props.main

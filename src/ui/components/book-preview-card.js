@@ -18,7 +18,10 @@ const BookPreviewCard = props => (
       <Grid container direction="row">
         <Grid item xs={6} lg={5}>
           <ImageThumbContainer>
-            <Image src={bookCover} />
+            <Image
+              src={props.bookCover ? bookCover : bmPlaceholderImage}
+              width={props.bookCover ? '' : 100}
+            />
           </ImageThumbContainer>
         </Grid>
         <Grid item xs={6} lg={7}>
@@ -45,7 +48,14 @@ const BookPreviewCard = props => (
             <InfoCaption>Reading Status: </InfoCaption>
             Completed
           </Typography>
-          <Button variant="contained" color="primary" size="small" component={SingleBookLink}>Full Info</Button>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            component={SingleBookLink}
+          >
+            Full Info
+          </Button>
         </Grid>
       </Grid>
     </PaddedPaper>

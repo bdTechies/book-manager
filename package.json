@@ -10,7 +10,8 @@
     "nedb-promises": "^3.0.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-system": "^3.0.2"
   },
   "scripts": {
     "start": "concurrently 'npm run react-start' 'wait-on http://localhost:3000/ && npm run electron-start'",
