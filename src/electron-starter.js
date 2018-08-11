@@ -3,7 +3,7 @@ const path = require('path');
 const url = require('url');
 const dataPath = app.getPath('userData');
 const db = require('./config/db');
-const datastore = db.createDatabase(dataPath, 'todo');
+const datastore = db.createDatabase(dataPath, 'book-manager');
 
 const startUrl =
   `http://localhost:3000` ||
@@ -54,12 +54,13 @@ ipcMain.on('init-app', (event, data) => {
     })
     .catch(err => console.log(err));
 });
-let x = 34;
-ipcMain.on('save-task', (event, data) => {
+
+ipcMain.on('save-book', (event, data) => {
+  console.log(data);
   datastore
     .insert(data)
     .then(data => {
-      event.sender.send('task-saved', data);
+      event.sender.send('book-saved', data);
     })
     .catch(err => console.log(err));
 });

@@ -26,19 +26,20 @@ const BookPreviewCard = props => (
         </Grid>
         <Grid item xs={6} lg={7}>
           <Typography variant="headline" color="primary">
-            A Tale of Two Cities
+            {props.title}
           </Typography>
           <Typography variant="title" gutterBottom color="primary">
-            Charles Dickens
+            {props.author}
           </Typography>
           <Typography variant="body2" gutterBottom>
             <InfoCaption>Description: </InfoCaption>
-            A Tale of Two Cities is a historical novel by Charles Dickens, set
-            in London and Paris before and during the French Revolution.
+            {props.description.length > 120
+              ? `${props.description.substring(0, 120)}...`
+              : props.description}
           </Typography>
           <Typography variant="body2" gutterBottom>
             <InfoCaption>Publisher: </InfoCaption>
-            Chapman & Hall
+            {props.publisher}
           </Typography>
           <Typography variant="body2" gutterBottom>
             <InfoCaption>Categories: </InfoCaption>
