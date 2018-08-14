@@ -8,7 +8,6 @@ import {
   Image,
 } from '../base-kits';
 import bmPlaceholderImage from '../../assets/img/bm-image-placeholder.svg';
-import bookCover from '../../assets/img/a-tale-of-two-cities.jpeg';
 
 const SingleBookLink = props => <Link to="/about" {...props} />;
 
@@ -19,8 +18,8 @@ const BookPreviewCard = props => (
         <Grid item xs={6} lg={5}>
           <ImageThumbContainer>
             <Image
-              src={props.bookCover ? bookCover : bmPlaceholderImage}
-              width={props.bookCover ? '' : 100}
+              src={props.coverImage ? props.coverImage : bmPlaceholderImage}
+              width={props.coverImage ? '' : 100}
             />
           </ImageThumbContainer>
         </Grid>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bookActions } from '../../actions';
 import {
   Grid,
   Button,
@@ -55,7 +57,7 @@ class AddNewBookForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+    this.props.saveBook(this.state.formData);
   }
 
   validateFormField(field, data) {
@@ -241,7 +243,11 @@ class AddNewBookForm extends Component {
                         color="primary"
                         size="small"
                         type="submit"
-                        disabled={this.state.errors.formError}
+                        disabled={
+                          this.state.errors.formError ||
+                          !this.state.formData.title ||
+                          !this.state.formData.author
+                        }
                       >
                         Save
                       </Button>
@@ -257,4 +263,11 @@ class AddNewBookForm extends Component {
   }
 }
 
-export default AddNewBookForm;
+const mapActionsToProps = {
+  saveBook: bookActions.saveBook,
+};
+
+export default connect(
+  null,
+  mapActionsToProps
+)(AddNewBookForm);

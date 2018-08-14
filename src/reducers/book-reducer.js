@@ -1,4 +1,4 @@
-import { SET_DATA, ADD_BOOK, CREATE_TASK } from '../actions/types';
+import { SET_DATA, ADD_BOOK } from '../actions/types';
 
 const INITIAL_STATE = {
   allBooks: [],

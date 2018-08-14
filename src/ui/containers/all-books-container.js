@@ -5,12 +5,8 @@ import { bookActions } from '../../actions';
 import { BookPreviewCard, MessageBox } from '../components';
 
 class AllBooksContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
-    //this.props.getData();
+    this.props.getData();
     this.props.initMainProcessListeners();
   }
 
@@ -38,7 +34,6 @@ const mapStateToProps = state => {
 
 const mapActionsToProps = {
   getData: bookActions.getData,
-  saveBook: bookActions.saveBook,
   initMainProcessListeners: bookActions.initMainProcessListeners,
 };
 
