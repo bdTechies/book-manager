@@ -9,4 +9,5 @@ export const SAVE_TASK = 'todo:save_task';
 export const SAVE_BOOK = 'book:save_book';
 export const ADD_TASK = 'todo:add_task';
 export const ADD_BOOK = 'book:add_book';
+export const RESET_BOOK_SAVED = 'book:reset_book_saved';
 export const CREATE_TASK = 'todo:create_task';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bookActions } from '../../actions';
 import {
@@ -41,6 +41,10 @@ class AddNewBookForm extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.resetBookSaved();
   }
 
   handleChange = field => event => {
@@ -105,6 +109,9 @@ class AddNewBookForm extends Component {
   }
 
   render() {
+    if (this.props.bookAdded) {
+      return <Redirect to="/all-books" />;
+    }
     return (
       <Grid container spacing={16}>
         <Grid item xs={12}>
@@ -263,11 +270,18 @@ class AddNewBookForm extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    bookAdded: state.bookReducer.bookAdded,
+  };
+};
+
 const mapActionsToProps = {
   saveBook: bookActions.saveBook,
+  resetBookSaved: bookActions.resetBookSaved,
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapActionsToProps
 )(AddNewBookForm);

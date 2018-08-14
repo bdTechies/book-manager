@@ -1,4 +1,10 @@
-import { GET_DATA, SET_DATA, SAVE_BOOK, ADD_BOOK } from './types';
+import {
+  GET_DATA,
+  SET_DATA,
+  SAVE_BOOK,
+  ADD_BOOK,
+  RESET_BOOK_SAVED,
+} from './types';
 const electron = window.require('electron');
 const { ipcRenderer } = electron;
 
@@ -40,5 +46,11 @@ export function addNewBook(newBook) {
   return {
     type: ADD_BOOK,
     payload: newBook,
+  };
+}
+
+export function resetBookSaved() {
+  return {
+    type: RESET_BOOK_SAVED,
   };
 }
