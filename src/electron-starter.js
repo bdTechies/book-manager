@@ -55,12 +55,31 @@ ipcMain.on('init-app', (event, data) => {
     .catch(err => console.log(err));
 });
 
+// ipcMain.on('save-book', (event, data) => {
+//   datastore
+//     .insert(data)
+//     .then(data => {
+//       event.sender.send('book-saved', data);
+//     })
+//     .catch(err => console.log(err));
+// });
+
 ipcMain.on('save-book', (event, data) => {
-  console.log(data);
   datastore
-    .insert(data)
-    .then(data => {
-      event.sender.send('book-saved', data);
+    .findOne({
+      title: data.title,
+      author: data.author,
+      publisher: data.publisher,
+    })
+    .then(book => {
+      if (book) {
+        event.sender.send('book-exists', book);
+      } else {
+        datastore.insert(data).then(data => {
+          console.log('Adding..');
+          event.sender.send('book-saved', data);
+        });
+      }
     })
     .catch(err => console.log(err));
 });

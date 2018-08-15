@@ -15,7 +15,14 @@ export function initMainProcessListeners() {
       return data;
     });
     ipcRenderer.on('book-saved', (event, data) => {
+      console.log('Added...');
       dispatch(addNewBook(data));
+      return data;
+    });
+    ipcRenderer.on('book-exists', (event, data) => {
+      console.log(event);
+      console.log('Book already exists');
+      //dispatch(addNewBook(data));
       return data;
     });
   };
