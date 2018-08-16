@@ -7,7 +7,6 @@ import { BookPreviewCard, MessageBox } from '../components';
 class AllBooksContainer extends Component {
   componentDidMount() {
     this.props.getData();
-    this.props.initMainProcessListeners();
   }
 
   render() {
@@ -33,7 +32,6 @@ const mapStateToProps = state => {
 
 const mapActionsToProps = {
   getData: bookActions.getData,
-  initMainProcessListeners: bookActions.initMainProcessListeners,
 };
 
 export default connect(
