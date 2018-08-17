@@ -3,7 +3,9 @@ import {
   SET_DATA,
   SAVE_BOOK,
   ADD_BOOK,
+  BOOK_EXISTS,
   RESET_BOOK_SAVED,
+  HIDE_MESSAGE_DIALOG,
 } from './types';
 const electron = window.require('electron');
 const { ipcRenderer } = electron;
@@ -15,14 +17,11 @@ export function initMainProcessListeners() {
       return data;
     });
     ipcRenderer.on('book-saved', (event, data) => {
-      console.log('Added...');
       dispatch(addNewBook(data));
       return data;
     });
     ipcRenderer.on('book-exists', (event, data) => {
-      console.log(event);
-      console.log('Book already exists');
-      //dispatch(addNewBook(data));
+      dispatch(showExistMessage());
       return data;
     });
   };
@@ -53,6 +52,18 @@ export function addNewBook(newBook) {
   return {
     type: ADD_BOOK,
     payload: newBook,
+  };
+}
+
+export function showExistMessage() {
+  return {
+    type: BOOK_EXISTS,
+  };
+}
+
+export function hideMessageDialog() {
+  return {
+    type: HIDE_MESSAGE_DIALOG,
   };
 }
 

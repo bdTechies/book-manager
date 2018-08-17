@@ -55,15 +55,6 @@ ipcMain.on('init-app', (event, data) => {
     .catch(err => console.log(err));
 });
 
-// ipcMain.on('save-book', (event, data) => {
-//   datastore
-//     .insert(data)
-//     .then(data => {
-//       event.sender.send('book-saved', data);
-//     })
-//     .catch(err => console.log(err));
-// });
-
 ipcMain.on('save-book', (event, data) => {
   datastore
     .findOne({
@@ -76,7 +67,6 @@ ipcMain.on('save-book', (event, data) => {
         event.sender.send('book-exists', book);
       } else {
         datastore.insert(data).then(data => {
-          console.log('Adding..');
           event.sender.send('book-saved', data);
         });
       }

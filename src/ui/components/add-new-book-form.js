@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bookActions } from '../../actions';
+import MessageDialog from './message-dialog';
 import {
   Grid,
   Button,
@@ -38,9 +39,11 @@ class AddNewBookForm extends Component {
         titleError: false,
         authorError: false,
       },
+      openMessageDialog: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   componentDidMount() {
@@ -62,6 +65,10 @@ class AddNewBookForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.saveBook(this.state.formData);
+  }
+
+  handleClose() {
+    this.props.hideMessageDialog();
   }
 
   validateFormField(field, data) {
@@ -112,6 +119,7 @@ class AddNewBookForm extends Component {
     if (this.props.bookAdded) {
       return <Redirect to="/all-books" />;
     }
+
     return (
       <Grid container spacing={16}>
         <Grid item xs={12}>
@@ -262,6 +270,12 @@ class AddNewBookForm extends Component {
                   </Grid>
                 </Grid>
               </form>
+              <MessageDialog
+                open={this.props.showMessageDialog}
+                close={this.handleClose}
+                emoji="¯\_(ツ)_/¯"
+                message="Book already exists!"
+              />
             </Container>
           </PaddedPaper>
         </Grid>
@@ -273,12 +287,14 @@ class AddNewBookForm extends Component {
 const mapStateToProps = state => {
   return {
     bookAdded: state.bookReducer.bookAdded,
+    showMessageDialog: state.bookReducer.showMessageDialog,
   };
 };
 
 const mapActionsToProps = {
   saveBook: bookActions.saveBook,
   resetBookSaved: bookActions.resetBookSaved,
+  hideMessageDialog: bookActions.hideMessageDialog,
 };
 
 export default connect(

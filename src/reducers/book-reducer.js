@@ -1,8 +1,15 @@
-import { SET_DATA, ADD_BOOK, RESET_BOOK_SAVED } from '../actions/types';
+import {
+  SET_DATA,
+  ADD_BOOK,
+  BOOK_EXISTS,
+  RESET_BOOK_SAVED,
+  HIDE_MESSAGE_DIALOG,
+} from '../actions/types';
 
 const INITIAL_STATE = {
   allBooks: [],
   bookAdded: false,
+  showMessageDialog: false,
 };
 
 export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
@@ -17,6 +24,17 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
         ...state,
         allBooks: [...state.allBooks, payload],
         bookAdded: true,
+      };
+    case BOOK_EXISTS:
+      return {
+        ...state,
+        bookAdded: false,
+        showMessageDialog: true,
+      };
+    case HIDE_MESSAGE_DIALOG:
+      return {
+        ...state,
+        showMessageDialog: false,
       };
     case RESET_BOOK_SAVED:
       return {
