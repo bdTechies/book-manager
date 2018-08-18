@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Grid, Button, Typography } from '@material-ui/core';
+import { Grid, Button, Typography, IconButton } from '@material-ui/core';
 import {
   Image,
   Container,
@@ -12,6 +12,7 @@ import {
   ImageThumbContainer,
 } from '../base-kits';
 import { bookActions } from '../../actions';
+import { PencilIcon } from 'mdi-react';
 import bmPlaceholderImage from '../../assets/img/bm-image-placeholder.svg';
 
 class SingleBookPreviewCard extends Component {
@@ -75,7 +76,10 @@ class SingleBookPreviewCard extends Component {
                     <Grid item xs={12}>
                       <InfoCaption>Note</InfoCaption>
                       <Typography variant="body2">
-                        {this.props.book.note}
+                        {this.props.book.note || 'Add a note'}
+                        <IconButton aria-label="Delete" disableRipple={true}>
+                          <PencilIcon size={16} />
+                        </IconButton>
                       </Typography>
                     </Grid>
                   </Grid>
@@ -83,7 +87,7 @@ class SingleBookPreviewCard extends Component {
                 <Grid item xs={3}>
                   <Grid container spacing={16} align="right">
                     <Grid item xs={12}>
-                      <ImageThumbContainer>
+                      <ImageThumbContainer height="450px" width="300px">
                         <Image
                           src={
                             this.props.book.coverImage
