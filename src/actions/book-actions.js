@@ -8,6 +8,8 @@ import {
   RESET_BOOK_SAVED,
   HIDE_MESSAGE_DIALOG,
   GET_BOOK_BY_ID,
+  DELETE_BOOK_BY_ID,
+  BOOK_DELETED,
 } from './types';
 const electron = window.require('electron');
 const { ipcRenderer } = electron;
@@ -28,6 +30,10 @@ export function initMainProcessListeners() {
     });
     ipcRenderer.on('found-book-by-id', (event, data) => {
       dispatch(showBook(data));
+      return data;
+    });
+    ipcRenderer.on('book-deleted', (event, data) => {
+      dispatch(bookDeleted());
       return data;
     });
   };
@@ -54,6 +60,19 @@ export function saveBook(newBook) {
   };
 }
 
+export function deleteBookById(id) {
+  ipcRenderer.send('delete-book-by-id', id);
+  return {
+    type: DELETE_BOOK_BY_ID,
+  };
+}
+
+export function bookDeleted(id) {
+  return {
+    type: BOOK_DELETED,
+  };
+}
+
 export function setData(data) {
   return {
     type: SET_DATA,
@@ -62,7 +81,6 @@ export function setData(data) {
 }
 
 export function showBook(data) {
-  console.log(data);
   return {
     type: SHOW_BOOK,
     payload: data,

@@ -59,7 +59,6 @@ ipcMain.on('get-book-by-id', (event, id) => {
   datastore
     .findOne({ _id: id })
     .then(data => {
-      console.log(data);
       event.sender.send('found-book-by-id', data);
     })
     .catch(err => console.log(err));
@@ -80,6 +79,15 @@ ipcMain.on('save-book', (event, data) => {
           event.sender.send('book-saved', data);
         });
       }
+    })
+    .catch(err => console.log(err));
+});
+
+ipcMain.on('delete-book-by-id', (event, id) => {
+  datastore
+    .remove({ _id: id })
+    .then(data => {
+      event.sender.send('book-deleted', data);
     })
     .catch(err => console.log(err));
 });

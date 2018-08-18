@@ -12,3 +12,5 @@ export const ADD_BOOK = 'book:add_book';
 export const BOOK_EXISTS = 'book:book_exixts';
 export const HIDE_MESSAGE_DIALOG = 'book:hide_message_dialog';
 export const RESET_BOOK_SAVED = 'book:reset_book_saved';
+export const DELETE_BOOK_BY_ID = 'book:delete_book_by_id';
+export const BOOK_DELETED = 'book:book_deleted';

@@ -21,15 +21,13 @@ class SingleBookPreviewCard extends Component {
   }
 
   render() {
-    console.log(this.props.id);
-    console.log(this.props.book);
     return (
       <Grid container spacing={16}>
         <Grid item xs={12}>
           <PaddedPaper square>
             <Container p={16}>
               <Grid container>
-                <Grid item xs={9}>
+                <Grid item xs={8}>
                   <Grid container spacing={16}>
                     <Grid item xs={6}>
                       <InfoCaption>Title</InfoCaption>
@@ -64,7 +62,7 @@ class SingleBookPreviewCard extends Component {
                     <Grid item xs={6}>
                       <InfoCaption>Reading Status</InfoCaption>
                       <Typography variant="title" color="primary">
-                        {this.props.book.readingStatus || 'Completed'}
+                        {this.props.book.readingStatus || 'Not started'}
                       </Typography>
                     </Grid>
                     <Grid item xs={12}>
@@ -84,10 +82,10 @@ class SingleBookPreviewCard extends Component {
                     </Grid>
                   </Grid>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={4}>
                   <Grid container spacing={16} align="right">
                     <Grid item xs={12}>
-                      <ImageThumbContainer height="450px" width="300px">
+                      <ImageThumbContainer height="450" width="300">
                         <Image
                           src={
                             this.props.book.coverImage
@@ -101,7 +99,7 @@ class SingleBookPreviewCard extends Component {
                   </Grid>
                 </Grid>
                 <Grid item xs={12}>
-                  <Container align="right">
+                  <Container align="right" mt={32}>
                     <CustomButton
                       variant="contained"
                       color="secondary"

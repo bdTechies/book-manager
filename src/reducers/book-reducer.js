@@ -5,11 +5,13 @@ import {
   BOOK_EXISTS,
   RESET_BOOK_SAVED,
   HIDE_MESSAGE_DIALOG,
+  BOOK_DELETED,
 } from '../actions/types';
 
 const INITIAL_STATE = {
   allBooks: [],
   bookAdded: false,
+  bookDeleted: false,
   singleBook: {},
   showMessageDialog: false,
 };
@@ -20,6 +22,7 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
       return {
         ...state,
         singleBook: {},
+        bookDeleted: false,
         allBooks: [...payload],
       };
     case SHOW_BOOK:
@@ -50,6 +53,11 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
       return {
         ...state,
         bookAdded: false,
+      };
+    case BOOK_DELETED:
+      return {
+        ...state,
+        bookDeleted: true,
       };
     default:
       return state;

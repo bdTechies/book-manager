@@ -9,7 +9,7 @@ const WelcomePageLogo = () => (
       variant="headline"
       align="center"
       customcolor="#ffffff"
-      customFont={true}
+      customfont="Arima"
       mt="16px"
     >
       Manage your dreams
