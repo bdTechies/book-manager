@@ -7,6 +7,7 @@ import {
   Container,
   PaddedPaper,
   InfoCaption,
+  CustomButton,
   CustomTypography,
   ImageThumbContainer,
 } from '../base-kits';
@@ -80,20 +81,35 @@ class SingleBookPreviewCard extends Component {
                   </Grid>
                 </Grid>
                 <Grid item xs={3}>
-                  <Grid container spacing={16}>
+                  <Grid container spacing={16} align="right">
                     <Grid item xs={12}>
                       <ImageThumbContainer>
                         <Image
                           src={
-                            this.props.coverImage
-                              ? this.props.coverImage
+                            this.props.book.coverImage
+                              ? this.props.book.coverImage
                               : bmPlaceholderImage
                           }
-                          width={this.props.coverImage ? '' : 100}
+                          width={this.props.book.coverImage ? '' : 100}
                         />
                       </ImageThumbContainer>
                     </Grid>
                   </Grid>
+                </Grid>
+                <Grid item xs={12}>
+                  <Container align="right">
+                    <CustomButton
+                      variant="contained"
+                      color="secondary"
+                      size="small"
+                      mr="16"
+                    >
+                      Delete
+                    </CustomButton>
+                    <Button variant="contained" color="primary" size="small">
+                      Edit
+                    </Button>
+                  </Container>
                 </Grid>
               </Grid>
             </Container>

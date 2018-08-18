@@ -186,9 +186,9 @@
     },
     "divider": "rgba(0, 0, 0, 0.12)",
     "secondary": {
-      "main": "#5b1f7c",
-      "light": "rgb(123, 75, 150)",
-      "dark": "rgb(63, 21, 86)",
+      "main": "#E91E63",
+      "light": "rgb(237, 75, 130)",
+      "dark": "rgb(163, 21, 69)",
       "contrastText": "#ffffff"
     },
     "common": { "black": "#000", "white": "#fff" },
