@@ -1,18 +1,20 @@
 import {
   GET_DATA,
   SET_DATA,
+  SHOW_BOOK,
   SAVE_BOOK,
   ADD_BOOK,
   BOOK_EXISTS,
   RESET_BOOK_SAVED,
   HIDE_MESSAGE_DIALOG,
+  GET_BOOK_BY_ID,
 } from './types';
 const electron = window.require('electron');
 const { ipcRenderer } = electron;
 
 export function initMainProcessListeners() {
   return dispatch => {
-    ipcRenderer.on('initialized-app', (event, data) => {
+    ipcRenderer.on('receive-all-books', (event, data) => {
       dispatch(setData(data));
       return data;
     });
@@ -24,13 +26,24 @@ export function initMainProcessListeners() {
       dispatch(showExistMessage());
       return data;
     });
+    ipcRenderer.on('found-book-by-id', (event, data) => {
+      dispatch(showBook(data));
+      return data;
+    });
   };
 }
 
 export function getData() {
-  ipcRenderer.send('init-app', 'init app');
+  ipcRenderer.send('get-all-books', 'Get all books from db');
   return {
     type: GET_DATA,
+  };
+}
+
+export function getBookById(id) {
+  ipcRenderer.send('get-book-by-id', id);
+  return {
+    type: GET_BOOK_BY_ID,
   };
 }
 
@@ -44,6 +57,14 @@ export function saveBook(newBook) {
 export function setData(data) {
   return {
     type: SET_DATA,
+    payload: data,
+  };
+}
+
+export function showBook(data) {
+  console.log(data);
+  return {
+    type: SHOW_BOOK,
     payload: data,
   };
 }

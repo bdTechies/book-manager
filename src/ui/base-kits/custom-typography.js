@@ -7,7 +7,8 @@ const CustomTypography = styled(Typography)`
     font-size: ${props => (props.fontSize ? props.fontSize : '')};
     margin-top: ${props => (props.mt ? props.mt : '')};
     font-weight: 400;
-    font-family: 'Arima Madurai';
+    font-family: ${props => (props.customFont ? 'Arima Madurai' : '')};
+    white-space: ${props => (props.whitespace ? props.whitespace : 'normal')};
   }
 `;
 

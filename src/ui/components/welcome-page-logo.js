@@ -9,6 +9,7 @@ const WelcomePageLogo = () => (
       variant="headline"
       align="center"
       customcolor="#ffffff"
+      customFont={true}
       mt="16px"
     >
       Manage your dreams

@@ -1,5 +1,6 @@
 import {
   SET_DATA,
+  SHOW_BOOK,
   ADD_BOOK,
   BOOK_EXISTS,
   RESET_BOOK_SAVED,
@@ -9,6 +10,7 @@ import {
 const INITIAL_STATE = {
   allBooks: [],
   bookAdded: false,
+  singleBook: {},
   showMessageDialog: false,
 };
 
@@ -17,17 +19,25 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
     case SET_DATA:
       return {
         ...state,
+        singleBook: {},
         allBooks: [...payload],
+      };
+    case SHOW_BOOK:
+      return {
+        ...state,
+        singleBook: payload,
       };
     case ADD_BOOK:
       return {
         ...state,
+        singleBook: payload,
         allBooks: [...state.allBooks, payload],
         bookAdded: true,
       };
     case BOOK_EXISTS:
       return {
         ...state,
+        singleBook: {},
         bookAdded: false,
         showMessageDialog: true,
       };

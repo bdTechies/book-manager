@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from '../base-kits';
-import { MainMenu, TopMenuBar } from '../components';
+import { MainMenu, TopMenuBar, SingleBookPreviewCard } from '../components';
 
 class SingleBookPage extends Component {
   render() {
@@ -8,7 +8,7 @@ class SingleBookPage extends Component {
       <Container main>
         <MainMenu />
         <TopMenuBar pageTitle="Book: A Tale of Two Cities" />
-        <p>Single book...</p>
+        <SingleBookPreviewCard id={this.props.match.params.id} />
       </Container>
     );
   }
