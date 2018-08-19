@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Grid, Button, Typography, IconButton } from '@material-ui/core';
 import {
@@ -16,11 +16,24 @@ import { PencilIcon } from 'mdi-react';
 import bmPlaceholderImage from '../../assets/img/bm-image-placeholder.svg';
 
 class SingleBookPreviewCard extends Component {
+  constructor(props) {
+    super(props);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
   componentDidMount() {
     this.props.getBookById(this.props.id);
   }
 
+  handleDelete() {
+    this.props.deleteBook(this.props.book._id);
+  }
+
   render() {
+    if (this.props.bookDeleted) {
+      return <Redirect to="/all-books" />;
+    }
+
     return (
       <Grid container spacing={16}>
         <Grid item xs={12}>
@@ -38,13 +51,13 @@ class SingleBookPreviewCard extends Component {
                     <Grid item xs={6}>
                       <InfoCaption>Publisher</InfoCaption>
                       <Typography variant="title" color="primary">
-                        {this.props.book.publisher || 'A Tale of Two Cities'}
+                        {this.props.book.publisher || 'Who Knows!'}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <InfoCaption>Author</InfoCaption>
                       <Typography variant="title" color="primary">
-                        {this.props.book.author || 'A Tale of Two Cities'}
+                        {this.props.book.author || "I don't know"}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -105,6 +118,7 @@ class SingleBookPreviewCard extends Component {
                       color="secondary"
                       size="small"
                       mr="16"
+                      onClick={this.handleDelete}
                     >
                       Delete
                     </CustomButton>
@@ -125,11 +139,13 @@ class SingleBookPreviewCard extends Component {
 const mapStateToProps = state => {
   return {
     book: state.bookReducer.singleBook,
+    bookDeleted: state.bookReducer.bookDeleted,
   };
 };
 
 const mapActionsToProps = {
   getBookById: bookActions.getBookById,
+  deleteBook: bookActions.deleteBookById,
 };
 
 export default connect(

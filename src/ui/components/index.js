@@ -7,6 +7,7 @@ import BookPreviewCard from './book-preview-card';
 import SingleBookPreviewCard from './single-book-preview-card';
 import AddNewBookForm from './add-new-book-form';
 import MessageBox from './message-box';
+import AllBooksLink from './all-books-link';
 
 export {
   MainMenu,
@@ -18,4 +19,5 @@ export {
   SingleBookPreviewCard,
   AddNewBookForm,
   MessageBox,
+  AllBooksLink,
 };
