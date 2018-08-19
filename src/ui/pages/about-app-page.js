@@ -13,7 +13,7 @@ import bmLogo from '../../assets/img/bm-logo-purple.svg';
 const electron = window.require('electron');
 
 class AboutAppPage extends Component {
-  url = 'http://book-manager.bdtechies.com';
+  url = 'http://bdtechies.com';
 
   constructor(props) {
     super(props);
@@ -67,7 +67,7 @@ class AboutAppPage extends Component {
                 Book Manager is an open source library management application
                 developed by bdTechies with the feature of adding, searching
                 books, taking notes while reading and importing/exporting the
-                data saved data.
+                saved data.
               </CustomTypography>
             </Container>
           </PaddedPaper>
