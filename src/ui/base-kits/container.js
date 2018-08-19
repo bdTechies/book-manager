@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 import { space } from 'styled-system';
 
 const Container = styled.div`
-  ${space}
   text-align: ${props => (props.align ? props.align : 'left')};
+  width: ${props => (props.width ? props.width : 'auto')};
   ${props =>
     props.main
       ? css`
@@ -18,6 +18,7 @@ const Container = styled.div`
           background-color: #f8f3fb;
         `
       : ''};
+  ${space};
 `;
 
 export default Container;

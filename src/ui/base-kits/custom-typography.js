@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
+import { space } from 'styled-system';
 
 const CustomTypography = styled(Typography)`
   && {
@@ -10,6 +11,7 @@ const CustomTypography = styled(Typography)`
     font-family: ${props =>
       props.customfont === 'Arima' ? 'Arima Madurai' : ''};
     white-space: ${props => (props.whitespace ? props.whitespace : 'normal')};
+    ${space};
   }
 `;
 

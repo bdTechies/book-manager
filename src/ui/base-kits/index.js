@@ -16,6 +16,7 @@ import InfoCaption from './info-caption';
 import CustomButton from './custom-button';
 import CustomTextField from './custom-text-field';
 import CustomFormLabel from './custom-form-label';
+import CustomGrid from './custom-grid';
 
 export {
   WelcomeContainer,
@@ -36,4 +37,5 @@ export {
   CustomButton,
   CustomTextField,
   CustomFormLabel,
+  CustomGrid,
 };
