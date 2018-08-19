@@ -10,14 +10,20 @@ class AllBooksContainer extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <Grid container spacing={16}>
-        {this.props.allBooks.length ? (
-          this.props.allBooks.map(book => (
-            <BookPreviewCard key={book._id} {...book} />
-          ))
+        {this.props.dbReqStarted ? <p>Hello</p> : ''}
+        {this.props.dbReqFinished ? (
+          this.props.allBooks.length ? (
+            this.props.allBooks.map(book => (
+              <BookPreviewCard key={book._id} {...book} />
+            ))
+          ) : (
+            <MessageBox emoji="(｡•́︿•̀｡)" message="No book found" />
+          )
         ) : (
-          <MessageBox emoji="(｡•́︿•̀｡)" message="No book found" />
+          ''
         )}
       </Grid>
     );
@@ -27,6 +33,8 @@ class AllBooksContainer extends Component {
 const mapStateToProps = state => {
   return {
     allBooks: state.bookReducer.allBooks,
+    dbReqStarted: state.bookReducer.dbReqStarted,
+    dbReqFinished: state.bookReducer.dbReqFinished,
   };
 };
 

@@ -10,6 +10,8 @@ import {
   GET_BOOK_BY_ID,
   DELETE_BOOK_BY_ID,
   BOOK_DELETED,
+  DB_REQUEST_STARTED,
+  DB_REQUEST_FINISHED,
 } from './types';
 const electron = window.require('electron');
 const { ipcRenderer } = electron;
@@ -17,6 +19,7 @@ const { ipcRenderer } = electron;
 export function initMainProcessListeners() {
   return dispatch => {
     ipcRenderer.on('receive-all-books', (event, data) => {
+      dispatch(dbReqFinish());
       dispatch(setData(data));
       return data;
     });
@@ -40,9 +43,12 @@ export function initMainProcessListeners() {
 }
 
 export function getData() {
-  ipcRenderer.send('get-all-books', 'Get all books from db');
-  return {
-    type: GET_DATA,
+  return dispatch => {
+    dispatch(dbReqStart());
+    ipcRenderer.send('get-all-books', 'Get all books from db');
+    return {
+      type: GET_DATA,
+    };
   };
 }
 
@@ -70,6 +76,19 @@ export function deleteBookById(id) {
 export function bookDeleted(id) {
   return {
     type: BOOK_DELETED,
+  };
+}
+
+export function dbReqStart() {
+  return {
+    type: DB_REQUEST_STARTED,
+  };
+}
+
+export function dbReqFinish() {
+  console.log('Hello');
+  return {
+    type: DB_REQUEST_FINISHED,
   };
 }
 
