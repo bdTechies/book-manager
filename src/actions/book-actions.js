@@ -86,7 +86,6 @@ export function dbReqStart() {
 }
 
 export function dbReqFinish() {
-  console.log('Hello');
   return {
     type: DB_REQUEST_FINISHED,
   };
