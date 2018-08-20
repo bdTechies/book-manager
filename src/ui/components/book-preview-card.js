@@ -50,11 +50,11 @@ class BookPreviewCard extends Component {
               </Typography>
               <Typography variant="body2" gutterBottom>
                 <InfoCaption>Categories: </InfoCaption>
-                Novel, Historical Fiction
+                {this.props.categories}
               </Typography>
               <Typography variant="body2" gutterBottom>
                 <InfoCaption>Reading Status: </InfoCaption>
-                Completed
+                {this.props.readingStatus}
               </Typography>
               <Button
                 variant="contained"

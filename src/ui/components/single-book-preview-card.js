@@ -65,13 +65,13 @@ class SingleBookPreviewCard extends Component {
                     <Grid item xs={6}>
                       <InfoCaption>Categories</InfoCaption>
                       <Typography variant="title" color="primary">
-                        {this.props.book.translator || 'A Tale of Two Cities'}
+                        {this.props.book.categories || 'Uncategorized'}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <InfoCaption>Translator</InfoCaption>
                       <Typography variant="title" color="primary">
-                        {this.props.book.translator || 'A Tale of Two Cities'}
+                        {this.props.book.translator || 'None'}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
