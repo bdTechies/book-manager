@@ -6,7 +6,7 @@ const AddNewBookPage = props => (
   <Container main>
     <MainMenu />
     <TopMenuBar pageTitle="Add Book" />
-    <AddNewBookForm />
+    <AddNewBookForm id={props.match.params.id} />
   </Container>
 );
 

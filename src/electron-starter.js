@@ -92,6 +92,15 @@ ipcMain.on('delete-book-by-id', (event, id) => {
     .catch(err => console.log(err));
 });
 
+ipcMain.on('update-book', (event, book) => {
+  datastore
+    .update({ _id: book._id }, book)
+    .then(data => {
+      event.sender.send('book-updated', data);
+    })
+    .catch(err => console.log(err));
+});
+
 ipcMain.on('MINIMIZE_APP', (event, data) => {
   mainWindow.minimize();
 });

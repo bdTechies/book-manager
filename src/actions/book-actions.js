@@ -3,6 +3,8 @@ import {
   SET_DATA,
   SHOW_BOOK,
   SAVE_BOOK,
+  UPDATE_BOOK,
+  BOOK_UPDATED,
   ADD_BOOK,
   BOOK_EXISTS,
   RESET_BOOK_SAVED,
@@ -25,6 +27,10 @@ export function initMainProcessListeners() {
     });
     ipcRenderer.on('book-saved', (event, data) => {
       dispatch(addNewBook(data));
+      return data;
+    });
+    ipcRenderer.on('book-updated', (event, data) => {
+      dispatch(bookUpdated());
       return data;
     });
     ipcRenderer.on('book-exists', (event, data) => {
@@ -63,6 +69,13 @@ export function saveBook(newBook) {
   ipcRenderer.send('save-book', newBook);
   return {
     type: SAVE_BOOK,
+  };
+}
+
+export function updateBook(book) {
+  ipcRenderer.send('update-book', book);
+  return {
+    type: UPDATE_BOOK,
   };
 }
 
@@ -109,6 +122,12 @@ export function addNewBook(newBook) {
   return {
     type: ADD_BOOK,
     payload: newBook,
+  };
+}
+
+export function bookUpdated() {
+  return {
+    type: BOOK_UPDATED,
   };
 }
 

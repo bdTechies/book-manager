@@ -5,7 +5,6 @@ import {
   AllBooksPage,
   SingleBookPage,
   AddNewBookPage,
-  EditBookPage,
   AllNotesPage,
   SingleNotePage,
   ImportExportPage,

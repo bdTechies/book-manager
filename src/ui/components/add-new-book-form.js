@@ -47,6 +47,15 @@ class AddNewBookForm extends Component {
 
   componentDidMount() {
     this.props.resetBookSaved();
+    this.props.getBook(this.props.id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.book) {
+      if (nextProps.book.title && !this.state.formData.title) {
+        this.setState({ formData: nextProps.book });
+      }
+    }
   }
 
   handleChange = field => event => {
@@ -63,7 +72,11 @@ class AddNewBookForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.saveBook(this.state.formData);
+    if (this.props.book._id) {
+      this.props.updateBook(this.state.formData);
+    } else {
+      this.props.saveBook(this.state.formData);
+    }
   }
 
   handleClose() {
@@ -115,7 +128,7 @@ class AddNewBookForm extends Component {
   }
 
   render() {
-    if (this.props.bookAdded) {
+    if (this.props.bookAdded || this.props.bookUpdated) {
       return <Redirect to="/all-books" />;
     }
 
@@ -286,12 +299,16 @@ class AddNewBookForm extends Component {
 const mapStateToProps = state => {
   return {
     bookAdded: state.bookReducer.bookAdded,
+    bookUpdated: state.bookReducer.bookUpdated,
     showMessageDialog: state.bookReducer.showMessageDialog,
+    book: state.bookReducer.singleBook,
   };
 };
 
 const mapActionsToProps = {
   saveBook: bookActions.saveBook,
+  updateBook: bookActions.updateBook,
+  getBook: bookActions.getBookById,
   resetBookSaved: bookActions.resetBookSaved,
   hideMessageDialog: bookActions.hideMessageDialog,
 };
