@@ -72,7 +72,7 @@ class AddNewBookForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    if (this.props.book._id) {
+    if (this.props.book && this.props.book._id) {
       this.props.updateBook(this.state.formData);
     } else {
       this.props.saveBook(this.state.formData);
