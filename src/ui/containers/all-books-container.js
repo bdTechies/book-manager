@@ -10,7 +10,6 @@ class AllBooksContainer extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <Grid container spacing={16}>
         {this.props.dbReqStarted ? <LoadingSpinner /> : ''}

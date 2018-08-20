@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Grid, Button, Typography, IconButton } from '@material-ui/core';
 import {
@@ -14,6 +14,8 @@ import {
 import { bookActions } from '../../actions';
 import { PencilIcon } from 'mdi-react';
 import bmPlaceholderImage from '../../assets/img/bm-image-placeholder.svg';
+
+const EditBookLink = props => <Link {...props} />;
 
 class SingleBookPreviewCard extends Component {
   constructor(props) {
@@ -122,7 +124,13 @@ class SingleBookPreviewCard extends Component {
                     >
                       Delete
                     </CustomButton>
-                    <Button variant="contained" color="primary" size="small">
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      size="small"
+                      component={EditBookLink}
+                      to={`/edit/${this.props.book._id}`}
+                    >
                       Edit
                     </Button>
                   </Container>
