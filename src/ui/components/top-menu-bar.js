@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { TopMenuBarContainer, AppTitle } from '../base-kits';
 import { ControlMenu } from '../components';
 
