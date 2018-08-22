@@ -6,14 +6,17 @@ A simple personal library management application.
 
 ### Install & Run
 
+1. First clone the repo:
 ```bash
 $ git clone git@github.com:bdTechies/book-manager.git
 ```
 
+2. Then install the dependencies:
 ```bash
 $ npm install 
 ```
 
+3. Finally run the app:
 ```bash
 $ npm start
 ``` 
