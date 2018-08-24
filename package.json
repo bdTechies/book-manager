@@ -6,6 +6,7 @@
   "homepage": "./",
   "dependencies": {
     "@sh4hids/react-scripts": "1.1.8",
+    "json-2-csv": "^2.2.1",
     "mdi-react": "^4.0.0",
     "nedb-promises": "^3.0.1",
     "react": "^16.4.1",
