@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import converter from 'json-2-csv';
 import { CloudUploadIcon, CloudDownloadIcon } from 'mdi-react';
 import {
   Container,
@@ -6,9 +8,69 @@ import {
   CustomTypography,
   CustomButton,
 } from '../base-kits';
-import { MainMenu, TopMenuBar } from '../components';
+import {
+  MainMenu,
+  TopMenuBar,
+  MessageBox,
+  LoadingSpinner,
+} from '../components';
+import { bookActions } from '../../actions';
+const electron = window.require('electron');
+const fs = electron.remote.require('fs');
+const { dialog } = electron.remote;
 
 class ImportExportPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleExport = this.handleExport.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.getData();
+  }
+
+  handleExport() {
+    const options = {
+      delimiter: {
+        wrap: '"',
+        field: ',',
+        eol: '\n',
+      },
+      keys: [
+        'title',
+        'author',
+        'translator',
+        'publisher',
+        'description',
+        'categories',
+        'coverImage',
+        'readingStatus',
+        'createdAt',
+        'updatedAt',
+      ],
+    };
+    if (this.props.allBooks.length > 0) {
+      converter
+        .json2csvPromisified(this.props.allBooks, options)
+        .then(csv => {
+          dialog.showSaveDialog(fileName => {
+            if (!fileName) {
+              fileName = 'book-manager.csv';
+            }
+            fs.writeFile(fileName, csv, err => {
+              if (err) {
+                console.log(err.message);
+              }
+            });
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }
+
   render() {
     return (
       <Container main>
@@ -38,6 +100,7 @@ class ImportExportPage extends Component {
             size="small"
             pr={32}
             pl={32}
+            onClick={this.handleExport}
           >
             <CloudUploadIcon />
             <CustomTypography ml={12}>Export Data (CSV)</CustomTypography>
@@ -48,4 +111,19 @@ class ImportExportPage extends Component {
   }
 }
 
-export default ImportExportPage;
+const mapStateToProps = state => {
+  return {
+    allBooks: state.bookReducer.allBooks,
+    dbReqStarted: state.bookReducer.dbReqStarted,
+    dbReqFinished: state.bookReducer.dbReqFinished,
+  };
+};
+
+const mapActionsToProps = {
+  getData: bookActions.getData,
+};
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(ImportExportPage);
