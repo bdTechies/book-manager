@@ -24,35 +24,37 @@ class ImportExportPage extends Component {
     super(props);
 
     this.handleExport = this.handleExport.bind(this);
+    this.handleImport = this.handleImport.bind(this);
   }
 
   componentDidMount() {
     this.props.getData();
   }
 
+  options = {
+    delimiter: {
+      wrap: '"',
+      field: ',',
+      eol: '\n',
+    },
+    keys: [
+      'title',
+      'author',
+      'translator',
+      'publisher',
+      'description',
+      'categories',
+      'coverImage',
+      'readingStatus',
+      'createdAt',
+      'updatedAt',
+    ],
+  };
+
   handleExport() {
-    const options = {
-      delimiter: {
-        wrap: '"',
-        field: ',',
-        eol: '\n',
-      },
-      keys: [
-        'title',
-        'author',
-        'translator',
-        'publisher',
-        'description',
-        'categories',
-        'coverImage',
-        'readingStatus',
-        'createdAt',
-        'updatedAt',
-      ],
-    };
     if (this.props.allBooks.length > 0) {
       converter
-        .json2csvPromisified(this.props.allBooks, options)
+        .json2csvPromisified(this.props.allBooks, this.options)
         .then(csv => {
           dialog.showSaveDialog(fileName => {
             if (!fileName) {
@@ -69,6 +71,31 @@ class ImportExportPage extends Component {
           console.log(err);
         });
     }
+  }
+
+  handleImport() {
+    dialog.showOpenDialog(fileName => {
+      if (!fileName) {
+        console.log('no file selected');
+      } else {
+        fs.readFile(fileName[0], 'utf-8', (err, data) => {
+          if (err) {
+            console.log(err.message);
+          } else if (data) {
+            converter
+              .csv2jsonPromisified(data, this.options)
+              .then(json => {
+                console.log(json);
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          } else {
+            console.log('Empty file...');
+          }
+        });
+      }
+    });
   }
 
   render() {
@@ -90,6 +117,7 @@ class ImportExportPage extends Component {
             pr={32}
             pl={32}
             mb={16}
+            onClick={this.handleImport}
           >
             <CloudDownloadIcon />
             <CustomTypography ml={12}>Import Data (CSV)</CustomTypography>
