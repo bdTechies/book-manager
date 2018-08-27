@@ -35,7 +35,10 @@ class ImportExportPage extends Component {
     delimiter: {
       wrap: '"',
       field: ',',
-      eol: '\n',
+      eol: '~',
+      trimHeaderValues: true,
+      trimFieldValues: true,
+      checkSchemaDifferences: false,
     },
     keys: [
       'title',
@@ -53,43 +56,28 @@ class ImportExportPage extends Component {
 
   handleExport() {
     if (this.props.allBooks.length > 0) {
-      converter
-        .json2csvPromisified(this.props.allBooks, this.options)
-        .then(csv => {
-          dialog.showSaveDialog(fileName => {
-            if (!fileName) {
-              fileName = 'book-manager.csv';
+      let data = JSON.stringify(this.props.allBooks);
+      dialog.showSaveDialog(fileName => {
+        if (fileName) {
+          fs.writeFile(fileName, data, err => {
+            if (err) {
+              console.log(err.message);
             }
-            fs.writeFile(fileName, csv, err => {
-              if (err) {
-                console.log(err.message);
-              }
-            });
           });
-        })
-        .catch(err => {
-          console.log(err);
-        });
+        }
+      });
     }
   }
 
   handleImport() {
     dialog.showOpenDialog(fileName => {
-      if (!fileName) {
-        console.log('no file selected');
-      } else {
-        fs.readFile(fileName[0], 'utf-8', (err, data) => {
+      if (fileName) {
+        fs.readFile(fileName[0], 'utf-8', (err, fileData) => {
           if (err) {
             console.log(err.message);
-          } else if (data) {
-            converter
-              .csv2jsonPromisified(data, this.options)
-              .then(json => {
-                console.log(json);
-              })
-              .catch(err => {
-                console.log(err);
-              });
+          } else if (fileData) {
+            let data = JSON.parse(fileData);
+            console.log(data);
           } else {
             console.log('Empty file...');
           }
@@ -120,7 +108,7 @@ class ImportExportPage extends Component {
             onClick={this.handleImport}
           >
             <CloudDownloadIcon />
-            <CustomTypography ml={12}>Import Data (CSV)</CustomTypography>
+            <CustomTypography ml={12}>Import Data (json)</CustomTypography>
           </CustomButton>
           <CustomButton
             variant="contained"
@@ -131,7 +119,7 @@ class ImportExportPage extends Component {
             onClick={this.handleExport}
           >
             <CloudUploadIcon />
-            <CustomTypography ml={12}>Export Data (CSV)</CustomTypography>
+            <CustomTypography ml={12}>Export Data (json)</CustomTypography>
           </CustomButton>
         </CustomGrid>
       </Container>
