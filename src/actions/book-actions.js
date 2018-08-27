@@ -12,6 +12,9 @@ import {
   GET_BOOK_BY_ID,
   DELETE_BOOK_BY_ID,
   BOOK_DELETED,
+  IMPORT_BOOK_LIST,
+  IMPORT_STARTED,
+  IMPORT_FINISHED,
   DB_REQUEST_STARTED,
   DB_REQUEST_FINISHED,
 } from './types';
@@ -43,6 +46,10 @@ export function initMainProcessListeners() {
     });
     ipcRenderer.on('book-deleted', (event, data) => {
       dispatch(bookDeleted());
+      return data;
+    });
+    ipcRenderer.on('import-completed', (event, data) => {
+      dispatch(finisImportReq());
       return data;
     });
   };
@@ -101,6 +108,25 @@ export function dbReqStart() {
 export function dbReqFinish() {
   return {
     type: DB_REQUEST_FINISHED,
+  };
+}
+
+export function importBookList(data) {
+  ipcRenderer.send('import-book-list', data);
+  return {
+    type: IMPORT_BOOK_LIST,
+  };
+}
+
+export function startImportReq() {
+  return {
+    type: IMPORT_STARTED,
+  };
+}
+
+export function finisImportReq() {
+  return {
+    type: IMPORT_FINISHED,
   };
 }
 

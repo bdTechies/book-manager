@@ -83,6 +83,28 @@ ipcMain.on('save-book', (event, data) => {
     .catch(err => console.log(err));
 });
 
+ipcMain.on('import-book-list', (event, data) => {
+  let c = 0;
+  data.map(book => {
+    c++;
+    datastore
+      .findOne({
+        title: book.title,
+        author: book.author,
+        publisher: book.publisher,
+      })
+      .then(bookFound => {
+        if (!bookFound) {
+          datastore.insert(book).then(newBook => {});
+        }
+      })
+      .catch(err => console.log(err));
+    if (data.length === c) {
+      event.sender.send('import-completed', {});
+    }
+  });
+});
+
 ipcMain.on('delete-book-by-id', (event, id) => {
   datastore
     .remove({ _id: id })

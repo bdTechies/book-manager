@@ -20,3 +20,7 @@ export const BOOK_DELETED = 'book:book_deleted';
 
 export const DB_REQUEST_STARTED = 'book:db_request_started';
 export const DB_REQUEST_FINISHED = 'book:db_request_finished';
+
+export const IMPORT_BOOK_LIST = 'book:import_book_list';
+export const IMPORT_STARTED = 'book:import_started';
+export const IMPORT_FINISHED = 'book:import_finished';

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import converter from 'json-2-csv';
 import { CloudUploadIcon, CloudDownloadIcon } from 'mdi-react';
 import {
   Container,
@@ -56,12 +55,24 @@ class ImportExportPage extends Component {
 
   handleExport() {
     if (this.props.allBooks.length > 0) {
-      let data = JSON.stringify(this.props.allBooks);
-      dialog.showSaveDialog(fileName => {
-        if (fileName) {
-          fs.writeFile(fileName, data, err => {
-            if (err) {
-              console.log(err.message);
+      let data = [],
+        c = 0;
+
+      this.props.allBooks.map(book => {
+        c++;
+        if (book.hasOwnProperty('_id')) {
+          delete book['_id'];
+        }
+        data.push(book);
+        if (this.props.allBooks.length === c) {
+          data = JSON.stringify(data);
+          dialog.showSaveDialog(fileName => {
+            if (fileName) {
+              fs.writeFile(fileName, data, err => {
+                if (err) {
+                  console.log(err.message);
+                }
+              });
             }
           });
         }
@@ -77,7 +88,7 @@ class ImportExportPage extends Component {
             console.log(err.message);
           } else if (fileData) {
             let data = JSON.parse(fileData);
-            console.log(data);
+            this.props.importBookList(data);
           } else {
             console.log('Empty file...');
           }
@@ -137,6 +148,7 @@ const mapStateToProps = state => {
 
 const mapActionsToProps = {
   getData: bookActions.getData,
+  importBookList: bookActions.importBookList,
 };
 
 export default connect(

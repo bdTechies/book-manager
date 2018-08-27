@@ -9,6 +9,8 @@ import {
   BOOK_DELETED,
   DB_REQUEST_STARTED,
   DB_REQUEST_FINISHED,
+  IMPORT_STARTED,
+  IMPORT_FINISHED,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -20,6 +22,8 @@ const INITIAL_STATE = {
   showMessageDialog: false,
   dbReqStarted: false,
   dbReqFinished: false,
+  importStarted: false,
+  importCompleted: false,
 };
 
 export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
@@ -85,6 +89,18 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
       return {
         ...state,
         bookDeleted: true,
+      };
+    case IMPORT_STARTED:
+      return {
+        ...state,
+        importStarted: true,
+        importCompleted: false,
+      };
+    case IMPORT_FINISHED:
+      return {
+        ...state,
+        importStarted: false,
+        importCompleted: true,
       };
     default:
       return state;
