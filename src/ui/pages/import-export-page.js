@@ -102,37 +102,47 @@ class ImportExportPage extends Component {
       <Container main>
         <MainMenu />
         <TopMenuBar pageTitle="Import/Export Data" />
-        <CustomGrid
-          container
-          direction="column"
-          alignItems="center"
-          justify="center"
-          customheight="100%"
-        >
-          <CustomButton
-            variant="contained"
-            color="default"
-            size="small"
-            pr={32}
-            pl={32}
-            mb={16}
-            onClick={this.handleImport}
+        {this.props.importStarted ? <LoadingSpinner /> : ''}
+        {this.props.importCompleted ? (
+          <MessageBox emoji="ᕕ( ᐛ )ᕗ" message="Data imported successfully!" />
+        ) : (
+          ''
+        )}
+        {!this.props.importStarted && !this.props.importCompleted ? (
+          <CustomGrid
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+            customheight="100%"
           >
-            <CloudDownloadIcon />
-            <CustomTypography ml={12}>Import Data (json)</CustomTypography>
-          </CustomButton>
-          <CustomButton
-            variant="contained"
-            color="default"
-            size="small"
-            pr={32}
-            pl={32}
-            onClick={this.handleExport}
-          >
-            <CloudUploadIcon />
-            <CustomTypography ml={12}>Export Data (json)</CustomTypography>
-          </CustomButton>
-        </CustomGrid>
+            <CustomButton
+              variant="contained"
+              color="default"
+              size="small"
+              pr={32}
+              pl={32}
+              mb={16}
+              onClick={this.handleImport}
+            >
+              <CloudDownloadIcon />
+              <CustomTypography ml={12}>Import Data (json)</CustomTypography>
+            </CustomButton>
+            <CustomButton
+              variant="contained"
+              color="default"
+              size="small"
+              pr={32}
+              pl={32}
+              onClick={this.handleExport}
+            >
+              <CloudUploadIcon />
+              <CustomTypography ml={12}>Export Data (json)</CustomTypography>
+            </CustomButton>
+          </CustomGrid>
+        ) : (
+          ''
+        )}
       </Container>
     );
   }
@@ -141,8 +151,8 @@ class ImportExportPage extends Component {
 const mapStateToProps = state => {
   return {
     allBooks: state.bookReducer.allBooks,
-    dbReqStarted: state.bookReducer.dbReqStarted,
-    dbReqFinished: state.bookReducer.dbReqFinished,
+    importStarted: state.bookReducer.importStarted,
+    importCompleted: state.bookReducer.importCompleted,
   };
 };
 

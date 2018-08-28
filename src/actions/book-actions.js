@@ -112,9 +112,12 @@ export function dbReqFinish() {
 }
 
 export function importBookList(data) {
-  ipcRenderer.send('import-book-list', data);
-  return {
-    type: IMPORT_BOOK_LIST,
+  return dispatch => {
+    dispatch(startImportReq());
+    ipcRenderer.send('import-book-list', data);
+    return {
+      type: IMPORT_BOOK_LIST,
+    };
   };
 }
 
