@@ -11,6 +11,8 @@ import {
   DB_REQUEST_FINISHED,
   IMPORT_STARTED,
   IMPORT_FINISHED,
+  SHOW_EDITOR_DIALOG,
+  HIDE_EDITOR_DIALOG,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -24,6 +26,8 @@ const INITIAL_STATE = {
   dbReqFinished: false,
   importStarted: false,
   importCompleted: false,
+  showEditorDialog: false,
+  newNote: {},
 };
 
 export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
@@ -101,6 +105,16 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
         ...state,
         importStarted: false,
         importCompleted: true,
+      };
+    case SHOW_EDITOR_DIALOG:
+      return {
+        ...state,
+        ...payload,
+      };
+    case HIDE_EDITOR_DIALOG:
+      return {
+        ...state,
+        ...payload,
       };
     default:
       return state;

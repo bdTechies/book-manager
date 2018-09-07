@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Grid, Button, Typography, IconButton } from '@material-ui/core';
+import {
+  Grid,
+  Button,
+  Typography,
+  IconButton,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from '@material-ui/core';
 import {
   Image,
   Container,
@@ -11,6 +20,7 @@ import {
   CustomTypography,
   ImageThumbContainer,
 } from '../base-kits';
+import SlateEditor from './slate-editor';
 import { bookActions } from '../../actions';
 import { PencilIcon } from 'mdi-react';
 import bmPlaceholderImage from '../../assets/img/bm-image-placeholder.svg';
@@ -21,6 +31,8 @@ class SingleBookPreviewCard extends Component {
   constructor(props) {
     super(props);
     this.handleDelete = this.handleDelete.bind(this);
+    this.showEditorDialog = this.showEditorDialog.bind(this);
+    this.hideEditorDialog = this.hideEditorDialog.bind(this);
   }
 
   componentDidMount() {
@@ -29,6 +41,14 @@ class SingleBookPreviewCard extends Component {
 
   handleDelete() {
     this.props.deleteBook(this.props.book._id);
+  }
+
+  showEditorDialog() {
+    this.props.showEditorDialog();
+  }
+
+  hideEditorDialog() {
+    this.props.hideEditorDialog();
   }
 
   render() {
@@ -90,7 +110,11 @@ class SingleBookPreviewCard extends Component {
                       <InfoCaption>Note</InfoCaption>
                       <Typography variant="body2">
                         {this.props.book.note || 'Add a note'}
-                        <IconButton aria-label="Delete" disableRipple={true}>
+                        <IconButton
+                          aria-label="Take note"
+                          disableRipple={true}
+                          onClick={this.props.showEditorDialog}
+                        >
                           <PencilIcon size={16} />
                         </IconButton>
                       </Typography>
@@ -139,6 +163,25 @@ class SingleBookPreviewCard extends Component {
             </Container>
           </PaddedPaper>
         </Grid>
+        <Dialog
+          open={this.props.showDialog}
+          onClose={this.hideEditorDialog}
+          fullWidth="true"
+          scroll="paper"
+        >
+          <DialogTitle>Note of a Book</DialogTitle>
+          <DialogContent>
+            <SlateEditor />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.props.hideEditorDialog} color="primary">
+              Disagree
+            </Button>
+            <Button onClick={this.handleClose} color="primary" autoFocus>
+              Agree
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Grid>
     );
   }
@@ -148,12 +191,15 @@ const mapStateToProps = state => {
   return {
     book: state.bookReducer.singleBook,
     bookDeleted: state.bookReducer.bookDeleted,
+    showDialog: state.bookReducer.showEditorDialog,
   };
 };
 
 const mapActionsToProps = {
   getBookById: bookActions.getBookById,
   deleteBook: bookActions.deleteBookById,
+  showEditorDialog: bookActions.showEditorDialog,
+  hideEditorDialog: bookActions.hideEditorDialog,
 };
 
 export default connect(

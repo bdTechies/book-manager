@@ -9,6 +9,7 @@ import AddNewBookForm from './add-new-book-form';
 import MessageBox from './message-box';
 import AllBooksLink from './all-books-link';
 import LoadingSpinner from './loading-spinner';
+import SlateEditor from './slate-editor';
 
 export {
   MainMenu,
@@ -22,4 +23,5 @@ export {
   MessageBox,
   AllBooksLink,
   LoadingSpinner,
+  SlateEditor,
 };

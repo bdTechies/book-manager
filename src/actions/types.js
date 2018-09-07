@@ -24,3 +24,6 @@ export const DB_REQUEST_FINISHED = 'book:db_request_finished';
 export const IMPORT_BOOK_LIST = 'book:import_book_list';
 export const IMPORT_STARTED = 'book:import_started';
 export const IMPORT_FINISHED = 'book:import_finished';
+
+export const SHOW_EDITOR_DIALOG = 'book:show_editor_dialog';
+export const HIDE_EDITOR_DIALOG = 'book:hide_editor_dialog';
