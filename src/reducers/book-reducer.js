@@ -72,6 +72,7 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
       return {
         ...state,
         allBooks: [...state.allBooks],
+        singleBook: payload,
         bookUpdated: true,
       };
     case BOOK_EXISTS:

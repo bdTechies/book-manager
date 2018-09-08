@@ -37,7 +37,8 @@ export function initMainProcessListeners() {
       return data;
     });
     ipcRenderer.on('book-updated', (event, data) => {
-      dispatch(bookUpdated());
+      dispatch(hideEditorDialog());
+      dispatch(bookUpdated(data));
       return data;
     });
     ipcRenderer.on('book-exists', (event, data) => {
@@ -158,9 +159,10 @@ export function addNewBook(newBook) {
   };
 }
 
-export function bookUpdated() {
+export function bookUpdated(updatedBook) {
   return {
     type: BOOK_UPDATED,
+    payload: updatedBook,
   };
 }
 

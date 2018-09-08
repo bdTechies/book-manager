@@ -19,6 +19,7 @@ import {
   CustomButton,
   CustomTypography,
   ImageThumbContainer,
+  RawHtmlViewr,
 } from '../base-kits';
 import QuillEditor from './quill-editor';
 import { bookActions } from '../../actions';
@@ -33,6 +34,7 @@ class SingleBookPreviewCard extends Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.showEditorDialog = this.showEditorDialog.bind(this);
     this.hideEditorDialog = this.hideEditorDialog.bind(this);
+    this.handleSaveNote = this.handleSaveNote.bind(this);
   }
 
   componentDidMount() {
@@ -44,17 +46,26 @@ class SingleBookPreviewCard extends Component {
   }
 
   showEditorDialog() {
-    console.log(this.props.editorContent);
+    if (this.props.book.note) {
+      this.props.setEditorContent(this.props.book.note);
+    } else {
+      this.props.resetEditorContent();
+    }
     this.props.showEditorDialog();
   }
 
   hideEditorDialog() {
-    console.log(this.props.editorContent);
+    this.props.resetEditorContent();
     this.props.hideEditorDialog();
   }
 
+  handleSaveNote() {
+    let bookWithNote = { ...this.props.book, note: this.props.editorContent };
+    this.props.updateBook(bookWithNote);
+  }
+
   render() {
-    if (this.props.bookDeleted) {
+    if (this.props.bookDeleted || this.props.bookUpdated) {
       return <Redirect to="/all-books" />;
     }
 
@@ -109,9 +120,8 @@ class SingleBookPreviewCard extends Component {
                       </CustomTypography>
                     </Grid>
                     <Grid item xs={12}>
-                      <InfoCaption>Note</InfoCaption>
-                      <Typography variant="body2">
-                        {this.props.book.note || 'Add a note'}
+                      <InfoCaption>
+                        Note{' '}
                         <IconButton
                           aria-label="Take note"
                           disableRipple={true}
@@ -119,7 +129,12 @@ class SingleBookPreviewCard extends Component {
                         >
                           <PencilIcon size={16} />
                         </IconButton>
-                      </Typography>
+                      </InfoCaption>
+                      <RawHtmlViewr
+                        dangerouslySetInnerHTML={{
+                          __html: this.props.book.note || '<p>Add a note.</p>',
+                        }}
+                      />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -179,7 +194,7 @@ class SingleBookPreviewCard extends Component {
             <Button onClick={this.hideEditorDialog} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleClose} color="primary" autoFocus>
+            <Button onClick={this.handleSaveNote} color="primary" autoFocus>
               Save
             </Button>
           </DialogActions>
@@ -193,6 +208,7 @@ const mapStateToProps = state => {
   return {
     book: state.bookReducer.singleBook,
     bookDeleted: state.bookReducer.bookDeleted,
+    bookUpdated: state.bookReducer.bookUpdated,
     showDialog: state.bookReducer.showEditorDialog,
     editorContent: state.bookReducer.editorContent,
   };
@@ -203,6 +219,9 @@ const mapActionsToProps = {
   deleteBook: bookActions.deleteBookById,
   showEditorDialog: bookActions.showEditorDialog,
   hideEditorDialog: bookActions.hideEditorDialog,
+  setEditorContent: bookActions.setEditorContent,
+  resetEditorContent: bookActions.resetEditorContent,
+  updateBook: bookActions.updateBook,
 };
 
 export default connect(
