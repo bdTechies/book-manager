@@ -27,3 +27,5 @@ export const IMPORT_FINISHED = 'book:import_finished';
 
 export const SHOW_EDITOR_DIALOG = 'book:show_editor_dialog';
 export const HIDE_EDITOR_DIALOG = 'book:hide_editor_dialog';
+export const SET_EDITOR_CONTENT = 'book:set_editor_content';
+export const RESET_EDITOR_CONTENT = 'book:reset_editor_content';

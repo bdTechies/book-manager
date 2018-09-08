@@ -5,6 +5,7 @@ const CustomReactQuill = styled(ReactQuill)`
   .ql-editor {
     height: 300px;
     overflow-y: auto;
+    font-size: 1rem;
   }
 `;
 

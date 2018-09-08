@@ -19,6 +19,8 @@ import {
   DB_REQUEST_FINISHED,
   SHOW_EDITOR_DIALOG,
   HIDE_EDITOR_DIALOG,
+  SET_EDITOR_CONTENT,
+  RESET_EDITOR_CONTENT,
 } from './types';
 const electron = window.require('electron');
 const { ipcRenderer } = electron;
@@ -194,6 +196,24 @@ export function hideEditorDialog() {
     type: HIDE_EDITOR_DIALOG,
     payload: {
       showEditorDialog: false,
+    },
+  };
+}
+
+export function setEditorContent(content) {
+  return {
+    type: SET_EDITOR_CONTENT,
+    payload: {
+      editorContent: content,
+    },
+  };
+}
+
+export function resetEditorContent() {
+  return {
+    type: RESET_EDITOR_CONTENT,
+    payload: {
+      editorContent: '',
     },
   };
 }

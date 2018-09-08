@@ -13,6 +13,8 @@ import {
   IMPORT_FINISHED,
   SHOW_EDITOR_DIALOG,
   HIDE_EDITOR_DIALOG,
+  SET_EDITOR_CONTENT,
+  RESET_EDITOR_CONTENT,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -27,7 +29,7 @@ const INITIAL_STATE = {
   importStarted: false,
   importCompleted: false,
   showEditorDialog: false,
-  newNote: {},
+  editorContent: '',
 };
 
 export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
@@ -112,6 +114,16 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
         ...payload,
       };
     case HIDE_EDITOR_DIALOG:
+      return {
+        ...state,
+        ...payload,
+      };
+    case SET_EDITOR_CONTENT:
+      return {
+        ...state,
+        ...payload,
+      };
+    case RESET_EDITOR_CONTENT:
       return {
         ...state,
         ...payload,

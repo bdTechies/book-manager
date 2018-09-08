@@ -28,22 +28,18 @@ const formats = [
 class QuillEditor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      text: '',
-    }; // You can also pass a Quill Delta here
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(value) {
-    console.log(value);
-    this.setState({ text: value });
+    this.props.setEditorContent(value);
   }
 
   render() {
     return (
       <div>
         <CustomReactQuill
-          value={this.state.text}
+          value={this.props.editorContent}
           onChange={this.handleChange}
           theme="snow"
           modules={modules}
@@ -57,13 +53,12 @@ class QuillEditor extends React.Component {
 const mapStateToProps = state => {
   return {
     showEditorDialog: state.bookReducer.showEditorDialog,
-    newNote: state.bookReducer.newNote,
+    editorContent: state.bookReducer.editorContent,
   };
 };
 
 const mapActionsToProps = {
-  getBookById: bookActions.getBookById,
-  deleteBook: bookActions.deleteBookById,
+  setEditorContent: bookActions.setEditorContent,
 };
 
 export default connect(
