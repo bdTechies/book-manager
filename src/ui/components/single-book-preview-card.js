@@ -44,10 +44,12 @@ class SingleBookPreviewCard extends Component {
   }
 
   showEditorDialog() {
+    console.log(this.props.editorContent);
     this.props.showEditorDialog();
   }
 
   hideEditorDialog() {
+    console.log(this.props.editorContent);
     this.props.hideEditorDialog();
   }
 
@@ -113,7 +115,7 @@ class SingleBookPreviewCard extends Component {
                         <IconButton
                           aria-label="Take note"
                           disableRipple={true}
-                          onClick={this.props.showEditorDialog}
+                          onClick={this.showEditorDialog}
                         >
                           <PencilIcon size={16} />
                         </IconButton>
@@ -174,11 +176,11 @@ class SingleBookPreviewCard extends Component {
             <QuillEditor />
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.props.hideEditorDialog} color="primary">
-              Disagree
+            <Button onClick={this.hideEditorDialog} color="primary">
+              Cancel
             </Button>
             <Button onClick={this.handleClose} color="primary" autoFocus>
-              Agree
+              Save
             </Button>
           </DialogActions>
         </Dialog>
@@ -192,6 +194,7 @@ const mapStateToProps = state => {
     book: state.bookReducer.singleBook,
     bookDeleted: state.bookReducer.bookDeleted,
     showDialog: state.bookReducer.showEditorDialog,
+    editorContent: state.bookReducer.editorContent,
   };
 };
 
