@@ -20,7 +20,7 @@ import {
   CustomTypography,
   ImageThumbContainer,
 } from '../base-kits';
-import SlateEditor from './slate-editor';
+import QuillEditor from './quill-editor';
 import { bookActions } from '../../actions';
 import { PencilIcon } from 'mdi-react';
 import bmPlaceholderImage from '../../assets/img/bm-image-placeholder.svg';
@@ -166,12 +166,12 @@ class SingleBookPreviewCard extends Component {
         <Dialog
           open={this.props.showDialog}
           onClose={this.hideEditorDialog}
-          fullWidth="true"
+          fullWidth={true}
           scroll="paper"
         >
           <DialogTitle>Note of a Book</DialogTitle>
           <DialogContent>
-            <SlateEditor />
+            <QuillEditor />
           </DialogContent>
           <DialogActions>
             <Button onClick={this.props.hideEditorDialog} color="primary">

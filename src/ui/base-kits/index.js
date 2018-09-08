@@ -17,6 +17,7 @@ import CustomButton from './custom-button';
 import CustomTextField from './custom-text-field';
 import CustomFormLabel from './custom-form-label';
 import CustomGrid from './custom-grid';
+import CustomReactQuill from './custom-react-quill';
 
 export {
   WelcomeContainer,
@@ -38,4 +39,5 @@ export {
   CustomTextField,
   CustomFormLabel,
   CustomGrid,
+  CustomReactQuill,
 };
