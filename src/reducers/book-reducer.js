@@ -30,6 +30,7 @@ const INITIAL_STATE = {
   importCompleted: false,
   showEditorDialog: false,
   editorContent: '',
+  pageTitle: 'Book Manager',
 };
 
 export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
@@ -48,6 +49,7 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
       return {
         ...state,
         singleBook: payload,
+        pageTitle: payload ? payload.title : 'Book Manager',
       };
     case DB_REQUEST_STARTED:
       return {

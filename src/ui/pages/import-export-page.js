@@ -76,6 +76,7 @@ class ImportExportPage extends Component {
             }
           });
         }
+        return data;
       });
     }
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from '../base-kits';
+import { connect } from 'react-redux';
 import { MainMenu, TopMenuBar, SingleBookPreviewCard } from '../components';
 
 class SingleBookPage extends Component {
@@ -7,11 +8,20 @@ class SingleBookPage extends Component {
     return (
       <Container main>
         <MainMenu />
-        <TopMenuBar pageTitle="Book: A Tale of Two Cities" />
+        <TopMenuBar pageTitle={`Book: ${this.props.pageTitle}`} />
         <SingleBookPreviewCard id={this.props.match.params.id} />
       </Container>
     );
   }
 }
 
-export default SingleBookPage;
+const mapStateToProps = state => {
+  return {
+    pageTitle: state.bookReducer.pageTitle,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(SingleBookPage);

@@ -25,7 +25,7 @@ const formats = [
   'link',
 ];
 
-class QuillEditor extends React.Component {
+class QuillEditor extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
