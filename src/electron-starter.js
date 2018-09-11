@@ -117,8 +117,10 @@ ipcMain.on('delete-book-by-id', (event, id) => {
 ipcMain.on('update-book', (event, book) => {
   datastore
     .update({ _id: book._id }, book)
-    .then(data => {
-      event.sender.send('book-updated', data);
+    .then(() => {
+      datastore.findOne({ _id: book._id }).then(data => {
+        event.sender.send('book-updated', data);
+      });
     })
     .catch(err => console.log(err));
 });

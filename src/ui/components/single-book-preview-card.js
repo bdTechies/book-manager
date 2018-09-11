@@ -65,7 +65,7 @@ class SingleBookPreviewCard extends Component {
   }
 
   render() {
-    if (this.props.bookDeleted || this.props.bookUpdated) {
+    if (this.props.bookDeleted) {
       return <Redirect to="/all-books" />;
     }
 
