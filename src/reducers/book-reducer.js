@@ -47,7 +47,7 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
 
     case SHOW_BOOK:
       return {
-        ...state,
+        ...INITIAL_STATE,
         singleBook: payload,
         pageTitle: payload ? payload.title : 'Book Manager',
       };

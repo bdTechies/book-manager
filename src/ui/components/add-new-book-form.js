@@ -129,7 +129,7 @@ class AddNewBookForm extends Component {
 
   render() {
     if (this.props.bookAdded || this.props.bookUpdated) {
-      return <Redirect to="/all-books" />;
+      return <Redirect to={`/books/${this.props.id || this.props.book._id}`} />;
     }
 
     return (
