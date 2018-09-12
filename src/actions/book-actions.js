@@ -21,6 +21,8 @@ import {
   HIDE_EDITOR_DIALOG,
   SET_EDITOR_CONTENT,
   RESET_EDITOR_CONTENT,
+  GET_ALL_NOTES,
+  SHOW_ALL_NOTES,
 } from './types';
 const electron = window.require('electron');
 const { ipcRenderer } = electron;
@@ -55,6 +57,11 @@ export function initMainProcessListeners() {
     });
     ipcRenderer.on('import-completed', (event, data) => {
       dispatch(finisImportReq());
+      return data;
+    });
+    ipcRenderer.on('show-all-notes', (event, data) => {
+      dispatch(dbReqFinish());
+      dispatch(showAllNotes(data));
       return data;
     });
   };
@@ -217,5 +224,22 @@ export function resetEditorContent() {
     payload: {
       editorContent: '',
     },
+  };
+}
+
+export function getAllNotes() {
+  return dispatch => {
+    dispatch(dbReqStart());
+    ipcRenderer.send('get-all-notes', 'Get all books from db');
+    return {
+      type: GET_ALL_NOTES,
+    };
+  };
+}
+
+export function showAllNotes(notes) {
+  return {
+    type: SHOW_ALL_NOTES,
+    payload: notes,
   };
 }

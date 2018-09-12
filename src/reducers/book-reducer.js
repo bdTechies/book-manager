@@ -15,10 +15,12 @@ import {
   HIDE_EDITOR_DIALOG,
   SET_EDITOR_CONTENT,
   RESET_EDITOR_CONTENT,
+  SHOW_ALL_NOTES,
 } from '../actions/types';
 
 const INITIAL_STATE = {
   allBooks: [],
+  allNotes: [],
   bookAdded: false,
   bookUpdated: false,
   bookDeleted: false,
@@ -44,12 +46,16 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
         bookUpdated: false,
         allBooks: [...payload],
       };
-
     case SHOW_BOOK:
       return {
         ...INITIAL_STATE,
         singleBook: payload,
         pageTitle: payload ? payload.title : 'Book Manager',
+      };
+    case SHOW_ALL_NOTES:
+      return {
+        ...INITIAL_STATE,
+        allNotes: payload,
       };
     case DB_REQUEST_STARTED:
       return {
