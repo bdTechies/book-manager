@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import htmlToText from 'html-to-text';
 import { Grid, Typography, Button } from '@material-ui/core';
-import {
-  PaddedPaper,
-  ImageThumbContainer,
-  InfoCaption,
-  Image,
-} from '../base-kits';
-import bmPlaceholderImage from '../../assets/img/bm-image-placeholder.svg';
+import { PaddedPaper, InfoCaption } from '../base-kits';
 
 class NotePreviewCard extends Component {
   singleBookLink = itemProps => (
     <Link to={'/books/' + this.props._id} {...itemProps} />
   );
 
+  generateTextFromHtml(htmlInput) {
+    let text = htmlToText.fromString(htmlInput, {
+      uppercaseHeadings: false,
+    });
+    if (text.length > 180) {
+      text = `${text.substring(0, 180)}...`;
+    }
+    return text;
+  }
+
   render() {
     return (
       <Grid item xs={6}>
-        <PaddedPaper square minheight="332">
+        <PaddedPaper square minheight="220">
           <Grid container direction="row">
-            <Grid item xs={12} lg={7}>
+            <Grid item xs={12}>
               <Typography variant="headline" color="primary">
                 {this.props.title}
               </Typography>
@@ -28,9 +33,7 @@ class NotePreviewCard extends Component {
               </Typography>
               <Typography variant="body2" gutterBottom>
                 <InfoCaption>Note: </InfoCaption>
-                {this.props.note.length > 120
-                  ? `${this.props.note.substring(0, 120)}...`
-                  : this.props.note}
+                {this.generateTextFromHtml(this.props.note)}
               </Typography>
               <Button
                 variant="contained"
