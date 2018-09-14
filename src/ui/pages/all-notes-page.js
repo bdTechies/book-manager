@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from '../base-kits';
 import { MainMenu, TopMenuBar } from '../components';
+import { AllNotesContainer } from '../containers';
 
 class AllNotesPage extends Component {
   render() {
@@ -8,7 +9,7 @@ class AllNotesPage extends Component {
       <Container main>
         <MainMenu />
         <TopMenuBar pageTitle="All Notes" />
-        <p>All notes...</p>
+        <AllNotesContainer />
       </Container>
     );
   }
