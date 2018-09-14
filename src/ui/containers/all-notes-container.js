@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
 import { bookActions } from '../../actions';
-import { BookPreviewCard, MessageBox, LoadingSpinner } from '../components';
+import { NotePreviewCard, MessageBox, LoadingSpinner } from '../components';
 
 class AllNotesContainer extends Component {
   componentDidMount() {
@@ -16,7 +16,7 @@ class AllNotesContainer extends Component {
         {this.props.dbReqFinished ? (
           this.props.allNotes.length ? (
             this.props.allNotes.map(note => (
-              <BookPreviewCard key={note._id} {...note} />
+              <NotePreviewCard key={note._id} {...note} />
             ))
           ) : (
             <MessageBox emoji="(｡•́︿•̀｡)" message="No note found" />
