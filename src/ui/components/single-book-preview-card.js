@@ -186,7 +186,7 @@ class SingleBookPreviewCard extends Component {
           fullWidth={true}
           scroll="paper"
         >
-          <DialogTitle>Note of a Book</DialogTitle>
+          <DialogTitle>Note for {this.props.book.title}</DialogTitle>
           <DialogContent>
             <QuillEditor />
           </DialogContent>

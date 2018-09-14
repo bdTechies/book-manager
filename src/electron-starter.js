@@ -125,6 +125,35 @@ ipcMain.on('update-book', (event, book) => {
     .catch(err => console.log(err));
 });
 
+ipcMain.on('get-all-notes', (event, data) => {
+  datastore
+    .find({
+      note: {
+        $exists: true,
+        $ne: '',
+      },
+    })
+    .then(data => {
+      event.sender.send('show-all-books', data);
+    })
+    .catch(err => console.log(err));
+});
+
+function getAllNotes() {
+  datastore
+    .find({
+      note: {
+        $exists: true,
+        $ne: '',
+      },
+    })
+    .then(data => {
+      console.log(data);
+    });
+}
+
+getAllNotes();
+
 ipcMain.on('MINIMIZE_APP', (event, data) => {
   mainWindow.minimize();
 });

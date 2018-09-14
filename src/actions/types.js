@@ -29,3 +29,6 @@ export const SHOW_EDITOR_DIALOG = 'book:show_editor_dialog';
 export const HIDE_EDITOR_DIALOG = 'book:hide_editor_dialog';
 export const SET_EDITOR_CONTENT = 'book:set_editor_content';
 export const RESET_EDITOR_CONTENT = 'book:reset_editor_content';
+
+export const GET_ALL_NOTES = 'book:get_all_notes';
+export const SHOW_ALL_NOTES = 'book:show_all_notes';
