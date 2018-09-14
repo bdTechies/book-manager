@@ -134,25 +134,10 @@ ipcMain.on('get-all-notes', (event, data) => {
       },
     })
     .then(data => {
-      event.sender.send('show-all-books', data);
+      event.sender.send('show-all-notes', data);
     })
     .catch(err => console.log(err));
 });
-
-function getAllNotes() {
-  datastore
-    .find({
-      note: {
-        $exists: true,
-        $ne: '',
-      },
-    })
-    .then(data => {
-      console.log(data);
-    });
-}
-
-getAllNotes();
 
 ipcMain.on('MINIMIZE_APP', (event, data) => {
   mainWindow.minimize();

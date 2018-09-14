@@ -19,6 +19,7 @@ import CustomFormLabel from './custom-form-label';
 import CustomGrid from './custom-grid';
 import CustomReactQuill from './custom-react-quill';
 import RawHtmlViewr from './raw-html-viewer';
+import EmojiContainer from './emoji-container';
 
 export {
   WelcomeContainer,
@@ -42,4 +43,5 @@ export {
   CustomGrid,
   CustomReactQuill,
   RawHtmlViewr,
+  EmojiContainer,
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { CustomGrid, CustomTypography } from '../base-kits';
+import { CustomGrid, CustomTypography, EmojiContainer } from '../base-kits';
 
 const MessageBox = props => (
   <Grid item xs={12}>
@@ -11,7 +11,9 @@ const MessageBox = props => (
       justify="center"
       customheight="calc(100vh - 82px)"
     >
-      <Typography variant="display1">{props.emoji}</Typography>
+      <Typography variant="display1">
+        <EmojiContainer>{props.emoji}</EmojiContainer>
+      </Typography>
       <CustomTypography mt={12} color="primary" variant="subheading">
         {props.message}
       </CustomTypography>

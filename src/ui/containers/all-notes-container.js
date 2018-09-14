@@ -6,7 +6,7 @@ import { BookPreviewCard, MessageBox, LoadingSpinner } from '../components';
 
 class AllNotesContainer extends Component {
   componentDidMount() {
-    this.props.getData();
+    this.props.getAllNotes();
   }
 
   render() {
@@ -14,12 +14,12 @@ class AllNotesContainer extends Component {
       <Grid container spacing={16}>
         {this.props.dbReqStarted ? <LoadingSpinner /> : ''}
         {this.props.dbReqFinished ? (
-          this.props.allBooks.length ? (
-            this.props.allBooks.map(book => (
-              <BookPreviewCard key={book._id} {...book} />
+          this.props.allNotes.length ? (
+            this.props.allNotes.map(note => (
+              <BookPreviewCard key={note._id} {...note} />
             ))
           ) : (
-            <MessageBox emoji="(｡•́︿•̀｡)" message="No book found" />
+            <MessageBox emoji="(｡•́︿•̀｡)" message="No note found" />
           )
         ) : (
           ''
@@ -31,14 +31,14 @@ class AllNotesContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    allBooks: state.bookReducer.allBooks,
+    allNotes: state.bookReducer.allNotes,
     dbReqStarted: state.bookReducer.dbReqStarted,
     dbReqFinished: state.bookReducer.dbReqFinished,
   };
 };
 
 const mapActionsToProps = {
-  getData: bookActions.getData,
+  getAllNotes: bookActions.getAllNotes,
 };
 
 export default connect(

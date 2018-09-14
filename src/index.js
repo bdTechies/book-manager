@@ -69,6 +69,34 @@ injectGlobal`
          url('/assets/fonts/archivo-narrow-v8-latin-500.woff2') format('woff2');
   }
 
+  @font-face{
+    font-family: 'Fira Code';
+    src: url('/assets/fonts/FiraCode-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  @font-face{
+    font-family: 'Fira Code';
+    src: url('/assets/fonts/FiraCode-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face{
+    font-family: 'Fira Code';
+    src: url('/assets/fonts/FiraCode-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face{
+    font-family: 'Fira Code';
+    src: url('/assets/fonts/FiraCode-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+  }
+
   * {
     margin: 0;
     padding: 0;

@@ -54,7 +54,7 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
       };
     case SHOW_ALL_NOTES:
       return {
-        ...INITIAL_STATE,
+        ...state,
         allNotes: payload,
       };
     case DB_REQUEST_STARTED:
