@@ -21,99 +21,114 @@ import {
 const INITIAL_STATE = {
   allBooks: [],
   allNotes: [],
+  singleBook: {},
+  editorContent: '',
+  pageTitle: 'Book Manager',
+};
+
+const INITIAL_FLAGS = {
   bookAdded: false,
   bookUpdated: false,
   bookDeleted: false,
-  singleBook: {},
-  showMessageDialog: false,
   dbReqStarted: false,
   dbReqFinished: false,
   importStarted: false,
   importCompleted: false,
   showEditorDialog: false,
-  editorContent: '',
-  pageTitle: 'Book Manager',
+  showMessageDialog: false,
 };
 
-export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
+export default function bookReducer(
+  state = { ...INITIAL_STATE, INITIAL_FLAGS },
+  { type, payload }
+) {
   switch (type) {
     case SET_DATA:
       return {
         ...state,
-        singleBook: {},
-        bookDeleted: false,
-        bookAdded: false,
-        bookUpdated: false,
+        ...INITIAL_STATE,
+        importCompleted: false,
         allBooks: [...payload],
       };
     case SHOW_BOOK:
       return {
+        ...state,
         ...INITIAL_STATE,
+        importCompleted: false,
         singleBook: payload,
         pageTitle: payload ? payload.title : 'Book Manager',
       };
     case SHOW_ALL_NOTES:
       return {
         ...state,
+        ...INITIAL_STATE,
+        importCompleted: false,
         allNotes: payload,
       };
     case DB_REQUEST_STARTED:
       return {
         ...state,
+        ...INITIAL_STATE,
         dbReqFinished: false,
         dbReqStarted: true,
       };
     case DB_REQUEST_FINISHED:
       return {
         ...state,
+        ...INITIAL_STATE,
         dbReqStarted: false,
         dbReqFinished: true,
       };
     case ADD_BOOK:
       return {
         ...state,
-        singleBook: payload,
-        allBooks: [...state.allBooks, payload],
+        ...INITIAL_STATE,
         bookAdded: true,
+        singleBook: payload,
       };
     case BOOK_UPDATED:
       return {
         ...state,
-        allBooks: [...state.allBooks],
+        ...INITIAL_STATE,
         singleBook: payload,
         bookUpdated: true,
       };
     case BOOK_EXISTS:
       return {
         ...state,
-        singleBook: {},
+        ...INITIAL_STATE,
         bookAdded: false,
         showMessageDialog: true,
       };
     case HIDE_MESSAGE_DIALOG:
       return {
         ...state,
+        ...INITIAL_STATE,
         showMessageDialog: false,
       };
     case RESET_BOOK_SAVED:
       return {
         ...state,
+        ...INITIAL_STATE,
         bookAdded: false,
       };
     case BOOK_DELETED:
       return {
         ...state,
+        ...INITIAL_STATE,
         bookDeleted: true,
       };
     case IMPORT_STARTED:
       return {
         ...state,
+        ...INITIAL_STATE,
         importStarted: true,
         importCompleted: false,
       };
     case IMPORT_FINISHED:
       return {
         ...state,
+        ...INITIAL_STATE,
         importStarted: false,
         importCompleted: true,
       };
