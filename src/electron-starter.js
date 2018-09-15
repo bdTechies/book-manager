@@ -21,6 +21,7 @@ function createWindow() {
     minWidth: 1152,
     minHeight: 700,
     frame: false,
+    icon: path.join(__dirname, 'icons/png/64x64.png'),
   });
   mainWindow.loadURL(startUrl);
   // Open the DevTools.

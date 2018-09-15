@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from '../base-kits';
-import {
-  MainMenu,
-  TopMenuBar,
-  MessageBox,
-  LoadingSpinner,
-} from '../components';
+import { MainMenu, TopMenuBar, MessageBox } from '../components';
 
 class SettingsPage extends Component {
   render() {

@@ -4,6 +4,12 @@
   "private": true,
   "main": "src/electron-starter.js",
   "homepage": "./",
+  "license": "MIT",
+  "url": "http://book-manager.bdtechies.com",
+  "email": "hello@shahid.pro",
+  "author": "Shahid <hello@shahid.pro> (https://shahid.pro/)",
+  "description": "A simple personal library management application.",
+  "productName": "Book Manager",
   "dependencies": {
     "@sh4hids/react-scripts": "1.1.8",
     "html-to-text": "^4.0.0",
@@ -28,6 +34,10 @@
   "devDependencies": {
     "concurrently": "^3.6.0",
     "electron": "^2.0.5",
+    "electron-builder": "^20.28.4",
     "wait-on": "^2.1.0"
+  },
+  "build": {
+    "appId": "com.bdtechies.book-manager"
   }
 }
