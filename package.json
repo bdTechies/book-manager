@@ -2,7 +2,7 @@
   "name": "book-manager",
   "version": "0.1.0",
   "private": true,
-  "main": "src/electron-starter.js",
+  "main": "public/electron.js",
   "homepage": "./",
   "license": "MIT",
   "url": "http://book-manager.bdtechies.com",
@@ -10,9 +10,32 @@
   "author": "Shahid <hello@shahid.pro> (https://shahid.pro/)",
   "description": "A simple personal library management application.",
   "productName": "Book Manager",
+  "scripts": {
+    "start": "concurrently 'npm run react-start' 'wait-on http://localhost:3000/ && npm run electron-start'",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "electron-start": "electron .",
+    "react-start": "BROWSER=none react-scripts start",
+    "preelectron-pack": "yarn build",
+    "electron-pack": "build -c.extraMetadata.main=build/electron.js"
+  },
+  "build": {
+    "appId": "com.bdtechies.book-manager",
+    "asar": false,
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
   "dependencies": {
     "@sh4hids/react-scripts": "1.1.8",
     "html-to-text": "^4.0.0",
+    "electron-is-dev": "^0.3.0",
     "mdi-react": "^4.0.0",
     "nedb-promises": "^3.0.1",
     "react": "^16.4.1",
@@ -22,22 +45,10 @@
     "redux-thunk": "^2.3.0",
     "styled-system": "^3.0.2"
   },
-  "scripts": {
-    "start": "concurrently 'npm run react-start' 'wait-on http://localhost:3000/ && npm run electron-start'",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "electron": "electron .",
-    "electron-start": "electron .",
-    "react-start": "BROWSER=none react-scripts start"
-  },
   "devDependencies": {
     "concurrently": "^3.6.0",
     "electron": "^2.0.5",
     "electron-builder": "^20.28.4",
     "wait-on": "^2.1.0"
-  },
-  "build": {
-    "appId": "com.bdtechies.book-manager"
   }
 }
