@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Container } from '../base-kits';
-import { MainMenu, TopMenuBar } from '../components';
+import {
+  MainMenu,
+  TopMenuBar,
+  MessageBox,
+  LoadingSpinner,
+} from '../components';
 
 class SettingsPage extends Component {
   render() {
@@ -8,7 +13,7 @@ class SettingsPage extends Component {
       <Container main>
         <MainMenu />
         <TopMenuBar pageTitle="Settings" />
-        <p>Settings</p>
+        <MessageBox emoji="ᕕ( ᐛ )ᕗ" message="Coming soooooooooo...n!" />
       </Container>
     );
   }
