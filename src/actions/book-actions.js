@@ -23,6 +23,8 @@ import {
   RESET_EDITOR_CONTENT,
   GET_ALL_NOTES,
   SHOW_ALL_NOTES,
+  ADD_NOTE,
+  NOTE_ADDED,
 } from './types';
 const electron = window.require('electron');
 const { ipcRenderer } = electron;
@@ -41,6 +43,11 @@ export function initMainProcessListeners() {
     ipcRenderer.on('book-updated', (event, data) => {
       dispatch(hideEditorDialog());
       dispatch(bookUpdated(data));
+      return data;
+    });
+    ipcRenderer.on('note-added', (event, data) => {
+      dispatch(hideEditorDialog());
+      dispatch(noteAdded(data));
       return data;
     });
     ipcRenderer.on('book-exists', (event, data) => {
@@ -95,6 +102,13 @@ export function updateBook(book) {
   ipcRenderer.send('update-book', book);
   return {
     type: UPDATE_BOOK,
+  };
+}
+
+export function addNote(bookWithNote) {
+  ipcRenderer.send('add-note', bookWithNote);
+  return {
+    type: ADD_NOTE,
   };
 }
 
@@ -170,6 +184,13 @@ export function bookUpdated(updatedBook) {
   return {
     type: BOOK_UPDATED,
     payload: updatedBook,
+  };
+}
+
+export function noteAdded(bookWithNote) {
+  return {
+    type: NOTE_ADDED,
+    payload: bookWithNote,
   };
 }
 

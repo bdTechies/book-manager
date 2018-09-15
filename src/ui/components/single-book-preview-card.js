@@ -61,7 +61,7 @@ class SingleBookPreviewCard extends Component {
 
   handleSaveNote() {
     let bookWithNote = { ...this.props.book, note: this.props.editorContent };
-    this.props.updateBook(bookWithNote);
+    this.props.addNote(bookWithNote);
   }
 
   render() {
@@ -208,7 +208,6 @@ const mapStateToProps = state => {
   return {
     book: state.bookReducer.singleBook,
     bookDeleted: state.bookReducer.bookDeleted,
-    bookUpdated: state.bookReducer.bookUpdated,
     showDialog: state.bookReducer.showEditorDialog,
     editorContent: state.bookReducer.editorContent,
   };
@@ -221,7 +220,7 @@ const mapActionsToProps = {
   hideEditorDialog: bookActions.hideEditorDialog,
   setEditorContent: bookActions.setEditorContent,
   resetEditorContent: bookActions.resetEditorContent,
-  updateBook: bookActions.updateBook,
+  addNote: bookActions.addNote,
 };
 
 export default connect(

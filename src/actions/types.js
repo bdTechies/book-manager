@@ -18,6 +18,9 @@ export const RESET_BOOK_SAVED = 'book:reset_book_saved';
 export const DELETE_BOOK_BY_ID = 'book:delete_book_by_id';
 export const BOOK_DELETED = 'book:book_deleted';
 
+export const ADD_NOTE = 'book:add_note';
+export const NOTE_ADDED = 'book:note_added';
+
 export const DB_REQUEST_STARTED = 'book:db_request_started';
 export const DB_REQUEST_FINISHED = 'book:db_request_finished';
 

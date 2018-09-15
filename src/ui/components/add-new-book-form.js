@@ -47,7 +47,9 @@ class AddNewBookForm extends Component {
 
   componentDidMount() {
     this.props.resetBookSaved();
-    this.props.getBook(this.props.id);
+    if (this.props.id) {
+      this.props.getBook(this.props.id);
+    }
   }
 
   componentWillReceiveProps(nextProps) {

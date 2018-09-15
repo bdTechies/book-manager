@@ -130,6 +130,17 @@ ipcMain.on('update-book', (event, book) => {
     .catch(err => console.log(err));
 });
 
+ipcMain.on('add-note', (event, bookWithNote) => {
+  datastore
+    .update({ _id: bookWithNote._id }, bookWithNote)
+    .then(() => {
+      datastore.findOne({ _id: bookWithNote._id }).then(data => {
+        event.sender.send('note-added', data);
+      });
+    })
+    .catch(err => console.log(err));
+});
+
 ipcMain.on('get-all-notes', (event, data) => {
   datastore
     .find({
