@@ -27,7 +27,9 @@ function createWindow() {
   });
   mainWindow.loadURL(startUrl);
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  if (isDev) {
+    mainWindow.webContents.openDevTools();
+  }
 
   mainWindow.on('closed', function() {
     mainWindow = null;

@@ -6,7 +6,6 @@ import {
   SingleBookPage,
   AddNewBookPage,
   AllNotesPage,
-  SingleNotePage,
   ImportExportPage,
   SettingsPage,
   AboutAppPage,
@@ -21,7 +20,6 @@ const Routes = () => (
       <Route path="/edit/:id" component={AddNewBookPage} />
       <Route path="/books/:id" component={SingleBookPage} />
       <Route path="/all-notes" component={AllNotesPage} />
-      <Route path="/notes/:id" component={SingleNotePage} />
       <Route path="/exim" component={ImportExportPage} />
       <Route path="/settings" component={SettingsPage} />
       <Route path="/about" component={AboutAppPage} />
