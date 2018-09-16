@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TopMenuBarContainer, AppTitle } from '../base-kits';
 import { ControlMenu } from '../components';
 
@@ -10,5 +11,9 @@ const TopMenuBar = props => (
     </AppTitle>
   </TopMenuBarContainer>
 );
+
+TopMenuBar.propTypes = {
+  pageTitle: PropTypes.string,
+};
 
 export default TopMenuBar;

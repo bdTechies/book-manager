@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   Grid,
   Button,
@@ -221,6 +222,19 @@ const mapActionsToProps = {
   setEditorContent: bookActions.setEditorContent,
   resetEditorContent: bookActions.resetEditorContent,
   addNote: bookActions.addNote,
+};
+
+SingleBookPreviewCard.propTypes = {
+  book: PropTypes.object,
+  bookDeleted: PropTypes.bool,
+  showDialog: PropTypes.bool,
+  editorContent: PropTypes.string,
+  getBookById: PropTypes.func,
+  deleteBook: PropTypes.func,
+  showEditorDialog: PropTypes.func,
+  hideEditorDialog: PropTypes.func,
+  resetEditorContent: PropTypes.func,
+  addNote: PropTypes.func,
 };
 
 export default connect(
