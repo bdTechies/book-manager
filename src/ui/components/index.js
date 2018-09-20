@@ -11,6 +11,7 @@ import MessageBox from './message-box';
 import AllBooksLink from './all-books-link';
 import LoadingSpinner from './loading-spinner';
 import QuillEditor from './quill-editor';
+import BookSearch from './book-search';
 
 export {
   MainMenu,
@@ -26,4 +27,5 @@ export {
   AllBooksLink,
   LoadingSpinner,
   QuillEditor,
+  BookSearch,
 };
