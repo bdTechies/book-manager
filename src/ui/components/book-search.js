@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { MagnifyIcon } from 'mdi-react';
 import { connect } from 'react-redux';
-import { Input, InputAdornment } from '@material-ui/core';
+import { TextField, InputAdornment } from '@material-ui/core';
 import { bookActions } from '../../actions';
 import { CustomButton } from '../base-kits';
 
@@ -36,19 +36,17 @@ class BookSearch extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} noValidate>
-        <Input
-          placeholder="Search by title, author or category..."
-          inputProps={{
-            'aria-label': 'Description',
-          }}
+        <TextField
+          variant="outlined"
           value={this.state.queryText}
           onChange={this.handleChange}
-          fullWidth={true}
-          startAdornment={
-            <InputAdornment position="start">
-              <MagnifyIcon />
-            </InputAdornment>
-          }
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <MagnifyIcon />
+              </InputAdornment>
+            ),
+          }}
         />
       </form>
     );

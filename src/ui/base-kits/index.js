@@ -20,6 +20,7 @@ import CustomGrid from './custom-grid';
 import CustomReactQuill from './custom-react-quill';
 import RawHtmlViewr from './raw-html-viewer';
 import EmojiContainer from './emoji-container';
+import SearchInput from './search-input';
 
 export {
   WelcomeContainer,
@@ -44,4 +45,5 @@ export {
   CustomReactQuill,
   RawHtmlViewr,
   EmojiContainer,
+  SearchInput,
 };
