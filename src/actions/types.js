@@ -35,3 +35,5 @@ export const RESET_EDITOR_CONTENT = 'book:reset_editor_content';
 
 export const GET_ALL_NOTES = 'book:get_all_notes';
 export const SHOW_ALL_NOTES = 'book:show_all_notes';
+
+export const SEARCH_BOOK = 'book:search_book';

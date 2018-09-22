@@ -55,7 +55,7 @@ ipcMain.on('get-all-books', (event, data) => {
     .find({})
     .sort({ createdAt: 1 })
     .then(data => {
-      event.sender.send('receive-all-books', data);
+      event.sender.send('show-all-books', data);
     })
     .catch(err => console.log(err));
 });
@@ -65,6 +65,28 @@ ipcMain.on('get-book-by-id', (event, id) => {
     .findOne({ _id: id })
     .then(data => {
       event.sender.send('found-book-by-id', data);
+    })
+    .catch(err => console.log(err));
+});
+
+ipcMain.on('search-book', (event, query) => {
+  let regexQuery = new RegExp(query, 'i');
+  datastore
+    .find({
+      $or: [
+        {
+          title: regexQuery,
+        },
+        {
+          author: regexQuery,
+        },
+        {
+          categories: regexQuery,
+        },
+      ],
+    })
+    .then(data => {
+      event.sender.send('show-all-books', data);
     })
     .catch(err => console.log(err));
 });

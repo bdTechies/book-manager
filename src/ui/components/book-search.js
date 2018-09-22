@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Input, InputAdornment } from '@material-ui/core';
-import { CustomButton } from '../base-kits';
 import { MagnifyIcon } from 'mdi-react';
+import { connect } from 'react-redux';
+import { Input, InputAdornment } from '@material-ui/core';
+import { bookActions } from '../../actions';
+import { CustomButton } from '../base-kits';
 
 class BookSearch extends Component {
   constructor(props) {
@@ -21,8 +23,11 @@ class BookSearch extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.queryText);
-    // this.props.searchBook(this.state.queryText);
+    if (!this.state.queryText) {
+      this.props.getAllBooks();
+    } else {
+      this.props.searchBook(this.state.queryText);
+    }
     this.setState({
       queryText: '',
     });
@@ -50,4 +55,21 @@ class BookSearch extends Component {
   }
 }
 
-export default BookSearch;
+// const mapStateToProps = state => {
+//   return {
+//     bookAdded: state.bookReducer.bookAdded,
+//     bookUpdated: state.bookReducer.bookUpdated,
+//     showMessageDialog: state.bookReducer.showMessageDialog,
+//     book: state.bookReducer.singleBook,
+//   };
+// };
+
+const mapActionsToProps = {
+  searchBook: bookActions.searchBook,
+  getAllBooks: bookActions.getData,
+};
+
+export default connect(
+  null,
+  mapActionsToProps
+)(BookSearch);

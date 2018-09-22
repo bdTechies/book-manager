@@ -25,13 +25,14 @@ import {
   SHOW_ALL_NOTES,
   ADD_NOTE,
   NOTE_ADDED,
+  SEARCH_BOOK,
 } from './types';
 const electron = window.require('electron');
 const { ipcRenderer } = electron;
 
 export function initMainProcessListeners() {
   return dispatch => {
-    ipcRenderer.on('receive-all-books', (event, data) => {
+    ipcRenderer.on('show-all-books', (event, data) => {
       dispatch(dbReqFinish());
       dispatch(setData(data));
       return data;
@@ -80,6 +81,16 @@ export function getData() {
     ipcRenderer.send('get-all-books', 'Get all books from db');
     return {
       type: GET_DATA,
+    };
+  };
+}
+
+export function searchBook(queryText) {
+  return dispatch => {
+    dispatch(dbReqStart());
+    ipcRenderer.send('search-book', queryText);
+    return {
+      type: SEARCH_BOOK,
     };
   };
 }
