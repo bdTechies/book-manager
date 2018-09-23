@@ -6,7 +6,7 @@ import { AllBooksContainer } from '../containers';
 const AllBooksPage = () => (
   <Container main>
     <MainMenu />
-    <TopMenuBar pageTitle="All Books" />
+    <TopMenuBar pageTitle="all-books" />
     <AllBooksContainer />
   </Container>
 );

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { MagnifyIcon } from 'mdi-react';
 import { connect } from 'react-redux';
-import { TextField, InputAdornment } from '@material-ui/core';
 import { bookActions } from '../../actions';
-import { CustomButton } from '../base-kits';
+import { SearchInput } from '../base-kits';
 
 class BookSearch extends Component {
   constructor(props) {
@@ -36,18 +35,16 @@ class BookSearch extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} noValidate>
-        <TextField
-          variant="outlined"
-          value={this.state.queryText}
-          onChange={this.handleChange}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <MagnifyIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
+        <SearchInput>
+          <span>
+            <MagnifyIcon />
+            <input
+              value={this.state.queryText}
+              onChange={this.handleChange}
+              placeholder="search book here..."
+            />
+          </span>
+        </SearchInput>
       </form>
     );
   }
