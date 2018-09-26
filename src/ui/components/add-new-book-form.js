@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bookActions } from '../../actions';
@@ -313,6 +314,18 @@ const mapActionsToProps = {
   getBook: bookActions.getBookById,
   resetBookSaved: bookActions.resetBookSaved,
   hideMessageDialog: bookActions.hideMessageDialog,
+};
+
+AddNewBookForm.propTypes = {
+  bookAdded: PropTypes.bool,
+  bookUpdated: PropTypes.bool,
+  showMessageDialog: PropTypes.bool,
+  book: PropTypes.object,
+  saveBook: PropTypes.func,
+  updateBook: PropTypes.func,
+  getBook: PropTypes.func,
+  resetBookSaved: PropTypes.func,
+  hideMessageDialog: PropTypes.func,
 };
 
 export default connect(
