@@ -4,10 +4,10 @@ export const UN_MAXIMIZE_APP = 'control:un_maximize_app';
 export const TOGGLE_MAXIMIZE = 'control:toggle_maximize';
 export const EXIT_APP = 'control:exit_app';
 
-export const GET_DATA = 'todo:get_data';
-export const SET_DATA = 'todo:set_data';
-export const GET_BOOK_BY_ID = 'todo:get_book_by_id';
-export const SHOW_BOOK = 'todo:show_book';
+export const GET_DATA = 'book:get_data';
+export const SET_DATA = 'book:set_data';
+export const GET_BOOK_BY_ID = 'book:get_book_by_id';
+export const SHOW_BOOK = 'book:show_book';
 export const ADD_BOOK = 'book:add_book';
 export const SAVE_BOOK = 'book:save_book';
 export const UPDATE_BOOK = 'book:update_book';

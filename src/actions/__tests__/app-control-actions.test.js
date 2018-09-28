@@ -1,7 +1,7 @@
 import * as types from '../types';
 import * as actions from '../app-control-actions';
 
-describe('actions', () => {
+describe('app control actions', () => {
   it('should create an action to minimize app', () => {
     const expectedAction = {
       type: types.MINIMIZE_APP,
