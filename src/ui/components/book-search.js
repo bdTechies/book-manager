@@ -50,15 +50,6 @@ class BookSearch extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     bookAdded: state.bookReducer.bookAdded,
-//     bookUpdated: state.bookReducer.bookUpdated,
-//     showMessageDialog: state.bookReducer.showMessageDialog,
-//     book: state.bookReducer.singleBook,
-//   };
-// };
-
 const mapActionsToProps = {
   searchBook: bookActions.searchBook,
   getAllBooks: bookActions.getData,
