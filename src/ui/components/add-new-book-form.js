@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bookActions } from '../../actions';
 import MessageDialog from './message-dialog';
-import { AllBooksLink } from '../components';
 import {
   Grid,
   Button,
@@ -19,6 +18,8 @@ import {
   CustomTextField,
   CustomFormLabel,
 } from '../base-kits';
+
+const AllBooksLink = props => <Link to="/all-books" {...props} />;
 
 class AddNewBookForm extends Component {
   constructor(props) {
