@@ -17,7 +17,7 @@ class BookPreviewCard extends Component {
   render() {
     return (
       <Grid item xs={6}>
-        <PaddedPaper square minheight="332">
+        <PaddedPaper square minheight="350">
           <Grid container direction="row">
             <Grid item xs={6} lg={5}>
               <ImageThumbContainer>
