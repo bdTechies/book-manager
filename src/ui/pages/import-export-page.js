@@ -66,15 +66,26 @@ class ImportExportPage extends Component {
         data.push(book);
         if (this.props.allBooks.length === c) {
           data = JSON.stringify(data);
-          dialog.showSaveDialog(fileName => {
-            if (fileName) {
-              fs.writeFile(fileName, data, err => {
-                if (err) {
-                  console.log(err.message);
-                }
-              });
+          dialog.showSaveDialog(
+            {
+              defaultPath: '~/bm-data.json',
+              filters: [
+                {
+                  name: 'json',
+                  extensions: ['json'],
+                },
+              ],
+            },
+            fileName => {
+              if (fileName) {
+                fs.writeFile(fileName, data, err => {
+                  if (err) {
+                    console.log(err.message);
+                  }
+                });
+              }
             }
-          });
+          );
         }
         return data;
       });
@@ -82,20 +93,30 @@ class ImportExportPage extends Component {
   }
 
   handleImport() {
-    dialog.showOpenDialog(fileName => {
-      if (fileName) {
-        fs.readFile(fileName[0], 'utf-8', (err, fileData) => {
-          if (err) {
-            console.log(err.message);
-          } else if (fileData) {
-            let data = JSON.parse(fileData);
-            this.props.importBookList(data);
-          } else {
-            console.log('Empty file...');
-          }
-        });
+    dialog.showOpenDialog(
+      {
+        filters: [
+          {
+            name: 'json',
+            extensions: ['json'],
+          },
+        ],
+      },
+      fileName => {
+        if (fileName) {
+          fs.readFile(fileName[0], 'utf-8', (err, fileData) => {
+            if (err) {
+              console.log(err.message);
+            } else if (fileData) {
+              let data = JSON.parse(fileData);
+              this.props.importBookList(data);
+            } else {
+              console.log('Empty file...');
+            }
+          });
+        }
       }
-    });
+    );
   }
 
   render() {
