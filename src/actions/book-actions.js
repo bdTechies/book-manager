@@ -26,6 +26,7 @@ import {
   ADD_NOTE,
   NOTE_ADDED,
   SEARCH_BOOK,
+  RESET_SINGLE_BOOK,
 } from './types';
 const electron = window.require('electron');
 const { ipcRenderer } = electron;
@@ -188,6 +189,12 @@ export function addNewBook(newBook) {
   return {
     type: ADD_BOOK,
     payload: newBook,
+  };
+}
+
+export function resetSingleBook() {
+  return {
+    type: RESET_SINGLE_BOOK,
   };
 }
 

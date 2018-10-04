@@ -17,6 +17,7 @@ export const HIDE_MESSAGE_DIALOG = 'book:hide_message_dialog';
 export const RESET_BOOK_SAVED = 'book:reset_book_saved';
 export const DELETE_BOOK_BY_ID = 'book:delete_book_by_id';
 export const BOOK_DELETED = 'book:book_deleted';
+export const RESET_SINGLE_BOOK = 'book:reset_single_book';
 
 export const ADD_NOTE = 'book:add_note';
 export const NOTE_ADDED = 'book:note_added';

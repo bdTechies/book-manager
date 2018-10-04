@@ -17,6 +17,7 @@ import {
   RESET_EDITOR_CONTENT,
   SHOW_ALL_NOTES,
   NOTE_ADDED,
+  RESET_SINGLE_BOOK,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -48,6 +49,7 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
       return {
         ...state,
         ...RESET_FLAG,
+        singleBook: {},
         importCompleted: false,
         allBooks: [...payload],
       };
@@ -112,6 +114,11 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
         ...state,
         bookAdded: false,
         bookUpdated: false,
+      };
+    case RESET_SINGLE_BOOK:
+      return {
+        ...state,
+        singleBook: {},
       };
     case BOOK_DELETED:
       return {
