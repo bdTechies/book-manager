@@ -1,6 +1,6 @@
 {
   "name": "book-manager",
-  "version": "0.1.0",
+  "version": "1.0.0-beta",
   "private": true,
   "main": "public/electron.js",
   "homepage": "./",
@@ -19,7 +19,7 @@
     "electron-start": "electron .",
     "react-start": "BROWSER=none react-scripts start",
     "premake": "npm run build",
-    "make": "build -mwl --x64 --ia32 -c.extraMetadata.main=build/electron.js"
+    "make": "build -mwl --x64 -c.extraMetadata.main=build/electron.js"
   },
   "build": {
     "appId": "com.bdtechies.book-manager",
@@ -30,6 +30,42 @@
     ],
     "directories": {
       "buildResources": "assets"
+    },
+    "linux": {
+      "category": "Utility",
+      "target": [
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "rpm",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": "x64"
+        }
+      ]
     }
   },
   "dependencies": {
