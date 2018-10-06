@@ -69,7 +69,7 @@
   "devDependencies": {
     "concurrently": "^3.6.0",
     "electron": "^2.0.5",
-    "electron-builder": "20.28.3",
+    "electron-builder": "^20.28.4",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "wait-on": "^2.1.0"
