@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Grid, Typography, Button } from '@material-ui/core';
 import {
   PaddedPaper,
@@ -15,6 +16,31 @@ class BookPreviewCard extends Component {
   );
 
   render() {
+    const {
+      coverImage,
+      title,
+      author,
+      description,
+      readingStatus,
+    } = this.props;
+
+    const generateSummary = function(text, maxLength) {
+      return text.length > maxLength
+        ? `${text.substring(0, maxLength)}...`
+        : text;
+    };
+
+    const generateReadingStatus = function(status) {
+      switch (status) {
+        case 'completed':
+          return 'Completed';
+        case 'reading':
+          return 'Reading';
+        default:
+          return 'Not Started';
+      }
+    };
+
     return (
       <Grid item xs={6}>
         <PaddedPaper square minheight="350">
@@ -22,39 +48,25 @@ class BookPreviewCard extends Component {
             <Grid item xs={6} lg={5}>
               <ImageThumbContainer>
                 <Image
-                  src={
-                    this.props.coverImage
-                      ? this.props.coverImage
-                      : bmPlaceholderImage
-                  }
-                  width={this.props.coverImage ? '' : 100}
+                  src={coverImage ? coverImage : bmPlaceholderImage}
+                  width={coverImage ? '' : 100}
                 />
               </ImageThumbContainer>
             </Grid>
             <Grid item xs={6} lg={7}>
               <Typography variant="headline" color="primary">
-                {this.props.title}
+                {generateSummary(title, 30)}
               </Typography>
               <Typography variant="title" gutterBottom color="primary">
-                {this.props.author}
+                {author}
               </Typography>
               <Typography variant="body2" gutterBottom>
                 <InfoCaption>Description: </InfoCaption>
-                {this.props.description.length > 120
-                  ? `${this.props.description.substring(0, 120)}...`
-                  : this.props.description}
-              </Typography>
-              <Typography variant="body2" gutterBottom>
-                <InfoCaption>Publisher: </InfoCaption>
-                {this.props.publisher}
-              </Typography>
-              <Typography variant="body2" gutterBottom>
-                <InfoCaption>Categories: </InfoCaption>
-                {this.props.categories}
+                {generateSummary(description, 120)}
               </Typography>
               <Typography variant="body2" gutterBottom>
                 <InfoCaption>Reading Status: </InfoCaption>
-                {this.props.readingStatus}
+                {generateReadingStatus(readingStatus)}
               </Typography>
               <Button
                 variant="contained"
@@ -71,5 +83,13 @@ class BookPreviewCard extends Component {
     );
   }
 }
+
+BookPreviewCard.propTypes = {
+  coverImage: PropTypes.string,
+  title: PropTypes.string,
+  author: PropTypes.string,
+  description: PropTypes.string,
+  readingStatus: PropTypes.string,
+};
 
 export default BookPreviewCard;
