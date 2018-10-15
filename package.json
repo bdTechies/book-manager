@@ -23,6 +23,7 @@
   },
   "build": {
     "appId": "com.bdtechies.book-manager",
+    "asar": false,
     "files": [
       "build/**/*",
       "node_modules/**/*"
@@ -32,7 +33,6 @@
     },
     "linux": {
       "category": "Utility",
-      "icon": "assets/icons/512x512.png",
       "target": [
         "deb",
         "AppImage"
@@ -68,7 +68,7 @@
   },
   "devDependencies": {
     "concurrently": "^3.6.0",
-    "electron": "^2.0.5",
+    "electron": "3.0.2",
     "electron-builder": "^20.28.4",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
