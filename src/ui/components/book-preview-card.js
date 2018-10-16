@@ -43,7 +43,7 @@ class BookPreviewCard extends Component {
 
     return (
       <Grid item xs={6}>
-        <PaddedPaper square minheight="350">
+        <PaddedPaper square minheight="320">
           <Grid container direction="row">
             <Grid item xs={6} lg={5}>
               <ImageThumbContainer>
