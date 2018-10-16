@@ -54,17 +54,17 @@ class BookPreviewCard extends Component {
               </ImageThumbContainer>
             </Grid>
             <Grid item xs={6} lg={7}>
-              <Typography variant="headline" color="primary">
+              <Typography variant="h5" color="primary">
                 {generateSummary(title, 30)}
               </Typography>
-              <Typography variant="title" gutterBottom color="primary">
+              <Typography variant="h6" gutterBottom color="primary">
                 {author}
               </Typography>
-              <Typography variant="body2" gutterBottom>
+              <Typography variant="body1" gutterBottom>
                 <InfoCaption>Description: </InfoCaption>
                 {generateSummary(description, 120)}
               </Typography>
-              <Typography variant="body2" gutterBottom>
+              <Typography variant="body1" gutterBottom>
                 <InfoCaption>Reading Status: </InfoCaption>
                 {generateReadingStatus(readingStatus)}
               </Typography>

@@ -11,10 +11,10 @@ const MessageBox = props => (
       justify="center"
       customheight="calc(100vh - 82px)"
     >
-      <Typography variant="display1">
+      <Typography variant="h4">
         <EmojiContainer>{props.emoji}</EmojiContainer>
       </Typography>
-      <CustomTypography mt={12} color="primary" variant="subheading">
+      <CustomTypography mt={12} color="primary" variant="subtitle1">
         {props.message}
       </CustomTypography>
     </CustomGrid>

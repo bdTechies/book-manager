@@ -12,7 +12,7 @@ import bmLogo from '../../assets/img/bm-logo-purple.svg';
 const electron = window.require('electron');
 
 class AboutAppPage extends Component {
-  url = 'http://bdtechies.com';
+  url = 'http://book-manager.bdtechies.com';
 
   constructor(props) {
     super(props);
@@ -40,7 +40,7 @@ class AboutAppPage extends Component {
             <Container align="center" width="100%" p={16}>
               <Image src={bmLogo} width="100" />
               <CustomTypography
-                variant="title"
+                variant="h6"
                 customfont="Arima"
                 color="primary"
                 mt={12}
@@ -48,7 +48,7 @@ class AboutAppPage extends Component {
                 Book Manager
               </CustomTypography>
               <CustomTypography
-                variant="subheading"
+                variant="subtitle1"
                 customfont="Arima"
                 color="primary"
                 mb={12}
@@ -62,7 +62,7 @@ class AboutAppPage extends Component {
               >
                 book-manager.bdtechies.com
               </Button>
-              <CustomTypography variant="body2" color="primary" mt={12}>
+              <CustomTypography variant="body1" color="primary" mt={12}>
                 Book Manager is an open source library management application
                 developed by bdTechies with the feature of adding, searching
                 books, taking notes while reading and importing/exporting the

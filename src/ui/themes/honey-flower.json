@@ -59,14 +59,15 @@
     }
   },
   "typography": {
-    "headline": {
+    "useNextVariants": true,
+    "h5": {
       "color": "rgba(0, 0, 0, 0.87)",
       "fontFamily": "\"IBM Plex Sans\", sans-serif",
       "lineHeight": "1.35417em",
       "fontSize": "1.5rem",
       "fontWeight": 700
     },
-    "display2": {
+    "h3": {
       "marginLeft": "-.02em",
       "color": "rgba(0, 0, 0, 0.54)",
       "fontFamily": "\"Lato\", \"Helvetica\", \"Arial\", sans-serif",
@@ -75,7 +76,7 @@
       "fontWeight": 400
     },
     "fontWeightLight": 300,
-    "display3": {
+    "h2": {
       "marginLeft": "-.02em",
       "color": "rgba(0, 0, 0, 0.54)",
       "fontFamily": "\"Lato\", \"Helvetica\", \"Arial\", sans-serif",
@@ -84,7 +85,7 @@
       "fontSize": "3.5rem",
       "fontWeight": 400
     },
-    "display4": {
+    "h1": {
       "marginLeft": "-.04em",
       "color": "rgba(0, 0, 0, 0.54)",
       "fontFamily": "\"Lato\", \"Helvetica\", \"Arial\", sans-serif",
@@ -94,7 +95,7 @@
       "fontWeight": 300
     },
     "fontWeightRegular": 400,
-    "display1": {
+    "h4": {
       "color": "rgba(0, 0, 0, 0.54)",
       "fontFamily": "\"Lato\", \"Helvetica\", \"Arial\", sans-serif",
       "lineHeight": "1.20588em",
@@ -109,7 +110,7 @@
       "fontWeight": 500
     },
     "fontFamily": "\"Lato\", \"Helvetica\", \"Arial\", sans-serif",
-    "body2": {
+    "body1": {
       "color": "rgba(0, 0, 0, 0.87)",
       "fontFamily": "\"Lato\", \"Helvetica\", \"Arial\", sans-serif",
       "lineHeight": "1.5em",
@@ -125,14 +126,14 @@
     },
     "fontSize": 14,
     "fontWeightMedium": 500,
-    "title": {
+    "h6": {
       "color": "rgba(0, 0, 0, 0.87)",
       "fontFamily": "\"Archivo Narrow\", sans-serif",
       "lineHeight": "1.16667em",
       "fontSize": "1.3125rem",
       "fontWeight": 500
     },
-    "subheading": {
+    "subtitle1": {
       "color": "rgba(0, 0, 0, 0.87)",
       "fontFamily": "\"Arima Madurai\", cursive",
       "lineHeight": "1.5em",

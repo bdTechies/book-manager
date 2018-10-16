@@ -29,7 +29,7 @@
       "node_modules/**/*"
     ],
     "directories": {
-      "buildResources": "assets"
+      "buildResources": "public/assets"
     },
     "linux": {
       "category": "Utility",

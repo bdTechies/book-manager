@@ -80,43 +80,43 @@ class SingleBookPreviewCard extends Component {
                   <Grid container spacing={16}>
                     <Grid item xs={6}>
                       <InfoCaption>Title</InfoCaption>
-                      <Typography variant="title" color="primary">
+                      <Typography variant="h6" color="primary">
                         {this.props.book.title || 'Book title not found'}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <InfoCaption>Publisher</InfoCaption>
-                      <Typography variant="title" color="primary">
+                      <Typography variant="h6" color="primary">
                         {this.props.book.publisher || 'Who Knows!'}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <InfoCaption>Author</InfoCaption>
-                      <Typography variant="title" color="primary">
+                      <Typography variant="h6" color="primary">
                         {this.props.book.author || "I don't know"}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <InfoCaption>Categories</InfoCaption>
-                      <Typography variant="title" color="primary">
+                      <Typography variant="h6" color="primary">
                         {this.props.book.categories || 'Uncategorized'}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <InfoCaption>Translator</InfoCaption>
-                      <Typography variant="title" color="primary">
+                      <Typography variant="h6" color="primary">
                         {this.props.book.translator || 'None'}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <InfoCaption>Reading Status</InfoCaption>
-                      <Typography variant="title" color="primary">
+                      <Typography variant="h6" color="primary">
                         {this.props.book.readingStatus || 'Not started'}
                       </Typography>
                     </Grid>
                     <Grid item xs={12}>
                       <InfoCaption>Description</InfoCaption>
-                      <CustomTypography variant="body2" whitespace="pre-line">
+                      <CustomTypography variant="body1" whitespace="pre-line">
                         {this.props.book.description}
                       </CustomTypography>
                     </Grid>

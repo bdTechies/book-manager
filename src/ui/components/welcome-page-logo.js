@@ -6,7 +6,7 @@ const WelcomePageLogo = () => (
   <Container align="center">
     <Image src={bmLogo} width="150px" />
     <CustomTypography
-      variant="headline"
+      variant="h5"
       align="center"
       customcolor="#ffffff"
       customfont="Arima"

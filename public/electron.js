@@ -23,7 +23,7 @@ function createWindow() {
     minWidth: 1152,
     minHeight: 700,
     frame: false,
-    icon: path.join(__dirname, '../assets/icons/512x512.png'),
+    icon: path.join(__dirname, './assets/icons/icon.png'),
   });
   mainWindow.loadURL(startUrl);
   // Open the DevTools.

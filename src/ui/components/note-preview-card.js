@@ -25,13 +25,13 @@ class NotePreviewCard extends Component {
         <PaddedPaper square minheight="220">
           <Grid container direction="row">
             <Grid item xs={12}>
-              <Typography variant="headline" color="primary">
+              <Typography variant="h5" color="primary">
                 {this.props.title}
               </Typography>
-              <Typography variant="title" gutterBottom color="primary">
+              <Typography variant="h6" gutterBottom color="primary">
                 {this.props.author}
               </Typography>
-              <Typography variant="body2" gutterBottom>
+              <Typography variant="body1" gutterBottom>
                 <InfoCaption>Note: </InfoCaption>
                 {this.generateTextFromHtml(this.props.note)}
               </Typography>

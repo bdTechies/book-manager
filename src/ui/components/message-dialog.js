@@ -6,7 +6,7 @@ const MessageDialog = props => (
   <Dialog open={props.open} onClose={props.close}>
     <DialogContent>
       <Container align="center">
-        <Typography variant="display1">{props.emoji}</Typography>
+        <Typography variant="h4">{props.emoji}</Typography>
         <Typography>{props.message}</Typography>
       </Container>
     </DialogContent>

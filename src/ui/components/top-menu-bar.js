@@ -6,7 +6,7 @@ import { ControlMenu, BookSearch } from '../components';
 const TopMenuBar = props => (
   <TopMenuBarContainer>
     <ControlMenu />
-    <AppTitle align="center" color="primary" variant="subheading">
+    <AppTitle align="center" color="primary" variant="subtitle1">
       {props.pageTitle === 'all-books' ? (
         <BookSearch />
       ) : (
