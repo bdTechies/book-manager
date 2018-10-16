@@ -6,17 +6,36 @@ A simple personal library management application.
 
 ### Install & Run
 
-1. First clone the repo:
+1.  First clone the repo:
+
 ```bash
 $ git clone git@github.com:bdTechies/book-manager.git
 ```
 
-2. Then install the dependencies:
+2.  Then install the dependencies:
+
 ```bash
-$ npm install 
+$ npm install
 ```
 
-3. Finally run the app:
+3.  Finally run the app:
+
 ```bash
 $ npm start
-``` 
+```
+
+### Create Packages
+
+Run the following commands to build and package the app for distribution. The packager will create packages based on the platform. [Linux: deb, AppImage; Win: exe; Mac: dmg]
+
+- Only Current platform:
+
+```bash
+$ npm run make
+```
+
+- All platform (dmg will not be created if platform is not a mac):
+
+```bash
+$ npm run make:all
+```

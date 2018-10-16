@@ -19,11 +19,12 @@
     "electron-start": "electron .",
     "react-start": "BROWSER=none react-scripts start",
     "premake": "npm run build",
-    "make": "build --x64 -c.extraMetadata.main=build/electron.js"
+    "premake:all": "npm run build",
+    "make": "build --x64 -c.extraMetadata.main=build/electron.js",
+    "make:all": "build -mwl --x64 -c.extraMetadata.main=build/electron.js"
   },
   "build": {
     "appId": "com.bdtechies.book-manager",
-    "asar": false,
     "files": [
       "build/**/*",
       "node_modules/**/*"
