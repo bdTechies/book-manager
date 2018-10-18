@@ -51,7 +51,7 @@ app.on('activate', function() {
 });
 
 ipcMain.on('get-all-books', (event, options) => {
-  const perPage = options.perPage || 4;
+  const perPage = options.perPage || 10;
   const currentPage = options.currentPage || 1;
   const skip = (currentPage - 1) * perPage;
   const sortBy = options.sortBy || { createdAt: 1 };
@@ -77,7 +77,7 @@ ipcMain.on('get-book-by-id', (event, id) => {
 
 ipcMain.on('search-book', (event, options) => {
   const regexQuery = new RegExp(options.queryText, 'i');
-  const perPage = options.perPage || 4;
+  const perPage = options.perPage || 10;
   const currentPage = options.currentPage || 1;
   const skip = (currentPage - 1) * perPage;
   const sortBy = options.sortBy || { createdAt: 1 };

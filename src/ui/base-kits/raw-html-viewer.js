@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 const RawHtmlViewr = styled.div`
   font-family: 'IBM Plex Sans', sans-serif;
-
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.87);
   ol,
   ul {
     margin-left: 20px;
