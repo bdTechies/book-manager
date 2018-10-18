@@ -20,20 +20,28 @@ class NotePreviewCard extends Component {
   }
 
   render() {
+    const { title, author, note } = this.props;
+
+    const generateSummary = function(text, maxLength) {
+      return text.length > maxLength
+        ? `${text.substring(0, maxLength)}...`
+        : text;
+    };
+
     return (
       <Grid item xs={6}>
-        <PaddedPaper square minheight="220">
+        <PaddedPaper square minheight="200">
           <Grid container direction="row">
             <Grid item xs={12}>
               <Typography variant="h5" color="primary">
-                {this.props.title}
+                {generateSummary(title, 32)}
               </Typography>
               <Typography variant="h6" gutterBottom color="primary">
-                {this.props.author}
+                {author}
               </Typography>
               <Typography variant="body1" gutterBottom>
                 <InfoCaption>Note: </InfoCaption>
-                {this.generateTextFromHtml(this.props.note)}
+                {this.generateTextFromHtml(note)}
               </Typography>
               <Button
                 variant="contained"

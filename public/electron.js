@@ -176,7 +176,11 @@ ipcMain.on('add-note', (event, bookWithNote) => {
     .catch(err => console.log(err));
 });
 
-ipcMain.on('get-all-notes', (event, data) => {
+ipcMain.on('get-all-notes', (event, options) => {
+  const perPage = options.perPage || 10;
+  const currentPage = options.currentPage || 1;
+  const skip = (currentPage - 1) * perPage;
+  const sortBy = options.sortBy || { createdAt: 1 };
   datastore
     .find({
       note: {
@@ -184,6 +188,9 @@ ipcMain.on('get-all-notes', (event, data) => {
         $ne: '',
       },
     })
+    .skip(skip)
+    .limit(perPage)
+    .sort(sortBy)
     .then(data => {
       event.sender.send('show-all-notes', data);
     })

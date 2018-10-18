@@ -266,10 +266,10 @@ export function resetEditorContent() {
   };
 }
 
-export function getAllNotes() {
+export function getAllNotes(options) {
   return dispatch => {
     dispatch(dbReqStart());
-    ipcRenderer.send('get-all-notes', 'Get all books from db');
+    ipcRenderer.send('get-all-notes', options);
     return {
       type: GET_ALL_NOTES,
     };
