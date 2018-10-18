@@ -79,7 +79,7 @@ export function initMainProcessListeners() {
 export function getData() {
   return dispatch => {
     dispatch(dbReqStart());
-    ipcRenderer.send('get-all-books', 'Get all books from db');
+    ipcRenderer.send('get-all-books', {});
     return {
       type: GET_DATA,
     };

@@ -50,10 +50,16 @@ app.on('activate', function() {
   }
 });
 
-ipcMain.on('get-all-books', (event, data) => {
+ipcMain.on('get-all-books', (event, options) => {
+  const perPage = options.perPage || 2;
+  const currentPage = options.currentPage || 1;
+  const skip = (currentPage - 1) * perPage;
+  const sortBy = options.sortBy || { createdAt: 1 };
   datastore
     .find({})
-    .sort({ createdAt: 1 })
+    .skip(skip)
+    .limit(perPage)
+    .sort(sortBy)
     .then(data => {
       event.sender.send('show-all-books', data);
     })
