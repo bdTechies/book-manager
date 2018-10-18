@@ -75,8 +75,12 @@ ipcMain.on('get-book-by-id', (event, id) => {
     .catch(err => console.log(err));
 });
 
-ipcMain.on('search-book', (event, query) => {
-  let regexQuery = new RegExp(query, 'i');
+ipcMain.on('search-book', (event, options) => {
+  const regexQuery = new RegExp(options.queryText, 'i');
+  const perPage = options.perPage || 4;
+  const currentPage = options.currentPage || 1;
+  const skip = (currentPage - 1) * perPage;
+  const sortBy = options.sortBy || { createdAt: 1 };
   datastore
     .find({
       $or: [
@@ -91,6 +95,9 @@ ipcMain.on('search-book', (event, query) => {
         },
       ],
     })
+    .skip(skip)
+    .limit(perPage)
+    .sort(sortBy)
     .then(data => {
       event.sender.send('show-all-books', data);
     })

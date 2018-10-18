@@ -23,9 +23,9 @@ class BookSearch extends Component {
   handleSubmit(event) {
     event.preventDefault();
     if (!this.state.queryText) {
-      this.props.getAllBooks();
+      this.props.getAllBooks({});
     } else {
-      this.props.searchBook(this.state.queryText);
+      this.props.searchBook({ queryText: this.state.queryText });
     }
     this.setState({
       queryText: '',
@@ -52,7 +52,7 @@ class BookSearch extends Component {
 
 const mapActionsToProps = {
   searchBook: bookActions.searchBook,
-  getAllBooks: bookActions.getData,
+  getAllBooks: bookActions.getAllBooks,
 };
 
 export default connect(

@@ -76,20 +76,20 @@ export function initMainProcessListeners() {
   };
 }
 
-export function getData() {
+export function getAllBooks(options) {
   return dispatch => {
     dispatch(dbReqStart());
-    ipcRenderer.send('get-all-books', {});
+    ipcRenderer.send('get-all-books', options);
     return {
       type: GET_DATA,
     };
   };
 }
 
-export function searchBook(queryText) {
+export function searchBook(options) {
   return dispatch => {
     dispatch(dbReqStart());
-    ipcRenderer.send('search-book', queryText);
+    ipcRenderer.send('search-book', options);
     return {
       type: SEARCH_BOOK,
     };
