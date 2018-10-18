@@ -66,9 +66,32 @@ class SingleBookPreviewCard extends Component {
   }
 
   render() {
+    const {
+      coverImage,
+      title,
+      author,
+      translator,
+      publisher,
+      categories,
+      readingStatus,
+      description,
+      note,
+    } = this.props.book;
+
     if (this.props.bookDeleted) {
       return <Redirect to="/all-books" />;
     }
+
+    const generateReadingStatus = function(status) {
+      switch (status) {
+        case 'completed':
+          return 'Completed';
+        case 'reading':
+          return 'Reading';
+        default:
+          return 'Not Started';
+      }
+    };
 
     return (
       <Grid container spacing={16}>
@@ -81,43 +104,43 @@ class SingleBookPreviewCard extends Component {
                     <Grid item xs={6}>
                       <InfoCaption>Title</InfoCaption>
                       <Typography variant="h6" color="primary">
-                        {this.props.book.title || 'Book title not found'}
+                        {title}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <InfoCaption>Publisher</InfoCaption>
                       <Typography variant="h6" color="primary">
-                        {this.props.book.publisher || 'Who Knows!'}
+                        {publisher}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <InfoCaption>Author</InfoCaption>
                       <Typography variant="h6" color="primary">
-                        {this.props.book.author || "I don't know"}
+                        {author}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <InfoCaption>Categories</InfoCaption>
                       <Typography variant="h6" color="primary">
-                        {this.props.book.categories || 'Uncategorized'}
+                        {categories || 'Uncategorized'}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <InfoCaption>Translator</InfoCaption>
                       <Typography variant="h6" color="primary">
-                        {this.props.book.translator || 'None'}
+                        {translator || 'None'}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <InfoCaption>Reading Status</InfoCaption>
                       <Typography variant="h6" color="primary">
-                        {this.props.book.readingStatus || 'Not started'}
+                        {generateReadingStatus(readingStatus)}
                       </Typography>
                     </Grid>
                     <Grid item xs={12}>
                       <InfoCaption>Description</InfoCaption>
                       <CustomTypography variant="body1" whitespace="pre-line">
-                        {this.props.book.description}
+                        {description}
                       </CustomTypography>
                     </Grid>
                     <Grid item xs={12}>
@@ -133,7 +156,7 @@ class SingleBookPreviewCard extends Component {
                       </InfoCaption>
                       <RawHtmlViewr
                         dangerouslySetInnerHTML={{
-                          __html: this.props.book.note || '<p>Add a note.</p>',
+                          __html: note || '<p>Add a note.</p>',
                         }}
                       />
                     </Grid>
@@ -144,12 +167,8 @@ class SingleBookPreviewCard extends Component {
                     <Grid item xs={12}>
                       <ImageThumbContainer height="450" width="300">
                         <Image
-                          src={
-                            this.props.book.coverImage
-                              ? this.props.book.coverImage
-                              : bmPlaceholderImage
-                          }
-                          width={this.props.book.coverImage ? '' : 100}
+                          src={coverImage ? coverImage : bmPlaceholderImage}
+                          width={coverImage ? '' : 100}
                         />
                       </ImageThumbContainer>
                     </Grid>

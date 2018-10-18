@@ -27,7 +27,7 @@ class ImportExportPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getData();
+    this.props.getAllBooks({});
   }
 
   options = {
@@ -179,7 +179,7 @@ const mapStateToProps = state => {
 };
 
 const mapActionsToProps = {
-  getData: bookActions.getData,
+  getAllBooks: bookActions.getAllBooks,
   importBookList: bookActions.importBookList,
 };
 

@@ -6,7 +6,7 @@ import { BookPreviewCard, MessageBox, LoadingSpinner } from '../components';
 
 class AllBooksContainer extends Component {
   componentDidMount() {
-    this.props.getData();
+    this.props.getAllBooks({});
   }
 
   render() {
@@ -38,7 +38,7 @@ const mapStateToProps = state => {
 };
 
 const mapActionsToProps = {
-  getData: bookActions.getData,
+  getAllBooks: bookActions.getAllBooks,
 };
 
 export default connect(

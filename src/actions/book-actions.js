@@ -76,20 +76,20 @@ export function initMainProcessListeners() {
   };
 }
 
-export function getData() {
+export function getAllBooks(options) {
   return dispatch => {
     dispatch(dbReqStart());
-    ipcRenderer.send('get-all-books', 'Get all books from db');
+    ipcRenderer.send('get-all-books', options);
     return {
       type: GET_DATA,
     };
   };
 }
 
-export function searchBook(queryText) {
+export function searchBook(options) {
   return dispatch => {
     dispatch(dbReqStart());
-    ipcRenderer.send('search-book', queryText);
+    ipcRenderer.send('search-book', options);
     return {
       type: SEARCH_BOOK,
     };
@@ -266,10 +266,10 @@ export function resetEditorContent() {
   };
 }
 
-export function getAllNotes() {
+export function getAllNotes(options) {
   return dispatch => {
     dispatch(dbReqStart());
-    ipcRenderer.send('get-all-notes', 'Get all books from db');
+    ipcRenderer.send('get-all-notes', options);
     return {
       type: GET_ALL_NOTES,
     };

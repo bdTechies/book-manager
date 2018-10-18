@@ -6,7 +6,7 @@ import { NotePreviewCard, MessageBox, LoadingSpinner } from '../components';
 
 class AllNotesContainer extends Component {
   componentDidMount() {
-    this.props.getAllNotes();
+    this.props.getAllNotes({ perPage: 0 });
   }
 
   render() {

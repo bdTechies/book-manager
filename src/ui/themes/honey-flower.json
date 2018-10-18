@@ -112,7 +112,7 @@
     "fontFamily": "\"Lato\", \"Helvetica\", \"Arial\", sans-serif",
     "body1": {
       "color": "rgba(0, 0, 0, 0.87)",
-      "fontFamily": "\"Lato\", \"Helvetica\", \"Arial\", sans-serif",
+      "fontFamily": "\"IBM Plex Sans\", \"Helvetica\", \"Arial\", sans-serif",
       "lineHeight": "1.5em",
       "fontSize": "1rem",
       "fontWeight": 500
@@ -138,13 +138,6 @@
       "fontFamily": "\"Arima Madurai\", cursive",
       "lineHeight": "1.5em",
       "fontSize": "1rem",
-      "fontWeight": 400
-    },
-    "body1": {
-      "color": "rgba(0, 0, 0, 0.87)",
-      "fontFamily": "\"Lato\", \"Helvetica\", \"Arial\", sans-serif",
-      "lineHeight": "1.46429em",
-      "fontSize": "0.875rem",
       "fontWeight": 400
     }
   },
