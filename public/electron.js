@@ -51,7 +51,7 @@ app.on('activate', function() {
 });
 
 ipcMain.on('get-all-books', (event, options) => {
-  const perPage = options.perPage || 2;
+  const perPage = options.perPage || 4;
   const currentPage = options.currentPage || 1;
   const skip = (currentPage - 1) * perPage;
   const sortBy = options.sortBy || { createdAt: 1 };
