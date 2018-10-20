@@ -36,6 +36,7 @@ const INITIAL_STATE = {
   importCompleted: false,
   showEditorDialog: false,
   showMessageDialog: false,
+  isScrolling: false,
 };
 
 const RESET_FLAG = {
