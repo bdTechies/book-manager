@@ -5,22 +5,50 @@ import { bookActions } from '../../actions';
 import { BookPreviewCard, MessageBox, LoadingSpinner } from '../components';
 
 class AllBooksContainer extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      options: {
+        currentPage: 1,
+        perPage: 2,
+      },
+    };
+  }
   componentDidMount() {
-    this.props.getAllBooks({});
+    this.props.getAllBooks(this.state.options);
   }
 
+  loadMoreBooks = () => {
+    const { currentPage, perPage } = this.state.options;
+    this.setState(
+      {
+        options: {
+          currentPage: currentPage + 1,
+          perPage: perPage,
+        },
+      },
+      () => {
+        return this.props.getAllBooks(this.state.options);
+      }
+    );
+  };
+
   render() {
+    const { allBooks, dbReqStarted, dbReqFinished } = this.props;
     return (
       <Grid container spacing={16}>
-        {this.props.dbReqStarted ? <LoadingSpinner /> : ''}
-        {this.props.dbReqFinished ? (
-          this.props.allBooks.length ? (
-            this.props.allBooks.map(book => (
-              <BookPreviewCard key={book._id} {...book} />
-            ))
+        {dbReqStarted ? <LoadingSpinner /> : ''}
+        {dbReqFinished ? (
+          allBooks.length ? (
+            allBooks.map(book => <BookPreviewCard key={book._id} {...book} />)
           ) : (
             <MessageBox emoji="(｡•́︿•̀｡)" message="No book found" />
           )
+        ) : (
+          ''
+        )}
+        {allBooks.length ? (
+          <a onClick={this.loadMoreBooks}>Load more...</a>
         ) : (
           ''
         )}

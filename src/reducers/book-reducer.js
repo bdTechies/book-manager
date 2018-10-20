@@ -51,12 +51,13 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
         ...RESET_FLAG,
         singleBook: {},
         importCompleted: false,
-        allBooks: [...payload],
+        allBooks: [...state.allBooks, ...payload],
       };
     case SHOW_BOOK:
       return {
         ...state,
         ...RESET_FLAG,
+        allBooks: [],
         importCompleted: false,
         singleBook: payload,
         pageTitle: payload ? payload.title : 'Book Manager',
@@ -65,6 +66,7 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
       return {
         ...state,
         ...RESET_FLAG,
+        allBooks: [],
         importCompleted: false,
         allNotes: payload,
       };
@@ -83,12 +85,14 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
     case ADD_BOOK:
       return {
         ...state,
+        allBooks: [],
         bookAdded: true,
         singleBook: payload,
       };
     case BOOK_UPDATED:
       return {
         ...state,
+        allBooks: [],
         singleBook: payload,
         bookUpdated: true,
       };
@@ -96,6 +100,7 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
       return {
         ...state,
         ...RESET_FLAG,
+        allBooks: [],
         singleBook: payload,
       };
     case BOOK_EXISTS:
