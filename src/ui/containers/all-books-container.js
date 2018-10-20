@@ -15,6 +15,7 @@ class AllBooksContainer extends Component {
     };
   }
   componentDidMount() {
+    this.props.resetAllBooks();
     this.props.getAllBooks(this.state.options);
   }
 
@@ -66,6 +67,7 @@ const mapStateToProps = state => {
 };
 
 const mapActionsToProps = {
+  resetAllBooks: bookActions.resetAllBooks,
   getAllBooks: bookActions.getAllBooks,
 };
 

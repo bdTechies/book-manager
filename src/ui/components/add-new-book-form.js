@@ -314,6 +314,7 @@ const mapActionsToProps = {
   updateBook: bookActions.updateBook,
   getBook: bookActions.getBookById,
   resetBookSaved: bookActions.resetBookSaved,
+  resetAllBooks: bookActions.resetAllBooks,
   hideMessageDialog: bookActions.hideMessageDialog,
 };
 
