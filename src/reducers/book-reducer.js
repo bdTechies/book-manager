@@ -23,6 +23,7 @@ import {
 
 const INITIAL_STATE = {
   allBooks: [],
+  totalBooksCount: 0,
   allNotes: [],
   singleBook: {},
   editorContent: '',
@@ -53,7 +54,8 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
         ...RESET_FLAG,
         singleBook: {},
         importCompleted: false,
-        allBooks: [...state.allBooks, ...payload],
+        allBooks: [...state.allBooks, ...payload.allBooks],
+        totalBooks: payload.totalBooks,
       };
     case SHOW_BOOK:
       return {
@@ -75,12 +77,14 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
     case DB_REQUEST_STARTED:
       return {
         ...state,
+        isScrolling: true,
         dbReqFinished: false,
         dbReqStarted: true,
       };
     case DB_REQUEST_FINISHED:
       return {
         ...state,
+        isScrolling: false,
         dbReqStarted: false,
         dbReqFinished: true,
       };
@@ -168,6 +172,7 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
       return {
         ...state,
         allBooks: [],
+        totalBooks: 0,
       };
     default:
       return state;
