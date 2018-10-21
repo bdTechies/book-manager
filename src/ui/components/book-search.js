@@ -22,10 +22,11 @@ class BookSearch extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.props.resetAllBooks();
     if (!this.state.queryText) {
-      this.props.getAllBooks({});
+      this.props.getAllBooks({ perPage: 0 });
     } else {
-      this.props.searchBook({ queryText: this.state.queryText });
+      this.props.searchBook({ queryText: this.state.queryText, perPage: 0 });
     }
     this.setState({
       queryText: '',
@@ -53,6 +54,7 @@ class BookSearch extends Component {
 const mapActionsToProps = {
   searchBook: bookActions.searchBook,
   getAllBooks: bookActions.getAllBooks,
+  resetAllBooks: bookActions.resetAllBooks,
 };
 
 export default connect(

@@ -27,7 +27,8 @@ class ImportExportPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getAllBooks({});
+    this.props.resetAllBooks();
+    this.props.getAllBooks({ perPage: 0, currentPage: 0 });
   }
 
   options = {
@@ -179,6 +180,7 @@ const mapStateToProps = state => {
 };
 
 const mapActionsToProps = {
+  resetAllBooks: bookActions.resetAllBooks,
   getAllBooks: bookActions.getAllBooks,
   importBookList: bookActions.importBookList,
 };

@@ -56,12 +56,20 @@ ipcMain.on('get-all-books', (event, options) => {
   const skip = (currentPage - 1) * perPage;
   const sortBy = options.sortBy || { createdAt: 1 };
   datastore
-    .find({})
-    .skip(skip)
-    .limit(perPage)
-    .sort(sortBy)
-    .then(data => {
-      event.sender.send('show-all-books', data);
+    .count({})
+    .then(totalBooks => {
+      datastore
+        .find({})
+        .skip(skip)
+        .limit(perPage)
+        .sort(sortBy)
+        .then(books => {
+          const data = {
+            allBooks: books,
+            totalBooks: totalBooks,
+          };
+          event.sender.send('show-all-books', data);
+        });
     })
     .catch(err => console.log(err));
 });
@@ -81,25 +89,34 @@ ipcMain.on('search-book', (event, options) => {
   const currentPage = options.currentPage || 1;
   const skip = (currentPage - 1) * perPage;
   const sortBy = options.sortBy || { createdAt: 1 };
+  const query = {
+    $or: [
+      {
+        title: regexQuery,
+      },
+      {
+        author: regexQuery,
+      },
+      {
+        categories: regexQuery,
+      },
+    ],
+  };
   datastore
-    .find({
-      $or: [
-        {
-          title: regexQuery,
-        },
-        {
-          author: regexQuery,
-        },
-        {
-          categories: regexQuery,
-        },
-      ],
-    })
-    .skip(skip)
-    .limit(perPage)
-    .sort(sortBy)
-    .then(data => {
-      event.sender.send('show-all-books', data);
+    .count(query)
+    .then(totalBooks => {
+      datastore
+        .find(query)
+        .skip(skip)
+        .limit(perPage)
+        .sort(sortBy)
+        .then(books => {
+          const data = {
+            allBooks: books,
+            totalBooks: totalBooks,
+          };
+          event.sender.send('show-all-books', data);
+        });
     })
     .catch(err => console.log(err));
 });

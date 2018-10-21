@@ -27,6 +27,7 @@ import {
   NOTE_ADDED,
   SEARCH_BOOK,
   RESET_SINGLE_BOOK,
+  RESET_ALL_BOOKS,
 } from './types';
 const electron = window.require('electron');
 const { ipcRenderer } = electron;
@@ -280,5 +281,11 @@ export function showAllNotes(notes) {
   return {
     type: SHOW_ALL_NOTES,
     payload: notes,
+  };
+}
+
+export function resetAllBooks() {
+  return {
+    type: RESET_ALL_BOOKS,
   };
 }

@@ -54,7 +54,7 @@
     }
   },
   "dependencies": {
-    "@material-ui/core": "^3.1.0",
+    "@material-ui/core": "^3.2.2",
     "@sh4hids/react-scripts": "1.1.8",
     "electron-is-dev": "^0.3.0",
     "html-to-text": "^4.0.0",
