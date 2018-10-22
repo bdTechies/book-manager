@@ -5,9 +5,53 @@ import { bookActions } from '../../actions';
 import { NotePreviewCard, MessageBox, LoadingSpinner } from '../components';
 
 class AllNotesContainer extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      options: {
+        currentPage: 1,
+        perPage: 10,
+      },
+    };
+  }
+
   componentDidMount() {
     this.props.getAllNotes({ perPage: 0 });
   }
+
+  handleScroll = e => {
+    const { allBooks, isScrolling, totalBooks } = this.props;
+    if (isScrolling) return;
+    if (allBooks.length >= totalBooks) return;
+    const scrollTop =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop;
+
+    const lastBook = ReactDOM.findDOMNode(this.refs[allBooks.length - 1]);
+    if (lastBook) {
+      const lastBookContainer = lastBook.getBoundingClientRect();
+      const lastBookOffset =
+        lastBookContainer.top + scrollTop + window.pageYOffset;
+      const bottomOffset = lastBook.clientHeight + lastBook.clientHeight / 3;
+      if (bottomOffset > lastBookOffset) this.loadMoreBooks();
+    }
+  };
+
+  loadMoreBooks = () => {
+    const { currentPage, perPage } = this.state.options;
+    this.setState(
+      {
+        options: {
+          currentPage: currentPage + 1,
+          perPage: perPage,
+        },
+      },
+      () => {
+        return this.props.getAllBooks(this.state.options);
+      }
+    );
+  };
 
   render() {
     return (
