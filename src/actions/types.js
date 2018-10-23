@@ -40,3 +40,4 @@ export const SHOW_ALL_NOTES = 'book:show_all_notes';
 export const SEARCH_BOOK = 'book:search_book';
 
 export const RESET_ALL_BOOKS = 'book:reset_all_books';
+export const RESET_ALL_NOTES = 'book:reset_all_notes';
