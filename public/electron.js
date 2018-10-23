@@ -199,17 +199,30 @@ ipcMain.on('get-all-notes', (event, options) => {
   const skip = (currentPage - 1) * perPage;
   const sortBy = options.sortBy || { createdAt: 1 };
   datastore
-    .find({
+    .count({
       note: {
         $exists: true,
         $ne: '',
       },
     })
-    .skip(skip)
-    .limit(perPage)
-    .sort(sortBy)
-    .then(data => {
-      event.sender.send('show-all-notes', data);
+    .then(totalNotes => {
+      datastore
+        .find({
+          note: {
+            $exists: true,
+            $ne: '',
+          },
+        })
+        .skip(skip)
+        .limit(perPage)
+        .sort(sortBy)
+        .then(notes => {
+          const data = {
+            allNotes: notes,
+            totalNotes: totalNotes,
+          };
+          event.sender.send('show-all-notes', data);
+        });
     })
     .catch(err => console.log(err));
 });

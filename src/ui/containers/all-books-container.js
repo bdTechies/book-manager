@@ -61,6 +61,7 @@ class AllBooksContainer extends Component {
 
   render() {
     const { allBooks } = this.props;
+
     return (
       <Grid container spacing={16} ref="parentContainer">
         {allBooks && allBooks.length ? (

@@ -19,12 +19,14 @@ import {
   NOTE_ADDED,
   RESET_SINGLE_BOOK,
   RESET_ALL_BOOKS,
+  RESET_ALL_NOTES,
 } from '../actions/types';
 
 const INITIAL_STATE = {
   allBooks: [],
-  totalBooksCount: 0,
+  totalBooks: 0,
   allNotes: [],
+  totalNotes: 0,
   singleBook: {},
   editorContent: '',
   pageTitle: 'Book Manager',
@@ -72,7 +74,8 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
         ...RESET_FLAG,
         allBooks: [],
         importCompleted: false,
-        allNotes: payload,
+        allNotes: [...state.allNotes, ...payload.allNotes],
+        totalNotes: payload.totalNotes,
       };
     case DB_REQUEST_STARTED:
       return {
@@ -173,6 +176,12 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
         ...state,
         allBooks: [],
         totalBooks: 0,
+      };
+    case RESET_ALL_NOTES:
+      return {
+        ...state,
+        allNotes: [],
+        totalNotes: 0,
       };
     default:
       return state;
