@@ -1,4 +1,4 @@
-## Book Manager &middot; ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
+## Book Manager &middot; [![GitHub license](https://img.shields.io/github/license/bdTechies/book-manager.svg?style=popout)](https://github.com/bdTechies/book-manager/blob/master/LICENSE.md) [![GitHub stars](https://img.shields.io/github/stars/bdTechies/book-manager.svg?style=popout)](https://github.com/bdTechies/book-manager/stargazers) [![GitHub forks](https://img.shields.io/github/forks/bdTechies/book-manager.svg?style=popout)](https://github.com/bdTechies/book-manager/network) [![GitHub issues](https://img.shields.io/github/issues/bdTechies/book-manager.svg?style=popout)](https://github.com/bdTechies/book-manager/issues)
 
 A simple personal library management application.
 
