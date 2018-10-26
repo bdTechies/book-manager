@@ -202,7 +202,7 @@ ipcMain.on('get-all-notes', (event, options) => {
     .count({
       note: {
         $exists: true,
-        $ne: '',
+        $nin: ['', '<p><br></p>'],
       },
     })
     .then(totalNotes => {
@@ -210,7 +210,7 @@ ipcMain.on('get-all-notes', (event, options) => {
         .find({
           note: {
             $exists: true,
-            $ne: '',
+            $nin: ['', '<p><br></p>'],
           },
         })
         .skip(skip)
