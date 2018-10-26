@@ -1,4 +1,9 @@
 language: node_js
 node_js:
   - "10"
-script: npm run build
+jobs:
+  include:
+    - stage: test
+      script: npm run test
+    - stage: build
+      script: npm run build
