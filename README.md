@@ -39,3 +39,8 @@ $ npm run make
 ```bash
 $ npm run make:all
 ```
+
+- If any problem occurs on mac os during create package try following command:
+```bash
+$ npm config set python /usr/bin/python2.7
+```
