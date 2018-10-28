@@ -10,6 +10,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
+  DialogContentText,
   DialogTitle,
 } from '@material-ui/core';
 import {
@@ -32,38 +33,50 @@ const EditBookLink = props => <Link {...props} />;
 class SingleBookPreviewCard extends Component {
   constructor(props) {
     super(props);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.showEditorDialog = this.showEditorDialog.bind(this);
-    this.hideEditorDialog = this.hideEditorDialog.bind(this);
-    this.handleSaveNote = this.handleSaveNote.bind(this);
+    this.state = {
+      isDeleteDialogOpen: false,
+    };
   }
 
   componentDidMount() {
     this.props.getBookById(this.props.id);
   }
 
-  handleDelete() {
-    this.props.deleteBook(this.props.book._id);
-  }
-
-  showEditorDialog() {
+  showEditorDialog = () => {
     if (this.props.book.note) {
       this.props.setEditorContent(this.props.book.note);
     } else {
       this.props.resetEditorContent();
     }
     this.props.showEditorDialog();
-  }
+  };
 
-  hideEditorDialog() {
+  hideEditorDialog = () => {
     this.props.resetEditorContent();
     this.props.hideEditorDialog();
-  }
+  };
 
-  handleSaveNote() {
+  handleSaveNote = () => {
     let bookWithNote = { ...this.props.book, note: this.props.editorContent };
     this.props.addNote(bookWithNote);
-  }
+  };
+
+  openDeleteDialog = () => {
+    // this.props.deleteBook(this.props.book._id);
+    this.setState({
+      isDeleteDialogOpen: true,
+    });
+  };
+
+  handleDeleteCancel = () => {
+    this.setState({
+      isDeleteDialogOpen: false,
+    });
+  };
+
+  handleDeleteBook = () => {
+    this.props.deleteBook(this.props.book._id);
+  };
 
   render() {
     const {
@@ -156,7 +169,10 @@ class SingleBookPreviewCard extends Component {
                       </InfoCaption>
                       <RawHtmlViewr
                         dangerouslySetInnerHTML={{
-                          __html: note || '<p>Add a note.</p>',
+                          __html:
+                            note && note !== '<p><br></p>'
+                              ? note
+                              : '<p>Add a note.</p>',
                         }}
                       />
                     </Grid>
@@ -181,7 +197,7 @@ class SingleBookPreviewCard extends Component {
                       color="secondary"
                       size="small"
                       mr="16"
-                      onClick={this.handleDelete}
+                      onClick={this.openDeleteDialog}
                     >
                       Delete
                     </CustomButton>
@@ -200,6 +216,34 @@ class SingleBookPreviewCard extends Component {
             </Container>
           </PaddedPaper>
         </Grid>
+        <Dialog
+          // fullScreen={true}
+          open={this.state.isDeleteDialogOpen}
+          onClose={this.handleDeleteDialogClose}
+          aria-labelledby="delete-book-dialog"
+        >
+          <DialogTitle id="delete-book-dialog">
+            {'Do you really want to delete the book?'}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Once a book is deleted, it is gone forever (if you don't add the
+              book again). So, be careful in your action!
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <CustomButton
+              onClick={this.handleDeleteCancel}
+              color="primary"
+              autoFocus
+            >
+              No
+            </CustomButton>
+            <CustomButton onClick={this.handleDeleteBook} color="secondary">
+              Yes
+            </CustomButton>
+          </DialogActions>
+        </Dialog>
         <Dialog
           open={this.props.showDialog}
           onClose={this.hideEditorDialog}
