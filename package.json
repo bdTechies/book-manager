@@ -11,7 +11,7 @@
   "description": "A simple personal library management application.",
   "productName": "Book Manager",
   "scripts": {
-    "start": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000/ && npm run electron-start\"",
+    "start": "concurrently 'npm run react-start' 'wait-on http://localhost:3000/ && npm run electron-start'",
     "start:win": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000/ && npm run electron-start:win\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
