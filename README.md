@@ -24,12 +24,6 @@ $ npm install
 $ npm start
 ```
 
-**N.B.** For Windows users:
-
-```bash
-$ npm run start:win
-```
-
 ### Create Packages
 
 Run the following commands to build and package the app for distribution. The packager will create packages based on the platform. [Linux: deb, AppImage; Win: exe; Mac: dmg]
