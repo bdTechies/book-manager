@@ -20,11 +20,13 @@ $ npm install
 
 3.  Finally run the app:
 
+- For Linux and Mac users:
+
 ```bash
 $ npm start
 ```
 
-**N.B.** For Windows users:
+- For Windows users:
 
 ```bash
 $ npm run start:win
@@ -46,7 +48,12 @@ $ npm run make
 $ npm run make:all
 ```
 
-- If any problem occurs on mac os during create package try following command:
+- If any problem occurs on Mac OS while packaging the app try following command:
+
 ```bash
 $ npm config set python /usr/bin/python2.7
 ```
+
+### Contribution
+
+If you want to contribute to this project, please follow the [contribution guide](https://github.com/bdTechies/book-manager/blob/master/CONTRIBUTING.md).
