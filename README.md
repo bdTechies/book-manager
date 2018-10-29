@@ -48,7 +48,7 @@ $ npm run make
 $ npm run make:all
 ```
 
-- If any problem occurs on Mac OS while packaging the app try following command:
+- If any problem occurs on Mac OS while packaging the app try the following command:
 
 ```bash
 $ npm config set python /usr/bin/python2.7
