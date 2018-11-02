@@ -11,6 +11,9 @@ import {
   DB_REQUEST_FINISHED,
   IMPORT_STARTED,
   IMPORT_FINISHED,
+  RESET_IMPORT_FINISHED,
+  EXPORT_FINISHED,
+  RESET_EXPORT_FINISHED,
   SHOW_EDITOR_DIALOG,
   HIDE_EDITOR_DIALOG,
   SET_EDITOR_CONTENT,
@@ -37,6 +40,7 @@ const INITIAL_STATE = {
   dbReqFinished: false,
   importStarted: false,
   importCompleted: false,
+  exportCompleted: false,
   showEditorDialog: false,
   showMessageDialog: false,
   isScrolling: false,
@@ -150,6 +154,21 @@ export default function bookReducer(state = INITIAL_STATE, { type, payload }) {
         ...state,
         importStarted: false,
         importCompleted: true,
+      };
+    case RESET_IMPORT_FINISHED:
+      return {
+        ...state,
+        importCompleted: false,
+      };
+    case EXPORT_FINISHED:
+      return {
+        ...state,
+        exportCompleted: true,
+      };
+    case RESET_EXPORT_FINISHED:
+      return {
+        ...state,
+        exportCompleted: false,
       };
     case SHOW_EDITOR_DIALOG:
       return {

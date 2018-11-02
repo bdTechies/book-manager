@@ -82,6 +82,11 @@ class ImportExportPage extends Component {
                 fs.writeFile(fileName, data, err => {
                   if (err) {
                     console.log(err.message);
+                  } else {
+                    this.props.finisExport();
+                    setTimeout(() => {
+                      this.props.resetFinisExport();
+                    }, 3000);
                   }
                 });
               }
@@ -111,6 +116,9 @@ class ImportExportPage extends Component {
             } else if (fileData) {
               let data = JSON.parse(fileData);
               this.props.importBookList(data);
+              setTimeout(() => {
+                this.props.resetFinisImportReq();
+              }, 3000);
             } else {
               console.log('Empty file...');
             }
@@ -131,7 +139,14 @@ class ImportExportPage extends Component {
         ) : (
           ''
         )}
-        {!this.props.importStarted && !this.props.importCompleted ? (
+        {this.props.exportCompleted ? (
+          <MessageBox emoji="ᕕ( ᐛ )ᕗ" message="Data exported successfully!" />
+        ) : (
+          ''
+        )}
+        {!this.props.importStarted &&
+        !this.props.importCompleted &&
+        !this.exportCompleted ? (
           <CustomGrid
             container
             direction="column"
@@ -176,6 +191,7 @@ const mapStateToProps = state => {
     allBooks: state.bookReducer.allBooks,
     importStarted: state.bookReducer.importStarted,
     importCompleted: state.bookReducer.importCompleted,
+    exportCompleted: state.bookReducer.exportCompleted,
   };
 };
 
@@ -183,6 +199,9 @@ const mapActionsToProps = {
   resetAllBooks: bookActions.resetAllBooks,
   getAllBooks: bookActions.getAllBooks,
   importBookList: bookActions.importBookList,
+  finisExport: bookActions.finisExport,
+  resetFinisExport: bookActions.resetFinisExport,
+  resetFinisImportReq: bookActions.resetFinisImportReq,
 };
 
 export default connect(

@@ -15,6 +15,9 @@ import {
   IMPORT_BOOK_LIST,
   IMPORT_STARTED,
   IMPORT_FINISHED,
+  RESET_IMPORT_FINISHED,
+  EXPORT_FINISHED,
+  RESET_EXPORT_FINISHED,
   DB_REQUEST_STARTED,
   DB_REQUEST_FINISHED,
   SHOW_EDITOR_DIALOG,
@@ -170,6 +173,24 @@ export function startImportReq() {
 export function finisImportReq() {
   return {
     type: IMPORT_FINISHED,
+  };
+}
+
+export function resetFinisImportReq() {
+  return {
+    type: RESET_IMPORT_FINISHED,
+  };
+}
+
+export function finisExport() {
+  return {
+    type: EXPORT_FINISHED,
+  };
+}
+
+export function resetFinisExport() {
+  return {
+    type: RESET_EXPORT_FINISHED,
   };
 }
 
