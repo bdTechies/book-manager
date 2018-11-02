@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { MenuList, WelcomePageMenuItem } from '../base-kits';
 import { appControlActions } from '../../actions';
 
 class WelcomePageMenu extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onExitApp = this.onExitApp.bind(this);
-  }
-
-  onExitApp() {
+  onExitApp = () => {
     this.props.onExitApp();
-  }
+  };
 
   render() {
     return (
@@ -45,6 +40,10 @@ class WelcomePageMenu extends Component {
 
 const mapActionsToProps = {
   onExitApp: appControlActions.exitApp,
+};
+
+WelcomePageMenu.propTypes = {
+  onExitApp: PropTypes.func,
 };
 
 export default connect(

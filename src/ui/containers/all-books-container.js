@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
 import { bookActions } from '../../actions';
-import { BookPreviewCard, MessageBox } from '../components';
+import { BookPreviewCard, MessageBox, LoadingSpinner } from '../components';
 
 class AllBooksContainer extends Component {
   constructor(props) {
@@ -60,7 +60,7 @@ class AllBooksContainer extends Component {
   };
 
   render() {
-    const { allBooks } = this.props;
+    const { allBooks, dbReqStarted, dbReqFinished } = this.props;
 
     return (
       <Grid container spacing={16} ref="parentContainer">
@@ -68,8 +68,12 @@ class AllBooksContainer extends Component {
           allBooks.map((book, idx) => (
             <BookPreviewCard ref={idx} key={book._id} {...book} />
           ))
-        ) : (
+        ) : dbReqStarted ? (
+          <LoadingSpinner />
+        ) : dbReqFinished ? (
           <MessageBox emoji="(｡•́︿•̀｡)" message="No book found" />
+        ) : (
+          ''
         )}
       </Grid>
     );
