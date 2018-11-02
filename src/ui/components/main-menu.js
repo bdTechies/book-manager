@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Tooltip } from '@material-ui/core';
 import { connect } from 'react-redux';
@@ -72,6 +73,10 @@ class MainMenu extends Component {
 
 const mapActionsToProps = {
   resetSingleBook: bookActions.resetSingleBook,
+};
+
+MainMenu.propTypes = {
+  resetSingleBook: PropTypes.func,
 };
 
 export default connect(

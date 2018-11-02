@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import htmlToText from 'html-to-text';
 import { Grid, Typography, Button } from '@material-ui/core';
@@ -58,5 +59,11 @@ class NotePreviewCard extends Component {
     );
   }
 }
+
+NotePreviewCard.propTypes = {
+  title: PropTypes.string,
+  author: PropTypes.string,
+  note: PropTypes.string,
+};
 
 export default NotePreviewCard;

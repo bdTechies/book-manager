@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { CustomReactQuill } from '../base-kits';
 import 'react-quill/dist/quill.snow.css';
 import { connect } from 'react-redux';
@@ -26,14 +27,9 @@ const formats = [
 ];
 
 class QuillEditor extends Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(value) {
+  handleChange = value => {
     this.props.setEditorContent(value);
-  }
+  };
 
   render() {
     return (
@@ -59,6 +55,11 @@ const mapStateToProps = state => {
 
 const mapActionsToProps = {
   setEditorContent: bookActions.setEditorContent,
+};
+
+QuillEditor.propTypes = {
+  showEditorDialog: PropTypes.bool,
+  editorContent: PropTypes.string,
 };
 
 export default connect(
