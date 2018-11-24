@@ -98,7 +98,10 @@ ipcMain.on('search-book', (event, options) => {
         author: regexQuery,
       },
       {
-        categories: regexQuery,
+        publisher: regexQuery,
+      },
+      {
+        description: regexQuery,
       },
     ],
   };
