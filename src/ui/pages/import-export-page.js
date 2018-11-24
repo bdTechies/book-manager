@@ -19,13 +19,6 @@ const fs = electron.remote.require('fs');
 const { dialog } = electron.remote;
 
 class ImportExportPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleExport = this.handleExport.bind(this);
-    this.handleImport = this.handleImport.bind(this);
-  }
-
   componentDidMount() {
     this.props.resetAllBooks();
     this.props.getAllBooks({ perPage: 0, currentPage: 0 });
@@ -54,7 +47,7 @@ class ImportExportPage extends Component {
     ],
   };
 
-  handleExport() {
+  handleExport = () => {
     if (this.props.allBooks.length > 0) {
       let data = [],
         c = 0;
@@ -96,9 +89,9 @@ class ImportExportPage extends Component {
         return data;
       });
     }
-  }
+  };
 
-  handleImport() {
+  handleImport = () => {
     dialog.showOpenDialog(
       {
         filters: [
@@ -126,7 +119,7 @@ class ImportExportPage extends Component {
         }
       }
     );
-  }
+  };
 
   render() {
     return (

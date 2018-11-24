@@ -14,15 +14,9 @@ const electron = window.require('electron');
 class AboutAppPage extends Component {
   url = 'http://book-manager.bdtechies.com';
 
-  constructor(props) {
-    super(props);
-
-    this.handleOpenUrl = this.handleOpenUrl.bind(this);
-  }
-
-  handleOpenUrl() {
+  handleOpenUrl = () => {
     electron.shell.openExternal(this.url);
-  }
+  };
 
   render() {
     return (
