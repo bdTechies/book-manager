@@ -54,7 +54,7 @@ $ npm run make:all
 $ npm config set python /usr/bin/python2.7
 ```
 
-*Special Thanks to **[Rafat Ahmed](https://github.com/rafat69ahmed)** & **[Touhidul Islam](https://github.com/Touhidul-MTI)** for helping me with the Mac and Windows build.*
+**Special Thanks to [Rafat Ahmed](https://github.com/rafat69ahmed) & [Touhidul Islam](https://github.com/Touhidul-MTI) for helping me with the Mac and Windows build.**
 
 ### Contribution
 
