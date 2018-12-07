@@ -24,6 +24,7 @@ import {
   RawHtmlViewr,
 } from '../base-kits';
 import QuillEditor from './quill-editor';
+import DraftEditor from './react-draft-editor';
 import { bookActions } from '../../actions';
 import { PencilIcon } from 'mdi-react';
 import bmPlaceholderImage from '../../assets/img/bm-image-placeholder.svg';
@@ -252,7 +253,7 @@ class SingleBookPreviewCard extends Component {
         >
           <DialogTitle>Note for {this.props.book.title}</DialogTitle>
           <DialogContent>
-            <QuillEditor />
+            <DraftEditor />
           </DialogContent>
           <DialogActions>
             <Button onClick={this.hideEditorDialog} color="primary">

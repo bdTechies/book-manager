@@ -18,6 +18,7 @@ import CustomTextField from './custom-text-field';
 import CustomFormLabel from './custom-form-label';
 import CustomGrid from './custom-grid';
 import CustomReactQuill from './custom-react-quill';
+import DraftEditorContainer from './draft-editor-container';
 import RawHtmlViewr from './raw-html-viewer';
 import EmojiContainer from './emoji-container';
 import SearchInput from './search-input';
@@ -43,6 +44,7 @@ export {
   CustomFormLabel,
   CustomGrid,
   CustomReactQuill,
+  DraftEditorContainer,
   RawHtmlViewr,
   EmojiContainer,
   SearchInput,
