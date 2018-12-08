@@ -1,6 +1,6 @@
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { DraftEditorContainer } from '../base-kits';
+import { EditorContainer } from '../base-kits';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
@@ -9,10 +9,19 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bookActions } from '../../actions';
 import en from 'react-draft-wysiwyg/src/i18n/en';
-import { FormatQuoteOpenIcon, TextIcon, CodeTagsIcon } from 'mdi-react';
+import { FormatQuoteOpenIcon, CodeTagsIcon } from 'mdi-react';
+import formatBold from '../../assets/icons/format-bold.svg';
 import formatItalic from '../../assets/icons/format-italic.svg';
+import formatUnderline from '../../assets/icons/format-underline.svg';
+import formatSubscript from '../../assets/icons/format-subscript.svg';
+import formatSuperscript from '../../assets/icons/format-superscript.svg';
+import formatListBulleted from '../../assets/icons/format-list-bulleted.svg';
+import formatListNumbered from '../../assets/icons/format-list-numbered.svg';
+import formatAlignLeft from '../../assets/icons/format-align-left.svg';
+import formatAlignCenter from '../../assets/icons/format-align-center.svg';
+import formatAlignRight from '../../assets/icons/format-align-right.svg';
+import formatAlignJustify from '../../assets/icons/format-align-justify.svg';
 
-en['components.controls.blocktype.normal'] = <TextIcon />;
 en['components.controls.blocktype.blockquote'] = <FormatQuoteOpenIcon />;
 en['components.controls.blocktype.code'] = <CodeTagsIcon />;
 const localization = {
@@ -23,21 +32,33 @@ const toolbarOptions = {
   options: ['inline', 'blockType', 'list', 'textAlign'],
   inline: {
     options: ['bold', 'italic', 'underline', 'superscript', 'subscript'],
+    bold: { icon: formatBold },
     italic: { icon: formatItalic },
+    underline: { icon: formatUnderline },
+    superscript: { icon: formatSuperscript },
+    subscript: { icon: formatSubscript },
   },
   blockType: {
     inDropdown: false,
-    options: ['Normal', 'Blockquote', 'Code'],
+    options: ['Blockquote', 'Code'],
     className: undefined,
     component: undefined,
     dropdownClassName: undefined,
   },
   list: {
     options: ['unordered', 'ordered'],
+    unordered: { icon: formatListBulleted },
+    ordered: { icon: formatListNumbered },
+  },
+  textAlign: {
+    left: { icon: formatAlignLeft },
+    center: { icon: formatAlignCenter },
+    right: { icon: formatAlignRight },
+    justify: { icon: formatAlignJustify },
   },
 };
 
-class DraftEditor extends Component {
+class DraftJsEditor extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,7 +84,6 @@ class DraftEditor extends Component {
   handleEditorContentChange = editorState => {
     const value = draftToHtml(convertToRaw(editorState.getCurrentContent()));
     this.props.setEditorContent(value);
-    console.log(value);
     this.setState({
       editorState,
     });
@@ -72,16 +92,17 @@ class DraftEditor extends Component {
   render() {
     const { editorState } = this.state;
     return (
-      <DraftEditorContainer>
+      <EditorContainer>
         <Editor
           editorState={editorState}
           onEditorStateChange={this.handleEditorContentChange}
           wrapperClassName="draft-wrapper"
           editorClassName="draft-editor"
+          toolbarClassName="draft-toolbar"
           localization={localization}
           toolbar={toolbarOptions}
         />
-      </DraftEditorContainer>
+      </EditorContainer>
     );
   }
 }
@@ -97,7 +118,7 @@ const mapActionsToProps = {
   setEditorContent: bookActions.setEditorContent,
 };
 
-DraftEditor.propTypes = {
+DraftJsEditor.propTypes = {
   showEditorDialog: PropTypes.bool,
   editorContent: PropTypes.string,
 };
@@ -105,4 +126,4 @@ DraftEditor.propTypes = {
 export default connect(
   mapStateToProps,
   mapActionsToProps
-)(DraftEditor);
+)(DraftJsEditor);
