@@ -23,7 +23,7 @@ import {
   ImageThumbContainer,
   RawHtmlViewr,
 } from '../base-kits';
-import QuillEditor from './quill-editor';
+import DraftJsEditor from './draft-js-editor';
 import { bookActions } from '../../actions';
 import { PencilIcon } from 'mdi-react';
 import bmPlaceholderImage from '../../assets/img/bm-image-placeholder.svg';
@@ -123,7 +123,7 @@ class SingleBookPreviewCard extends Component {
                     <Grid item xs={6}>
                       <InfoCaption>Publisher</InfoCaption>
                       <Typography variant="h6" color="primary">
-                        {publisher}
+                        {publisher || '(not provided)'}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -141,7 +141,7 @@ class SingleBookPreviewCard extends Component {
                     <Grid item xs={6}>
                       <InfoCaption>Translator</InfoCaption>
                       <Typography variant="h6" color="primary">
-                        {translator || 'None'}
+                        {translator || 'n\\a'}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
@@ -153,7 +153,7 @@ class SingleBookPreviewCard extends Component {
                     <Grid item xs={12}>
                       <InfoCaption>Description</InfoCaption>
                       <CustomTypography variant="body1" whitespace="pre-line">
-                        {description}
+                        {description || '(not provided)'}
                       </CustomTypography>
                     </Grid>
                     <Grid item xs={12}>
@@ -170,7 +170,7 @@ class SingleBookPreviewCard extends Component {
                       <RawHtmlViewr
                         dangerouslySetInnerHTML={{
                           __html:
-                            note && note !== '<p><br></p>'
+                            note && note !== '<p></p>\n'
                               ? note
                               : '<p>Add a note.</p>',
                         }}
@@ -252,7 +252,7 @@ class SingleBookPreviewCard extends Component {
         >
           <DialogTitle>Note for {this.props.book.title}</DialogTitle>
           <DialogContent>
-            <QuillEditor />
+            <DraftJsEditor />
           </DialogContent>
           <DialogActions>
             <Button onClick={this.hideEditorDialog} color="primary">

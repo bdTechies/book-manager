@@ -9,7 +9,7 @@ import SingleBookPreviewCard from './single-book-preview-card';
 import AddNewBookForm from './add-new-book-form';
 import MessageBox from './message-box';
 import LoadingSpinner from './loading-spinner';
-import QuillEditor from './quill-editor';
+import DraftJsEditor from './draft-js-editor';
 import BookSearch from './book-search';
 
 export {
@@ -24,6 +24,6 @@ export {
   AddNewBookForm,
   MessageBox,
   LoadingSpinner,
-  QuillEditor,
+  DraftJsEditor,
   BookSearch,
 };
