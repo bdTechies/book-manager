@@ -47,7 +47,7 @@ class AboutAppPage extends Component {
                 color="primary"
                 mb={12}
               >
-                Version 0.1.0
+                Version 1.1.0
               </CustomTypography>
               <Button
                 variant="outlined"
