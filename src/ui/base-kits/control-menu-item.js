@@ -12,7 +12,7 @@ const ControlMenuItem = styled.li`
     margin-right: 0;
   }
 
-  a {
+  span.menu-button {
     width: 100%;
     color: #ffffff;
     display: inline-block;

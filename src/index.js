@@ -6,9 +6,9 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import allReducers from './reducers';
-import { injectGlobal } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
 /* lato-regular - latin */
   @font-face {
   font-family: 'Lato';
@@ -139,6 +139,7 @@ const store = createStore(allReducers, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
+    <GlobalStyle />
     <App />
   </Provider>,
   document.getElementById('root')

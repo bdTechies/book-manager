@@ -6,14 +6,12 @@ import { connect } from 'react-redux';
 import { bookActions } from '../../actions';
 import { MenuList, MainMenuItem, Image } from '../base-kits';
 import bmLogo from '../../assets/img/bm-logo-white.svg';
-import {
-  PlusIcon,
-  AllInclusiveIcon,
-  SwapVerticalIcon,
-  TextIcon,
-  SettingsIcon,
-  InformationVariantIcon,
-} from 'mdi-react';
+import PlusIcon from 'mdi-react/PlusIcon';
+import AllInclusiveIcon from 'mdi-react/AllInclusiveIcon';
+import SwapVerticalIcon from 'mdi-react/SwapVerticalIcon';
+import TextIcon from 'mdi-react/TextIcon';
+import SettingsIcon from 'mdi-react/SettingsIcon';
+import InformationVariantIcon from 'mdi-react/InformationVariantIcon';
 
 class MainMenu extends Component {
   render() {

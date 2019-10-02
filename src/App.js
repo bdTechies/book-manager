@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
 import { honeyFlower } from './ui/themes';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 import Routes from './routes';
 import { bookActions } from './actions';
 
@@ -14,9 +15,9 @@ class App extends Component {
 
   render() {
     return (
-      <MuiThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
         <Routes />
-      </MuiThemeProvider>
+      </ThemeProvider>
     );
   }
 }

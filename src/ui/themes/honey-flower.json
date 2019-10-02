@@ -151,7 +151,7 @@
   },
   "shape": { "borderRadius": 4 },
   "props": {},
-  "spacing": { "unit": 8 },
+  "spacing": 8,
   "palette": {
     "tonalOffset": 0.2,
     "background": { "paper": "#fff", "default": "#fafafa" },

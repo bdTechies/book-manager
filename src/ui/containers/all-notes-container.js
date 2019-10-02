@@ -64,7 +64,7 @@ class AllNotesContainer extends Component {
     const { allNotes, dbReqStarted, dbReqFinished } = this.props;
 
     return (
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         {allNotes && allNotes.length ? (
           allNotes.map((note, idx) => (
             <NotePreviewCard ref={idx} key={note._id} {...note} />

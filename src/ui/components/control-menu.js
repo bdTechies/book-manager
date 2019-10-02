@@ -46,21 +46,21 @@ class ControlMenu extends Component {
     return (
       <MenuList control="true">
         <ControlMenuItem>
-          <a onClick={this.onMinimizeApp}>
+          <span className="menu-button" onClick={this.onMinimizeApp}>
             <Image src={minimizeIcon} />
-          </a>
+          </span>
         </ControlMenuItem>
         <ControlMenuItem>
-          <a onClick={this.toggleMaximize}>
+          <span className="menu-button" onClick={this.toggleMaximize}>
             <Image
               src={this.props.isMaximized ? unMaximizeIcon : maximizeIcon}
             />
-          </a>
+          </span>
         </ControlMenuItem>
         <ControlMenuItem>
-          <a onClick={this.onExitApp}>
+          <span className="menu-button" onClick={this.onExitApp}>
             <Image src={closeIcon} />
-          </a>
+          </span>
         </ControlMenuItem>
       </MenuList>
     );

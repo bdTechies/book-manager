@@ -7,7 +7,8 @@ const WelcomePageMenuItem = styled.li`
   text-transform: lowercase;
   cursor: pointer;
 
-  a {
+  a,
+  span.exit-button {
     width: 100%;
     color: #ffffff;
     text-align: right;

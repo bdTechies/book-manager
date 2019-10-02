@@ -24,6 +24,9 @@ function createWindow() {
     minHeight: 700,
     frame: false,
     icon: path.join(__dirname, './assets/icons/icon.png'),
+    webPreferences: {
+      nodeIntegration: true,
+    },
   });
   mainWindow.loadURL(startUrl);
   // Open the DevTools.

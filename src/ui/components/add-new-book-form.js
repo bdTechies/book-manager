@@ -19,8 +19,6 @@ import {
   CustomFormLabel,
 } from '../base-kits';
 
-const AllBooksLink = props => <Link to="/all-books" {...props} />;
-
 class AddNewBookForm extends Component {
   constructor(props) {
     super(props);
@@ -137,12 +135,12 @@ class AddNewBookForm extends Component {
     }
 
     return (
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <PaddedPaper square>
             <Container p={32}>
               <form onSubmit={this.handleSubmit} noValidate>
-                <Grid container direction="row" spacing={32}>
+                <Grid container direction="row" spacing={4}>
                   <Grid item xs={6}>
                     <CustomTextField
                       id="title"
@@ -265,7 +263,8 @@ class AddNewBookForm extends Component {
                         color="default"
                         size="small"
                         mr="16"
-                        component={AllBooksLink}
+                        component={Link}
+                        to="/all-books"
                       >
                         Cancel
                       </CustomButton>

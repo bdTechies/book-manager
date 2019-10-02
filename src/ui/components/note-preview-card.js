@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import htmlToText from 'html-to-text';
+import { Link } from 'react-router-dom';
 import { Grid, Typography, Button } from '@material-ui/core';
 import { PaddedPaper, InfoCaption } from '../base-kits';
 
 class NotePreviewCard extends Component {
-  singleBookLink = itemProps => (
-    <Link to={'/books/' + this.props._id} {...itemProps} />
-  );
-
   generateTextFromHtml(htmlInput) {
     let text = htmlToText.fromString(htmlInput, {
       uppercaseHeadings: false,
@@ -48,7 +44,8 @@ class NotePreviewCard extends Component {
                 variant="contained"
                 color="primary"
                 size="small"
-                component={this.singleBookLink}
+                component={Link}
+                to={'/books/' + this.props._id}
               >
                 Full Info
               </Button>

@@ -25,10 +25,8 @@ import {
 } from '../base-kits';
 import DraftJsEditor from './draft-js-editor';
 import { bookActions } from '../../actions';
-import { PencilIcon } from 'mdi-react';
+import PencilIcon from 'mdi-react/PencilIcon';
 import bmPlaceholderImage from '../../assets/img/bm-image-placeholder.svg';
-
-const EditBookLink = props => <Link {...props} />;
 
 class SingleBookPreviewCard extends Component {
   constructor(props) {
@@ -107,13 +105,13 @@ class SingleBookPreviewCard extends Component {
     };
 
     return (
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <PaddedPaper square>
             <Container p={16}>
               <Grid container>
                 <Grid item xs={8}>
-                  <Grid container spacing={16}>
+                  <Grid container spacing={2}>
                     <Grid item xs={6}>
                       <InfoCaption>Title</InfoCaption>
                       <Typography variant="h6" color="primary">
@@ -179,7 +177,7 @@ class SingleBookPreviewCard extends Component {
                   </Grid>
                 </Grid>
                 <Grid item xs={4}>
-                  <Grid container spacing={16} align="right">
+                  <Grid container spacing={2} align="right">
                     <Grid item xs={12}>
                       <ImageThumbContainer height="450" width="300">
                         <Image
@@ -205,7 +203,7 @@ class SingleBookPreviewCard extends Component {
                       variant="contained"
                       color="primary"
                       size="small"
-                      component={EditBookLink}
+                      component={Link}
                       to={`/edit/${this.props.book._id}`}
                     >
                       Edit

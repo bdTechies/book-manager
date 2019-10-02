@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { CloudUploadIcon, CloudDownloadIcon } from 'mdi-react';
+import CloudUploadIcon from 'mdi-react/CloudUploadIcon';
+import CloudDownloadIcon from 'mdi-react/CloudDownloadIcon';
 import {
   Container,
   CustomGrid,

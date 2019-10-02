@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MagnifyIcon } from 'mdi-react';
+import MagnifyIcon from 'mdi-react/MagnifyIcon';
 import { connect } from 'react-redux';
 import { bookActions } from '../../actions';
 import { SearchInput } from '../base-kits';

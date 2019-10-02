@@ -29,9 +29,9 @@ class WelcomePageMenu extends Component {
           </Link>
         </WelcomePageMenuItem>
         <WelcomePageMenuItem>
-          <a onClick={this.onExitApp}>
+          <span className="exit-button" onClick={this.onExitApp}>
             <span>exit</span>
-          </a>
+          </span>
         </WelcomePageMenuItem>
       </MenuList>
     );

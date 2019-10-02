@@ -63,7 +63,7 @@ class AllBooksContainer extends Component {
     const { allBooks, dbReqStarted, dbReqFinished } = this.props;
 
     return (
-      <Grid container spacing={16} ref="parentContainer">
+      <Grid container spacing={2} ref="parentContainer">
         {allBooks && allBooks.length ? (
           allBooks.map((book, idx) => (
             <BookPreviewCard ref={idx} key={book._id} {...book} />

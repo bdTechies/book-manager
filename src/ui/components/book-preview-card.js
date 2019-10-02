@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Grid, Typography, Button } from '@material-ui/core';
 import {
   PaddedPaper,
@@ -11,10 +11,6 @@ import {
 import bmPlaceholderImage from '../../assets/img/bm-image-placeholder.svg';
 
 class BookPreviewCard extends Component {
-  singleBookLink = itemProps => (
-    <Link to={'/books/' + this.props._id} {...itemProps} />
-  );
-
   render() {
     const {
       coverImage,
@@ -72,7 +68,8 @@ class BookPreviewCard extends Component {
                 variant="contained"
                 color="primary"
                 size="small"
-                component={this.singleBookLink}
+                component={Link}
+                to={'/books/' + this.props._id}
               >
                 Full Info
               </Button>
