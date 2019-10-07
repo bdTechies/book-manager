@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { honeyFlower } from './ui/themes';
@@ -16,7 +16,9 @@ class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <Routes />
+        <Suspense fallback={<div>Loading</div>}>
+          <Routes />
+        </Suspense>
       </ThemeProvider>
     );
   }

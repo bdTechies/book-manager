@@ -1,0 +1,9 @@
+{
+  "title": "Manage your dreams",
+  "welcomePageMenu": {
+    "viewAll": "view all",
+    "addNew": "add new",
+    "about": "about",
+    "exit": "exit"
+  }
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { withTranslation } from 'react-i18next';
 import { MenuList, WelcomePageMenuItem } from '../base-kits';
 import { appControlActions } from '../../actions';
 
@@ -11,26 +12,28 @@ class WelcomePageMenu extends Component {
   };
 
   render() {
+    const { t } = this.props;
+
     return (
       <MenuList>
         <WelcomePageMenuItem>
           <Link to="/all-books">
-            <span>view all</span>
+            <span>{t('welcomePageMenu.viewAll')}</span>
           </Link>
         </WelcomePageMenuItem>
         <WelcomePageMenuItem>
           <Link to="/add-book">
-            <span>add new</span>
+            <span>{t('welcomePageMenu.addNew')}</span>
           </Link>
         </WelcomePageMenuItem>
         <WelcomePageMenuItem>
           <Link to="/about">
-            <span>about</span>
+            <span>{t('welcomePageMenu.about')}</span>
           </Link>
         </WelcomePageMenuItem>
         <WelcomePageMenuItem>
           <span className="exit-button" onClick={this.onExitApp}>
-            <span>exit</span>
+            <span>{t('welcomePageMenu.exit')}</span>
           </span>
         </WelcomePageMenuItem>
       </MenuList>
@@ -49,4 +52,4 @@ WelcomePageMenu.propTypes = {
 export default connect(
   null,
   mapActionsToProps
-)(WelcomePageMenu);
+)(withTranslation()(WelcomePageMenu));
