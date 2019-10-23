@@ -98,6 +98,13 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
 
+  @font-face{
+    font-family: 'notosansbengali';
+    src: url('./assets/fonts/notosansbengali.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+
   * {
     margin: 0;
     padding: 0;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { withTranslation } from 'react-i18next';
 import { bookActions } from '../../actions';
 import MessageDialog from './message-dialog';
 import {
@@ -134,6 +135,8 @@ class AddNewBookForm extends Component {
       return <Redirect to={`/books/${this.props.id || this.props.book._id}`} />;
     }
 
+    const { t } = this.props;
+
     return (
       <Grid container spacing={2}>
         <Grid item xs={12}>
@@ -144,7 +147,7 @@ class AddNewBookForm extends Component {
                   <Grid item xs={6}>
                     <CustomTextField
                       id="title"
-                      label="Title"
+                      label={t('bookInfo.title')}
                       value={this.state.formData.title}
                       onChange={this.handleChange('title')}
                       margin="none"
@@ -158,7 +161,7 @@ class AddNewBookForm extends Component {
                     />
                     <CustomTextField
                       id="author"
-                      label="Author"
+                      label={t('bookInfo.author')}
                       value={this.state.formData.author}
                       onChange={this.handleChange('author')}
                       margin="normal"
@@ -171,7 +174,7 @@ class AddNewBookForm extends Component {
                     />
                     <CustomTextField
                       id="translator"
-                      label="Translator"
+                      label={t('bookInfo.translator')}
                       value={this.state.formData.translator}
                       onChange={this.handleChange('translator')}
                       margin="normal"
@@ -182,7 +185,7 @@ class AddNewBookForm extends Component {
                     />
                     <CustomTextField
                       id="publisher"
-                      label="Publisher"
+                      label={t('bookInfo.publisher')}
                       value={this.state.formData.publisher}
                       onChange={this.handleChange('publisher')}
                       margin="normal"
@@ -193,7 +196,7 @@ class AddNewBookForm extends Component {
                     />
                     <CustomTextField
                       id="book-description"
-                      label="Book description"
+                      label={t('bookInfo.bookDescription')}
                       value={this.state.formData.description}
                       onChange={this.handleChange('description')}
                       margin="normal"
@@ -209,7 +212,7 @@ class AddNewBookForm extends Component {
                   <Grid item xs={6}>
                     <CustomTextField
                       id="book-cover"
-                      label="Book cover"
+                      label={t('bookInfo.bookCover')}
                       value={this.state.formData.coverImage}
                       onChange={this.handleChange('coverImage')}
                       margin="none"
@@ -220,7 +223,7 @@ class AddNewBookForm extends Component {
                     />
                     <CustomTextField
                       id="categories"
-                      label="Categories"
+                      label={t('bookInfo.categories')}
                       value={this.state.formData.categories}
                       onChange={this.handleChange('categories')}
                       margin="normal"
@@ -231,10 +234,10 @@ class AddNewBookForm extends Component {
                       }}
                     />
                     <CustomFormLabel component="legend">
-                      Reading Status
+                      {t('bookInfo.readingStatus')}
                     </CustomFormLabel>
                     <RadioGroup
-                      aria-label="Reading Status"
+                      aria-label={t('readingStatus.completed')}
                       name="reading-status"
                       value={this.state.formData.readingStatus}
                       onChange={this.handleChange('readingStatus')}
@@ -242,17 +245,17 @@ class AddNewBookForm extends Component {
                       <FormControlLabel
                         value="completed"
                         control={<Radio />}
-                        label="Completed"
+                        label={t('readingStatus.completed')}
                       />
                       <FormControlLabel
                         value="reading"
                         control={<Radio />}
-                        label="Reading"
+                        label={t('readingStatus.reading')}
                       />
                       <FormControlLabel
                         value="not-started"
                         control={<Radio />}
-                        label="Not started"
+                        label={t('readingStatus.default')}
                       />
                     </RadioGroup>
                   </Grid>
@@ -266,7 +269,7 @@ class AddNewBookForm extends Component {
                         component={Link}
                         to="/all-books"
                       >
-                        Cancel
+                        {t('buttons.cancelButton')}
                       </CustomButton>
                       <Button
                         variant="contained"
@@ -279,7 +282,7 @@ class AddNewBookForm extends Component {
                           !this.state.formData.author
                         }
                       >
-                        Save
+                        {t('buttons.saveButton')}
                       </Button>
                     </Container>
                   </Grid>
@@ -332,4 +335,4 @@ AddNewBookForm.propTypes = {
 export default connect(
   mapStateToProps,
   mapActionsToProps
-)(AddNewBookForm);
+)(withTranslation()(AddNewBookForm));

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MagnifyIcon from 'mdi-react/MagnifyIcon';
 import { connect } from 'react-redux';
+import { withTranslation } from 'react-i18next';
 import { bookActions } from '../../actions';
 import { SearchInput } from '../base-kits';
 
@@ -34,6 +35,8 @@ class BookSearch extends Component {
   }
 
   render() {
+    const { t } = this.props;
+
     return (
       <form onSubmit={this.handleSubmit} noValidate>
         <SearchInput>
@@ -42,7 +45,7 @@ class BookSearch extends Component {
             <input
               value={this.state.queryText}
               onChange={this.handleChange}
-              placeholder="search book here..."
+              placeholder={t('topMenuBar.searchPlaceholder')}
             />
           </span>
         </SearchInput>
@@ -60,4 +63,4 @@ const mapActionsToProps = {
 export default connect(
   null,
   mapActionsToProps
-)(BookSearch);
+)(withTranslation()(BookSearch));

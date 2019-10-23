@@ -1,9 +1,55 @@
 {
-  "title": "Manage your dreams",
+  "title": "Book Manager",
+  "tagline": "Manage your dreams",
   "welcomePageMenu": {
     "viewAll": "view all",
     "addNew": "add new",
     "about": "about",
     "exit": "exit"
+  },
+  "mainMenu": {
+    "addNew": "Add Book",
+    "allBooks": "All Books",
+    "notes": "Notes",
+    "exim": "Import/Export",
+    "settings": "Settings",
+    "about": "About Book Manager"
+  },
+  "topMenuBar": {
+    "searchPlaceholder": "search book here..."
+  },
+  "bookPreviewCard": {
+    "description": "Description",
+    "readingStatus": "Reading Status",
+    "fullInfo": "Full Info"
+  },
+  "readingStatus": {
+    "completed": "Completed",
+    "reading": "Reading",
+    "default": "Not Started"
+  },
+  "headers": {
+    "addBook": "Add Book",
+    "editBook": "Edit Book",
+    "bookInfoPage": "Book"
+  },
+  "bookInfo": {
+    "title": "Title",
+    "author": "Author",
+    "translator": "Translator",
+    "publisher": "Publisher",
+    "bookDescription": "Book description",
+    "bookCover": "Book cover",
+    "categories": "Categories",
+    "readingStatus": "Reading Status",
+    "note": "Note",
+    "addNoteMessage": "Add a note.",
+    "bookExistsMessage": "Book already exists!"
+  },
+  "buttons": {
+    "cancelButton": "Cancel",
+    "saveButton": "Save",
+    "editButton": "Edit",
+    "deleteButton": "Delete"
   }
 }

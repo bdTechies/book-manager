@@ -15,7 +15,7 @@ const WelcomePageLogo = () => {
         customfont="Arima"
         mt="16px"
       >
-        {t('title')}
+        {t('tagline')}
       </CustomTypography>
     </Container>
   );

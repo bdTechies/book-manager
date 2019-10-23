@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 import {
   Grid,
   Button,
@@ -89,6 +90,8 @@ class SingleBookPreviewCard extends Component {
       note,
     } = this.props.book;
 
+    const { t } = this.props;
+
     if (this.props.bookDeleted) {
       return <Redirect to="/all-books" />;
     }
@@ -96,11 +99,11 @@ class SingleBookPreviewCard extends Component {
     const generateReadingStatus = function(status) {
       switch (status) {
         case 'completed':
-          return 'Completed';
+          return t('readingStatus.completed');
         case 'reading':
-          return 'Reading';
+          return t('readingStatus.reading');
         default:
-          return 'Not Started';
+          return t('readingStatus.default');
       }
     };
 
@@ -113,50 +116,50 @@ class SingleBookPreviewCard extends Component {
                 <Grid item xs={8}>
                   <Grid container spacing={2}>
                     <Grid item xs={6}>
-                      <InfoCaption>Title</InfoCaption>
+                      <InfoCaption>{t('bookInfo.title')}</InfoCaption>
                       <Typography variant="h6" color="primary">
                         {title}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <InfoCaption>Publisher</InfoCaption>
+                      <InfoCaption>{t('bookInfo.publisher')}</InfoCaption>
                       <Typography variant="h6" color="primary">
                         {publisher || '(not provided)'}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <InfoCaption>Author</InfoCaption>
+                      <InfoCaption>{t('bookInfo.author')}</InfoCaption>
                       <Typography variant="h6" color="primary">
                         {author}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <InfoCaption>Categories</InfoCaption>
+                      <InfoCaption>{t('bookInfo.categories')}</InfoCaption>
                       <Typography variant="h6" color="primary">
                         {categories || 'Uncategorized'}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <InfoCaption>Translator</InfoCaption>
+                      <InfoCaption>{t('bookInfo.translator')}</InfoCaption>
                       <Typography variant="h6" color="primary">
                         {translator || 'n\\a'}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <InfoCaption>Reading Status</InfoCaption>
+                      <InfoCaption>{t('bookInfo.readingStatus')}</InfoCaption>
                       <Typography variant="h6" color="primary">
                         {generateReadingStatus(readingStatus)}
                       </Typography>
                     </Grid>
                     <Grid item xs={12}>
-                      <InfoCaption>Description</InfoCaption>
+                      <InfoCaption>{t('bookInfo.bookDescription')}</InfoCaption>
                       <CustomTypography variant="body1" whitespace="pre-line">
                         {description || '(not provided)'}
                       </CustomTypography>
                     </Grid>
                     <Grid item xs={12}>
                       <InfoCaption>
-                        Note{' '}
+                        {t('bookInfo.note')}{' '}
                         <IconButton
                           aria-label="Take note"
                           disableRipple={true}
@@ -170,7 +173,7 @@ class SingleBookPreviewCard extends Component {
                           __html:
                             note && note !== '<p></p>\n'
                               ? note
-                              : '<p>Add a note.</p>',
+                              : `<p>${t('bookInfo.addNoteMessage')}</p>`,
                         }}
                       />
                     </Grid>
@@ -197,7 +200,7 @@ class SingleBookPreviewCard extends Component {
                       mr="16"
                       onClick={this.openDeleteDialog}
                     >
-                      Delete
+                      {t('buttons.deleteButton')}
                     </CustomButton>
                     <Button
                       variant="contained"
@@ -206,7 +209,7 @@ class SingleBookPreviewCard extends Component {
                       component={Link}
                       to={`/edit/${this.props.book._id}`}
                     >
-                      Edit
+                      {t('buttons.editButton')}
                     </Button>
                   </Container>
                 </Grid>
@@ -301,4 +304,4 @@ SingleBookPreviewCard.propTypes = {
 export default connect(
   mapStateToProps,
   mapActionsToProps
-)(SingleBookPreviewCard);
+)(withTranslation()(SingleBookPreviewCard));

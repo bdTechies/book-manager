@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { withTranslation } from 'react-i18next';
 import { Grid, Typography, Button } from '@material-ui/core';
 import {
   PaddedPaper,
@@ -18,6 +19,7 @@ class BookPreviewCard extends Component {
       author,
       description,
       readingStatus,
+      t,
     } = this.props;
 
     const generateSummary = function(text, maxLength) {
@@ -29,11 +31,11 @@ class BookPreviewCard extends Component {
     const generateReadingStatus = function(status) {
       switch (status) {
         case 'completed':
-          return 'Completed';
+          return t('readingStatus.completed');
         case 'reading':
-          return 'Reading';
+          return t('readingStatus.reading');
         default:
-          return 'Not Started';
+          return t('readingStatus.default');
       }
     };
 
@@ -57,11 +59,13 @@ class BookPreviewCard extends Component {
                 {author}
               </Typography>
               <Typography variant="body1" gutterBottom>
-                <InfoCaption>Description: </InfoCaption>
+                <InfoCaption>{t('bookPreviewCard.description')}: </InfoCaption>
                 {generateSummary(description, 120)}
               </Typography>
               <Typography variant="body1" gutterBottom>
-                <InfoCaption>Reading Status: </InfoCaption>
+                <InfoCaption>
+                  {t('bookPreviewCard.readingStatus')}:{' '}
+                </InfoCaption>
                 {generateReadingStatus(readingStatus)}
               </Typography>
               <Button
@@ -71,7 +75,7 @@ class BookPreviewCard extends Component {
                 component={Link}
                 to={'/books/' + this.props._id}
               >
-                Full Info
+                {t('bookPreviewCard.fullInfo')}
               </Button>
             </Grid>
           </Grid>
@@ -89,4 +93,6 @@ BookPreviewCard.propTypes = {
   readingStatus: PropTypes.string,
 };
 
-export default BookPreviewCard;
+export default withTranslation('translation', { withRef: true })(
+  BookPreviewCard
+);

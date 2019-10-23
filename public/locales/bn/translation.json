@@ -1,9 +1,55 @@
 {
-  "title": "স্বপ্নগুলো সাজিয়ে রাখুন",
+  "title": "বুক ম্যানেজার",
+  "tagline": "স্বপ্নগুলো সাজিয়ে রাখুন",
   "welcomePageMenu": {
     "viewAll": "সকল বই দেখুন",
     "addNew": "নতুন যোগ করুন",
     "about": "পরিচিতি",
     "exit": "বন্ধ করুন"
+  },
+  "mainMenu": {
+    "addNew": "বই যোগ করুন",
+    "allBooks": "সকল বই",
+    "notes": "টীকা",
+    "exim": "ইমপোর্ট/এক্সপোর্ট",
+    "settings": "সেটিংস",
+    "about": "পরিচিতি"
+  },
+  "topMenuBar": {
+    "searchPlaceholder": "এখানে বই খুঁজুন..."
+  },
+  "bookPreviewCard": {
+    "description": "বিবরণ",
+    "readingStatus": "পাঠের অগ্রগতি",
+    "fullInfo": "বিস্তারিত"
+  },
+  "readingStatus": {
+    "completed": "পড়া শেষ",
+    "reading": "পড়ছি",
+    "default": "শুরু করিনি"
+  },
+  "headers": {
+    "addBook": "বই যোগ করুন",
+    "editBook": "বই সম্পাদনা করুন",
+    "bookInfoPage": "বই"
+  },
+  "bookInfo": {
+    "title": "শিরোনাম",
+    "author": "লেখক",
+    "translator": "অনুবাদক",
+    "publisher": "প্রকাশক",
+    "bookDescription": "বইয়ের বিবরণ",
+    "bookCover": "বইয়ের কভার",
+    "categories": "বিভাগসমূহ",
+    "readingStatus": "পড়ার অগ্রগতি",
+    "note": "টীকা",
+    "addNoteMessage": "টীকা যোগ করুন।",
+    "bookExistsMessage": "বইটি আগে থেকেই বিদ্যমান!"
+  },
+  "buttons": {
+    "cancelButton": "বাতিল করুন",
+    "saveButton": "সেইভ করুন",
+    "editButton": "সম্পাদনা করুন",
+    "deleteButton": "ডিলেট করুন"
   }
 }
