@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.2.2",
-    "@sh4hids/react-scripts": "1.1.8",
+    "@sh4hids/react-scripts": "2.1.5",
     "draft-js": "^0.10.5",
     "draftjs-to-html": "^0.8.4",
     "electron-is-dev": "^0.3.0",
@@ -76,7 +76,7 @@
   "devDependencies": {
     "concurrently": "^3.6.0",
     "electron": "3.0.2",
-    "electron-builder": "^20.28.4",
+    "electron-builder": "^20.44.4",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "wait-on": "^2.1.0"
